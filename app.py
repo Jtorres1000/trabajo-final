@@ -48,15 +48,6 @@ with st.sidebar:
 
     year_range = st.select_slider("Selecciona un rango de años:", options=sorted(df_processed['release_date'].dt.year.unique()), value=(2015, 2025), help="Selecciona un rango de años para filtrar los datos.")
 
-# Filtrar el DataFrame según las ciudades seleccionadas
-if selected_cities:
-    filtered_df = df_processed[df_processed['country'].isin(selected_cities)]
-else:
-    filtered_df = df_processed
-
-# Filtrar por géneros seleccionados
-if selected_genres:
-    filtered_df = filtered_df[filtered_df['genre'].isin(selected_genres)]
 
 st.title("Dasboard exploratorio de Spotify Data (2015-2025)")
 st.markdown("Análisis exploratorio de datos de Spotify utilizando Streamlit, Pandas, Matplotlib y Seaborn.")
