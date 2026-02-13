@@ -1,3 +1,6 @@
+[server]
+runOnSave = true
+
 [[theme.fontFaces]]
 family = "Inter"
 url = "app/static/Inter_18pt-Regular.ttf"
