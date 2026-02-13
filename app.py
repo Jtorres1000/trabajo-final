@@ -15,8 +15,6 @@ PALETA_SPOTIFY = [
     "#B3B3B3"   # Gris claro
 ]
 
-sns.set_palette(sns.color_palette(PALETA_SPOTIFY))
-
 # Configuración inicial del dashboard
 
 sns.set_palette(sns.color_palette(PALETA_SPOTIFY))
@@ -79,5 +77,35 @@ df_filtered = df_filtered[
     (df_filtered['release_date'].dt.year <= year_range[1])
 ]
 
-st.write(f"Mostrando {len(df_filtered)} resultados:")
-st.dataframe(df_filtered)
+st.write(f"Mostrando {len(df_filtered)} canciones:")
+
+with st.expander("Ver datos filtrados"):
+
+    st.dataframe(df_filtered)
+
+    canciones_por_pais = df_filtered.groupby('country').size().reset_index(name='count').sort_values(by='count', ascending=False)
+    st.dataframe(canciones_por_pais)
+
+    top_10_artistas = (df_filtered.groupby('artist_name')['stream_count']
+                   .sum()
+                   .reset_index()
+                   .sort_values(by='stream_count', ascending=False)
+                   .head(10))
+    
+    st.dataframe(top_10_artistas)
+
+
+# Gráficos
+
+# Gráfico de caja y bigotes según el género y la popularidad
+
+fig = px.box(df_filtered, x='genre', y='popularity', title="Popularidad por Género", labels={"genre": "Género", "popularity": "Popularidad"}, color_discrete_sequence=PALETA_SPOTIFY)
+st.plotly_chart(fig, width='stretch')
+
+# Gráfico de barras de la cantidad de canciones por país
+fig = px.histogram(canciones_por_pais, x='country', y='count', title="Distribución de Países", labels={"country": "País", 'count': "Cantidad de canciones"}, color_discrete_sequence=PALETA_SPOTIFY)
+st.plotly_chart(fig, width='stretch')
+
+# Gráfico de mapa de calor según la cantidad de caciones por país.
+fig = px.choropleth(canciones_por_pais, locations='country', locationmode='country names', color='count', title="Mapa de Popularidad por País", color_continuous_scale=["#121212", "#1DB954", "#1ed760"])
+st.plotly_chart(fig, width='stretch')
