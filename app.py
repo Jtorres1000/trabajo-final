@@ -3,6 +3,7 @@ import streamlit as st
 import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
+import plotly.express as px
 
 # Definir una paleta de colores personalizada inspirada en Spotify  
 
@@ -18,23 +19,33 @@ sns.set_palette(sns.color_palette(PALETA_SPOTIFY))
 
 # Configuración inicial del dashboard
 
+sns.set_palette(sns.color_palette(PALETA_SPOTIFY))
 st.set_page_config(page_title="Spotify Dashboard Análisis de datos", layout="wide")
 
-# Cargar el dataset
+# Función para cargar el dataset
+@st.cache_data
+def cargar_csv(path: str) -> pd.DataFrame:
+    """Carga un archivo CSV desde una ruta dada."""
+    df = pd.read_csv(path)
+    return df
 
-df = pd.read_csv("18. Spotify 2015-2025.csv")
+def preprocesar_datos(df: pd.DataFrame) -> pd.DataFrame:
+    """Preprocesa el DataFrame de Spotify."""
+    df = df.head(10000).copy()
+    df = df.convert_dtypes()
+    df = df.replace(r'^\s*$', np.nan, regex=True)
+    df["duration_ms"] = df["duration_ms"].div(1000 * 60).round(2)
+    df = df.rename(columns={'duration_ms': 'duration_min'})
+    df['release_date'] = pd.to_datetime(df['release_date'])
+    df = df.fillna('Unknown')
+    
+    return df
 
-# Preprocesamiento de datos
 
-df = df.convert_dtypes()
-df = df.replace(r'^\s*$', np.nan, regex=True)
-df = df.fillna('Unknown')
-df = df.head(10000)
+df = cargar_csv("18. Spotify 2015-2025.csv")
 
-# Convertir release_date to datetime
-df['release_date'] = pd.to_datetime(df['release_date'])
+df_processed = preprocesar_datos(df)
 
-df_processed = df
 
 # Sidebar para filtrado y búsqueda
 with st.sidebar:
