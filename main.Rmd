@@ -1,0 +1,22 @@
+---
+title: "Análisis exploratorio descriptivo de datos Spotify 2015-2025"
+author: "Arianna Oliveros; Jorge Torres"
+date: "`r Sys.Date()`"
+output: 
+  pdf_document:
+    toc: true  # Tabla de contenidos 
+    number_sections: true  # Numerar secciones
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Planteamiento de la Investigación
+
+## 1. Planteamiento del Problema
+
+...
+
+
