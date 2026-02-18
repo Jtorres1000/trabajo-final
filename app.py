@@ -94,6 +94,13 @@ with st.expander("Ver datos filtrados"):
     
     st.dataframe(top_10_artistas)
 
+    columnas_corr = ['duration_min', 'popularity', 'danceability', 'energy', 'loudness', 'instrumentalness', 'stream_count']
+
+    st.markdown("## Matriz de correlaciones de las variables filtradas:")
+
+    corr_matrix = df_filtered[columnas_corr].corr()
+
+    st.dataframe(corr_matrix)
 
 # Gráficos
 
@@ -109,3 +116,16 @@ st.plotly_chart(fig, width='stretch')
 # Gráfico de mapa de calor según la cantidad de caciones por país.
 fig = px.choropleth(canciones_por_pais, locations='country', locationmode='country names', color='count', title="Mapa de Popularidad por País", color_continuous_scale=["#121212", "#1DB954", "#1ed760"])
 st.plotly_chart(fig, width='stretch')
+
+# Gráfico de mapa de calor según las correlaciones entre las variables numéricas    
+fig, ax = plt.subplots(figsize=(10, 8))
+sns.heatmap(corr_matrix, 
+            annot=True, 
+            cmap='coolwarm', 
+            linewidths=0.6,
+            fmt='.4f',
+            square=True,
+            ax=ax)
+ax.set_title('Mapa de Calor - Correlaciones', fontsize=14)
+
+st.pyplot(fig, width='stretch')
