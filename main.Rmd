@@ -16,7 +16,7 @@ knitr::opts_chunk$set(echo = TRUE)
 # Planteamiento de la Investigación
 
 ## 1. Planteamiento del Problema
-
+## 2.objetivos
 ...
 
 
