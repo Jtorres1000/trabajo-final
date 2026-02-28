@@ -14,9 +14,16 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 # Planteamiento de la Investigación
+  Comportamiento Geográfico y Distribución de Sellos
 
 ## 1. Planteamiento del Problema
-## 2.objetivos
+  El mercado musical global está fragmentado. Lo que es un éxito en Brasil puede no serlo en Alemania. Además, se desconoce si ciertos sellos discográficos (labels) 
+tienen un dominio real sobre géneros específicos o regiones geográficas particulares dentro de los datos analizados.
+ 
+## 2.objetivo general
+ Mapear la distribución geográfica de los géneros musicales y la influencia de las disqueras en los diferentes mercados.
+
+## 3.objetivos especificos 
 ...
 
 
