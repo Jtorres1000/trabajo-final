@@ -92,7 +92,7 @@ Esta investigación es fundamental para comprender la transformación estructura
  
 \subsection{Objetivo General}
 \begin{itemize}
-  \item{Analizar la evolución temporal de la duración y velocidad de la música global entre 2015 y 2025, contrastando su comportamiento entre diferentes países para determinar la existencia de patrones de **"inmediatez"** y validar la independencia o no de estas variables respecto a la popularidad de una canción.}
+  \item{Analizar la evolución temporal de la duración y velocidad de la música global entre 2015 y 2025, contrastando su comportamiento entre diferentes países para determinar la existencia de patrones de **"inmediatez"** y validar la independencia o no de estas variables respecto a la popularidad de una canción}
 \end{itemize}
 
 \subsection{Objetivos Específicos}
@@ -110,7 +110,7 @@ Esta investigación es fundamental para comprender la transformación estructura
 Describir la cobertura Horizontal del trabajo de investigación\ La investigación abarca la totalidad de los registros válidos en el dataset (85,000 pistas), incluyendo todos los géneros musicales y los 10 países representados en la muestra (USA, UK, Brazil, India, Australia, France, Germany, Japan, Canada, Mexico*). *Nota: Se asumen los países visibles en tu gráfico previo.
 
 \subsection{vertical}
- El estudio se delimita al análisis de las características técnicas de audio (tiempo, ritmo, energía) y su distribución temporal y geográfica, excluyendo análisis de contenido lírico o armónico complejo.
+ El estudio se delimita al análisis de las características técnicas de audio (tiempo, ritmo, energía) y su distribución temporal y geográfica, excluyendo análisis de contenido lírico o armónico complejo
 
 \begin{table}[ht]
 \centering
@@ -226,7 +226,7 @@ Descripción Presentación de resultados n\
 \textbf{1.-} Conclusion 1 del trabajo de investigación.\
 
 \textbf{Recomendación} 
-Recomendación 1 del trabajo de investigación.\
+Recomendación 1 del trabajo de investigación\
 
 \textbf{2.-} Conclusion 2 del trabajo de investigación.\
 
