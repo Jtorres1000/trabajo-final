@@ -19,8 +19,7 @@ facultad:
 escudo: "Latex/Classes/Escudos/faces"
 
 # --- Bibliografía ---
-bibliography: bibliografia.bib
-
+bibliography: El análisis comprende los datos generados entre el 1 de enero de 2015 y el 31 de diciembre de 2025.
 # --- Configuración de Salida ---
 output: 
   pdf_document:
@@ -62,7 +61,7 @@ Introducción del trabajo de investigación
 
 En la última década, hay una proliferación de formatos de video corto en plataformas como TikTok, y su posterior adopción por YouTube Shorts e Instagram Reels. Ha modificado los patrones de consumo de contenido, reduciendo la ventana de atención del usuario promedio y fomentando una cultura de la inmediatez.
 Por otro lado, la industria musical contemporánea ha transitado de un modelo basado en la venta física a uno dominado por el streaming . Este cambio en los hábitos de consumo sugiere la aparición de una "cultura de la inmediatez", donde el oyente promedio tiene una ventana de atención reducida y una mayor propensión a saltar canciones o escuchar canciones muy cortas o rápidas.
-Sin embargo, se carece de evidencia estadística descriptiva que cuantifique este fenómeno a nivel global en las últimas décadas. Además, se desconoce si esta supuesta compresión y aceleración de las canciones es una tendencia global en todos los mercados o si existen diferencias significativas según la ubicación geográfica, y si estas tienen alguna relación lineal real con el éxito comercial de una pista musical.
+Sin embargo, se carece de evidencia estadística descriptiva que cuantifique este fenómeno a nivel global en las últimas décadas. Además, se desconoce si esta supuesta compresión y aceleración de las canciones es una tendencia global en todos los mercados o si existen diferencias significativas según la ubicación geográfica, y si estas tienen alguna relación lineal real con el éxito comercial de una pista musical
 
 En base a lo anterior se plantean las siguientes preguntas de investigación:
 
