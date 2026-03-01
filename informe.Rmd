@@ -61,53 +61,51 @@ Introducción del trabajo de investigación
 
 En la última década, hay una proliferación de formatos de video corto en plataformas como TikTok, y su posterior adopción por YouTube Shorts e Instagram Reels. Ha modificado los patrones de consumo de contenido, reduciendo la ventana de atención del usuario promedio y fomentando una cultura de la inmediatez.
 Por otro lado, la industria musical contemporánea ha transitado de un modelo basado en la venta física a uno dominado por el streaming . Este cambio en los hábitos de consumo sugiere la aparición de una "cultura de la inmediatez", donde el oyente promedio tiene una ventana de atención reducida y una mayor propensión a saltar canciones o escuchar canciones muy cortas o rápidas.
-Sin embargo, se carece de evidencia estadística descriptiva que cuantifique este fenómeno a nivel global en las últimas décadas. Además, se desconoce si esta supuesta compresión y aceleración de las canciones es una tendencia global en todos los mercados o si existen diferencias significativas según la ubicación geográfica, y si estas tienen alguna relación lineal real con el éxito comercial de una pista musical
+Sin embargo, se carece de evidencia estadística descriptiva que cuantifique este fenómeno a nivel global en las últimas décadas. Además, se ddeesconoce si esta supuesta compresión y aceleración de las canciones es una tendencia global en todos los mercados o si existen diferencias significativas según la ubicación geográfica, y si estas tienen alguna relación lineal real con el éxito comercial de una pista musical
 
 En base a lo anterior se plantean las siguientes preguntas de investigación:
 
-\textbf{1.}	Pregunta1\ ¿Cómo ha evolucionado el promedio de duración de las canciones a nivel global entre 2015 y 2025, y existe evidencia de una reducción de la misma año tras año?
+\textbf{1.}	Pregunta \ ¿Cómo ha evolucionado el promedio de duración de las canciones a nivel global entre 2015 y 2025, y existe evidencia de una reducción de la misma año tras año?
 
-\textbf{2.}	Pregunta2\ ¿Se observa una tendencia creciente en las variables de velocidad y energía que sugieren una aceleración en la composición musical durante el periodo estudiado?
-
-
-\textbf{3.}	Pregunta3\ ¿Es la tendencia hacia canciones más cortas y rápidas un fenómeno homogéneo en los 10 países analizados, o existen diferencias marcadas en el comportamiento de estas variables según la región?
+\textbf{2.}	Pregunta \ ¿Se observa una tendencia creciente en las variables de velocidad y energía que sugieren una aceleración en la composición musical durante el periodo estudiado?
 
 
-\textbf{4.}	Pregunta4\ ¿Existe una correlación lineal significativa entre las características estructurales de una canción duración, tempo, energía, etc. Y su popularidad, o son estas variables independientes del éxito comercial?
+\textbf{3.}	Pregunta \ ¿Es la tendencia hacia canciones más cortas y rápidas un fenómeno homogéneo en los 10 países analizados, o existen diferencias marcadas en el comportamiento de estas variables según la región?
+
+
+\textbf{4.}	Pregunta \ ¿Existe una correlación lineal significativa entre las características estructurales de una canción duración, tempo, energía, etc. Y su popularidad, o son estas variables independientes del éxito comercial?
 
 
 \section{Justificación}
 
-Justificación del trabajo de investigación\
-
 Esta investigación es fundamental para comprender la transformación estructural del producto musical ante la presión de los algoritmos de recomendación.
 
-* **Perspectiva de mercado:** Confirmar una tendencia decreciente en la duración y creciente en la velocidad permitiría a productores y sellos discográficos alinear sus estrategias de creación con los patrones de consumo actuales.
+* Perspectiva de mercado: Confirmar una tendencia decreciente en la duración y creciente en la velocidad permitiría a productores y sellos discográficos alinear sus estrategias de creación con los patrones de consumo actuales.
 
-* **Perspectiva estadística:** El estudio se justifica al integrar un análisis de correlación que desafía la intuición común: demostrar si el éxito es multifactorial o si depende linealmente de atributos específicos.
+* Perspectiva estadística: El estudio se justifica al integrar un análisis de correlación que desafía la intuición común: demostrar si el éxito es multifactorial o si depende linealmente de atributos específicos.
 
-* **Análisis geográfico:** Al contrastar estos datos por país, el estudio aportará valor al identificar si la globalización digital está homogeneizando los rasgos culturales de la música o si persisten resistencias locales ante la tendencia a contenido breve.
+* Análisis geográfico: Al contrastar estos datos por país, el estudio aportará valor al identificar si la globalización digital está homogeneizando los rasgos culturales de la música o si persisten resistencias locales ante la tendencia a contenido breve.
 
 \section{Objetivos}
  
 \subsection{Objetivo General}
 \begin{itemize}
-  \item{Analizar la evolución temporal de la duración y velocidad de la música global entre 2015 y 2025, contrastando su comportamiento entre diferentes países para determinar la existencia de patrones de **"inmediatez"** y validar la independencia o no de estas variables respecto a la popularidad de una canción}
+  \item{Analizar la evolución temporal de la duración y velocidad de la música global entre 2015 y 2025, contrastando su comportamiento entre diferentes países para determinar la existencia de patrones de inmediatez y validar la independencia o no de estas variables respecto a la popularidad de una canción}
 \end{itemize}
 
 \subsection{Objetivos Específicos}
 \begin{itemize}
-  \item{**Determinar la tendencia de la duración:** Describir la evolución del promedio de duración (`duration\_ms`) por año para verificar si existe una reducción sistemática en la longitud de las canciones.}
-  \item{**Evaluar la aceleración rítmica:** Analizar el comportamiento anual de las variables `tempo` y `energy` para identificar si existe una tendencia hacia composiciones más rápidas e intensas.}
-  \item{**Contrastar la consistencia geográfica:** Comparar los promedios de duración y velocidad entre los 10 países del dataset para establecer si el fenómeno de inmediatez es globalmente homogéneo o presenta variaciones regionales significativas.}
-\item{**Validar la independencia de variables:** Utilizar una matriz de correlación para demostrar la ausencia de relaciones lineales fuertes entre los atributos acústicos individuales y la métrica de `popularity`, descartando fórmulas únicas de éxito.}
+  \item{ Determinar la tendencia de la duración: Describir la evolución del promedio de duración (`duration\_ms`) por año para verificar si existe una reducción sistemática en la longitud de las canciones.}
+  \item{ Evaluar la aceleración rítmica: Analizar el comportamiento anual de las variables `tempo` y `energy` para identificar si existe una tendencia hacia composiciones más rápidas e intensas.}
+  \item{ Contrastar la consistencia geográfica: Comparar los promedios de duración y velocidad entre los 10 países del dataset para establecer si el fenómeno de inmediatez es globalmente homogéneo o presenta variaciones regionales significativas.}
+\item{ Validar la independencia de variables: Utilizar una matriz de correlación para demostrar la ausencia de relaciones lineales fuertes entre los atributos acústicos individuales y la métrica de `popularity`, descartando fórmulas únicas de éxito.}
 \end{itemize}
 
 
 \section{Cobertura}
 
 \subsection{Horizontal}
-Describir la cobertura Horizontal del trabajo de investigación\ La investigación abarca la totalidad de los registros válidos en el dataset (85,000 pistas), incluyendo todos los géneros musicales y los 10 países representados en la muestra (USA, UK, Brazil, India, Australia, France, Germany, Japan, Canada, Mexico*). *Nota: Se asumen los países visibles en tu gráfico previo.
+Describir la cobertura Horizontal del trabajo de investigación\ La investigación abarca la totalidad de los registros válidos en el dataset (85,000 pistas), incluyendo todos los géneros musicales y los 10 países representados en la muestra (USA, UK, Brazil, India, Australia, France, Germany, Japan, Canada, Mexico*). Nota: Se asumen los países visibles en tu gráfico previo.
 
 \subsection{vertical}
  El estudio se delimita al análisis de las características técnicas de audio (tiempo, ritmo, energía) y su distribución temporal y geográfica, excluyendo análisis de contenido lírico o armónico complejo
