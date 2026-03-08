@@ -69,10 +69,9 @@ Debido al éxito general que venía amasando la red social TikTok, otras platafo
 A la par de esto, según el reciente informe de la IFPI (2024) las ventas de la industria musical han venido migrando de un formato físico a un formato de streaming, pasando de discos en formato físico al uso de plataformas de audio streaming o de video streaming.
 
 
-
 En base a lo anterior se plantean las siguientes preguntas de investigación:
 
-\textbf{1.}	¿Cómo ha evolucionado el promedio de duración de las canciones a nivel global entre 2015 y 2025, y existe evidencia de una reducción de la misma año tras año?
+\textbf{1.}	¿Cómo ha evolucionado el promedio de duración de las canciones a nivel global entre 2015 y 2025, y existe evidencia de una reducción de la misma año tras años?
 
 \textbf{2.}	¿Cuál es la tendencia creciente en las variables de velocidad y energía que sugieren una aceleración en la composición musical durante el periodo estudiado?
 
@@ -85,19 +84,14 @@ En base a lo anterior se plantean las siguientes preguntas de investigación:
 
 \section{Justificación}
 
-Esta investigación es fundamental para comprender la transformación estructural del producto musical ante la presión de los algoritmos de recomendación.
-
-* Perspectiva de mercado: Confirmar una tendencia decreciente en la duración y creciente en la velocidad permitiría a productores y sellos discográficos alinear sus estrategias de creación con los patrones de consumo actuales.
-
-* Perspectiva estadística: El estudio se justifica al integrar un análisis de correlación que desafía la intuición común demostrando si el éxito es multifactorial o si depende linealmente de atributos específicos.
-
-* Análisis geográfico: Al contrastar estos datos por país, el estudio aportará valor al identificar si la globalización digital está homogeneizando los rasgos culturales de la música o si persisten resistencias locales ante la tendencia a contenido breve.
+Esta investigación es fundamental para comprender la transformación estructural del producto musical ante la presión de los algoritmos de recomendación. Desde una perspectiva de mercado, confirmar una tendencia decreciente en la duración y creciente en la velocidad permitiría a productores y sellos discográficos alinear sus estrategias de creación con los patrones de consumo actuales. Desde una perspectiva estadística, el estudio se justifica al integrar un análisis de correlación que desafía la intuición común: demostrar si el éxito es multifactorial o si depende linealmente de atributos específicos. Además, al contrastar estos datos por país, el estudio aportará valor al identificar si la globalización digital está homogeneizando los rasgos culturales de la música o si persisten resistencias locales ante la tendencia a contenido breve.
 
 \section{Objetivos}
  
 \subsection{Objetivo General}
 \begin{itemize}
-  \item{Analizar la evolución temporal de la duración y velocidad de la música global entre 2015 y 2025, contrastando su comportamiento entre diferentes países para determinar la existencia de patrones de inmediatez y validar la independencia o no de estas variables respecto a la popularidad de una canción}
+  \item{Determinar la influencia del formato de video corto y vertical en la evolución de la duración estructural de las canciones producidas por la industria musical global durante la última década}
+
 \end{itemize}
 
 \subsection{Objetivos Específicos}
@@ -112,10 +106,10 @@ Esta investigación es fundamental para comprender la transformación estructura
 \section{Cobertura}
 
 \subsection{Horizontal}
-Describir la cobertura Horizontal del trabajo de investigación\ La investigación abarca la totalidad de los registros válidos en el dataset (85,000 pistas), incluyendo todos los géneros musicales y los 10 países representados en la muestra (USA, UK, Brazil, India, Australia, France, Germany, Japan, Canada, Mexico*). Nota: Se asumen los países visibles en tu gráfico previo.
+ \item{stigación abarca la totalidad de los registros válidos en el dataset (85,000 pistas), incluyendo todos los géneros musicales y los 10 países representados en la muestra (USA, UK, Brazil, India, Australia, France, Germany, Japan, Canada, Mexico*). *Nota: Se asumen los países visibles en tu gráfico previo}
 
 \subsection{vertical}
- El estudio se delimita al análisis de las características técnicas de audio (tiempo, ritmo, energía) y su distribución temporal y geográfica, excluyendo análisis de contenido lírico o armónico complejo
+ \item{udio se delimita al análisis de las características técnicas de audio (tiempo, ritmo, energía) y su distribución temporal y geográfica, excluyendo análisis de contenido lírico o armónico complejo}
 
 \begin{table}[ht]
 \centering
