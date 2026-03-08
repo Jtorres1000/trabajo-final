@@ -1,6 +1,6 @@
 ---
 # --- Metadatos Básicos ---
-title: "Analisis  exploratorio de spotify 2015 2025"
+title: "Videos cortos y verticales y su efecto en las tendencias musicales globales 2015-2025: Análisis descriptivo de series temporales."
 author:
    - Jorge Torres
    - Arianna Oliveros 
@@ -8,6 +8,7 @@ date: "marzo 2026"
 
 # --- Metadatos Específicos de Plantilla ---
 degree: "Computación I"
+
 director: 
   - Jesus Ochoa 
   - Oliver Triveño
@@ -19,8 +20,11 @@ facultad:
 escudo: "Latex/Classes/Escudos/faces"
 
 # --- Bibliografía ---
-bibliography: 
-# --- Configuración de Salida ---
+
+header-includes:
+  - \usepackage[spanish]{babel}
+  - \usepackage[numbers]{natbib}
+  - \usepackage[nottoc]{tocbibind}
 output: 
   pdf_document:
     template: template.tex  # Llamamos al archivo de plantilla
@@ -28,7 +32,7 @@ output:
     toc: true                      # Generar índice
     number_sections: true
     citation_package: natbib       # Importante: forzar natbib porque tu plantilla lo usa
-
+    pandoc_args: ["--metadata", "reference-section-title=Bibliografía"]
 # --- Resumen (Abstract) ---
 abstract: |
   Resumen del trabajo de investigación...
@@ -59,9 +63,12 @@ Introducción del trabajo de investigación
 
 \chapter{Planteamiento del Problema}
 
-En la última década, hay una proliferación de formatos de video corto en plataformas como TikTok, y su posterior adopción por YouTube Shorts e Instagram Reels. Ha modificado los patrones de consumo de contenido, reduciendo la ventana de atención del usuario promedio y fomentando una cultura de la inmediatez.
-Por otro lado, la industria musical contemporánea ha transitado de un modelo basado en la venta física a uno dominado por el streaming . Este cambio en los hábitos de consumo sugiere la aparición de una "cultura de la inmediatez", donde el oyente promedio tiene una ventana de atención reducida y una mayor propensión a saltar canciones o escuchar canciones muy cortas o rápidas.
-Sin embargo, se carece de evidencia estadística descriptiva que cuantifique este fenómeno a nivel global en las últimas décadas. Además, se desconoce si esta supuesta compresión y aceleración de las canciones es una tendencia global en todos los mercados o si existen diferencias significativas según la ubicación geográfica, y si estas tienen alguna relación lineal real con el éxito comercial de una pista musical
+1. Planteamiento del Problema
+En la última década, hay una inclinación a los videos de formato corto y vertical. Debido al auge que tuvo la aplicación Tiktok. En 2020, TikTok superó los 2 mil millones de visualizaciones en todo el mundo (Influencer Marketing Hub, 2020, como se citó en Navarro-Güere, 2024). Y, además, esta red social motiva a sus usuarios a generar contenido corto y vertical, para optimizar los vídeos en TikTok, la red social recomienda que los vídeos se graben siempre en modo vertical (Simplified, 2022, como se citó en Navarro-Güere, 2024)
+Debido al éxito general que venía amasando la red social TikTok, otras plataformas empezaron a adaptarse a este tipo de formato vertical y corto, La sección Instagram Reels apareció en 2020 —diez años después que la aplicación Instagram— donde se graban y editan vídeos de clips de 15, 30 ó 60 segundos con audio, efectos, stickers, audio y otros recursos (Instagram, 2020; Alexander, 2020; Lenis, 2023, como se citó en Navarro-Güere, 2024). Así mismo, la red social Youtube, se adaptó con la implementación de Youtube shorts, según YouTube (s.f.) Shorts es la plataforma para grabar, compartir y maratonear videos cortos (de 60 segundos o menos) en YouTube.
+A la par de esto, según el reciente informe de la IFPI (2024) las ventas de la industria musical han venido migrando de un formato físico a un formato de streaming, pasando de discos en formato físico al uso de plataformas de audio streaming o de video streaming.
+
+
 
 En base a lo anterior se plantean las siguientes preguntas de investigación:
 
@@ -118,12 +125,12 @@ Describir la cobertura Horizontal del trabajo de investigación\ La investigaci�
   \hline
 \ \ \ \ \ NOMBRE DE LA VARIABLE \\ 
   \hline
-   \\ Variable Temporal (Eje de Evolución): release\_date (Año).& \\
-   \\ Variable de Segmentación (Criterio de Comparación): country.& \\
+   \\ Variable Temporal (Eje de Evolución): release\_date (Año)\&\\
+   \\ Variable de Segmentación (Criterio de Comparación): country\& \\
     \\ Variables de Interés (Métricas de la "Inmediatez"):
-     duration\_ms (transformada a duration\_ms).& \\
-     tempo (BPM).& \\
-     energy (Escala 0-1).& \\
+     duration\_ms (transformada a duration\_ms).\& \\
+     tempo (BPM).\&\\
+     energy (Escala 0-1).\&\\
      \\Variables de Validación (Correlación): popularity, stream\_count, danceability, loudness& & \\
 \hline
 \end{tabular}
@@ -243,4 +250,3 @@ Recomendación 2 del trabajo de investigación.\
 \chapter{Anexo B}
 
 \chapter{Anexo C}
-
