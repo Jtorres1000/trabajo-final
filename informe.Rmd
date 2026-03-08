@@ -1,6 +1,6 @@
 ---
 # --- Metadatos Básicos ---
-title: "Analisia exploratorio de spotify 2015 2025"
+title: "Analisis  exploratorio de spotify 2015 2025"
 author:
    - Jorge Torres
    - Arianna Oliveros 
@@ -19,7 +19,7 @@ facultad:
 escudo: "Latex/Classes/Escudos/faces"
 
 # --- Bibliografía ---
-bibliography: El análisis comprende los datos generados entre el 1 de enero de 2015 y el 31 de diciembre de 2025.
+bibliography: 
 # --- Configuración de Salida ---
 output: 
   pdf_document:
@@ -61,19 +61,19 @@ Introducción del trabajo de investigación
 
 En la última década, hay una proliferación de formatos de video corto en plataformas como TikTok, y su posterior adopción por YouTube Shorts e Instagram Reels. Ha modificado los patrones de consumo de contenido, reduciendo la ventana de atención del usuario promedio y fomentando una cultura de la inmediatez.
 Por otro lado, la industria musical contemporánea ha transitado de un modelo basado en la venta física a uno dominado por el streaming . Este cambio en los hábitos de consumo sugiere la aparición de una "cultura de la inmediatez", donde el oyente promedio tiene una ventana de atención reducida y una mayor propensión a saltar canciones o escuchar canciones muy cortas o rápidas.
-Sin embargo, se carece de evidencia estadística descriptiva que cuantifique este fenómeno a nivel global en las últimas décadas. Además, se ddeesconoce si esta supuesta compresión y aceleración de las canciones es una tendencia global en todos los mercados o si existen diferencias significativas según la ubicación geográfica, y si estas tienen alguna relación lineal real con el éxito comercial de una pista musical
+Sin embargo, se carece de evidencia estadística descriptiva que cuantifique este fenómeno a nivel global en las últimas décadas. Además, se desconoce si esta supuesta compresión y aceleración de las canciones es una tendencia global en todos los mercados o si existen diferencias significativas según la ubicación geográfica, y si estas tienen alguna relación lineal real con el éxito comercial de una pista musical
 
 En base a lo anterior se plantean las siguientes preguntas de investigación:
 
-\textbf{1.}	Pregunta \ ¿Cómo ha evolucionado el promedio de duración de las canciones a nivel global entre 2015 y 2025, y existe evidencia de una reducción de la misma año tras año?
+\textbf{1.}	¿Cómo ha evolucionado el promedio de duración de las canciones a nivel global entre 2015 y 2025, y existe evidencia de una reducción de la misma año tras año?
 
-\textbf{2.}	Pregunta \ ¿Se observa una tendencia creciente en las variables de velocidad y energía que sugieren una aceleración en la composición musical durante el periodo estudiado?
-
-
-\textbf{3.}	Pregunta \ ¿Es la tendencia hacia canciones más cortas y rápidas un fenómeno homogéneo en los 10 países analizados, o existen diferencias marcadas en el comportamiento de estas variables según la región?
+\textbf{2.}	¿Cuál es la tendencia creciente en las variables de velocidad y energía que sugieren una aceleración en la composición musical durante el periodo estudiado?
 
 
-\textbf{4.}	Pregunta \ ¿Existe una correlación lineal significativa entre las características estructurales de una canción duración, tempo, energía, etc. Y su popularidad, o son estas variables independientes del éxito comercial?
+\textbf{3.} ¿Cuál es la tendencia hacia canciones más cortas y rápidas: un fenómeno homogéneo en los 10 países analizados, o existen diferencias marcadas en el comportamiento de estas variables según la región?
+
+
+\textbf{4.} ¿Cuál es la correlación lineal significativa entre las características estructurales de una canción (duración, tempo, energía, etc.) y su popularidad, o son estas variables independientes del éxito comercial?
 
 
 \section{Justificación}
@@ -82,7 +82,7 @@ Esta investigación es fundamental para comprender la transformación estructura
 
 * Perspectiva de mercado: Confirmar una tendencia decreciente en la duración y creciente en la velocidad permitiría a productores y sellos discográficos alinear sus estrategias de creación con los patrones de consumo actuales.
 
-* Perspectiva estadística: El estudio se justifica al integrar un análisis de correlación que desafía la intuición común: demostrar si el éxito es multifactorial o si depende linealmente de atributos específicos.
+* Perspectiva estadística: El estudio se justifica al integrar un análisis de correlación que desafía la intuición común demostrando si el éxito es multifactorial o si depende linealmente de atributos específicos.
 
 * Análisis geográfico: Al contrastar estos datos por país, el estudio aportará valor al identificar si la globalización digital está homogeneizando los rasgos culturales de la música o si persisten resistencias locales ante la tendencia a contenido breve.
 
