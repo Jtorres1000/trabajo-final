@@ -63,10 +63,24 @@ Introducción del trabajo de investigación
 
 \chapter{Planteamiento del Problema}
 
-1. Planteamiento del Problema
-En la última década, hay una inclinación a los videos de formato corto y vertical. Debido al auge que tuvo la aplicación Tiktok. En 2020, TikTok superó los 2 mil millones de visualizaciones en todo el mundo (Influencer Marketing Hub, 2020, como se citó en Navarro-Güere, 2024). Y, además, esta red social motiva a sus usuarios a generar contenido corto y vertical, para optimizar los vídeos en TikTok, la red social recomienda que los vídeos se graben siempre en modo vertical (Simplified, 2022, como se citó en Navarro-Güere, 2024)
-Debido al éxito general que venía amasando la red social TikTok, otras plataformas empezaron a adaptarse a este tipo de formato vertical y corto, La sección Instagram Reels apareció en 2020 —diez años después que la aplicación Instagram— donde se graban y editan vídeos de clips de 15, 30 ó 60 segundos con audio, efectos, stickers, audio y otros recursos (Instagram, 2020; Alexander, 2020; Lenis, 2023, como se citó en Navarro-Güere, 2024). Así mismo, la red social Youtube, se adaptó con la implementación de Youtube shorts, según YouTube (s.f.) Shorts es la plataforma para grabar, compartir y maratonear videos cortos (de 60 segundos o menos) en YouTube.
-A la par de esto, según el reciente informe de la IFPI (2024) las ventas de la industria musical han venido migrando de un formato físico a un formato de streaming, pasando de discos en formato físico al uso de plataformas de audio streaming o de video streaming.
+ En la última década, hay una inclinación a los videos de formato corto y vertical. Debido al auge que tuvo la aplicación Tiktok. En 2020, TikTok superó los 2 mil millones de visualizaciones en todo el mundo (Influencer Marketing Hub, 2020, como se citó en Navarro-Güere, 2024). Y, además, esta red social motiva a sus usuarios a generar contenido corto y vertical, para optimizar los vídeos en TikTok, la red social recomienda que los vídeos se graben siempre en modo vertical (Simplified, 2022, como se citó en Navarro-Güere, 2024)
+
+ Debido al éxito general que venía amasando la red social TikTok, otras plataformas empezaron a adaptarse a este tipo de formato vertical y corto, La sección Instagram Reels apareció en 2020 —diez años después que la aplicación Instagram— donde se graban y editan vídeos de clips de 15, 30 o 60 segundos con audio, efectos, stickers, audio y otros recursos (Instagram, 2020; Alexander, 2020; Lenis, 2023, como se citó en Navarro-Güere, 2024). Así mismo, la red social Youtube, se adaptó con la implementación de Youtube shorts, según YouTube (s.f.) Shorts es la plataforma para grabar, compartir y maratonear videos cortos (de 60 segundos o menos) en YouTube.
+
+ A la par de esto, según el reciente informe de la IFPI (2024) las ventas de la industria musical han venido migrando de un formato físico a un formato de streaming, pasando de discos en formato físico al uso de plataformas de audio streaming o de video streaming.
+
+```{r grafico-ingresos, echo=FALSE, fig.align='center', out.width="80%"}
+knitr::include_graphics("imagen/grafico 1.png")
+```
+
+ Como podemos apreciar en el gráfico, las ventas musicales a nivel global en la modalidad de streaming para el año 2024 estaban conformadas por un total de 20.4 billones de USD representando al 69\% de las ventas producidas por la industria musical, y ha mantenido un incremento desde 2011.
+
+ Así mismo, el auge de los videos de formato vertical ha reconfigurado la manera en que las audiencias más jóvenes consumen contenido sonoro. De acuerdo con los datos recopilados en el estudio Engaging with Music (IFPI, 2023), el 82\% de los usuarios con edades comprendidas entre los 16 y 24 años interactúa con la música diariamente a través de plataformas de videos cortos. Esta preferencia sitúa a este formato por encima de alternativas tradicionales y digitales, dejando en segundo plano al streaming de audio puro (72\%) y a las plataformas de video convencionales (66\%).
+ 
+ Del mismo modo, según Ngilangil (2022) en un estudio realizado en los estudiantes de la universidad Surigao del Norte State University (SNSU), en el que se analizó qué elementos garantizan el éxito de un video de TikTok, se observa que el contenido, la calidad visual y la música son factores muy influyentes para los usuarios.
+ 
+ Tomando en consideración que el mercado de la industria musical está siendo mayoritariamente dominado por plataformas de streaming, y que a su vez gran parte de su consumo proviene de formatos verticales y breves, surge la siguiente interrogante: ¿Es posible que este fenómeno esté condicionando la producción de nuevas piezas musicales, impulsando una reducción en su duración para adaptarse a estos vídeos y plataformas para así aumentar sus probabilidades de éxito?"
+
 
 
 En base a lo anterior se plantean las siguientes preguntas de investigación:
@@ -89,27 +103,23 @@ Esta investigación es fundamental para comprender la transformación estructura
 \section{Objetivos}
  
 \subsection{Objetivo General}
-\begin{itemize}
-  \item{Determinar la influencia del formato de video corto y vertical en la evolución de la duración estructural de las canciones producidas por la industria musical global durante la última década}
-
-\end{itemize}
+* Determinar la influencia del formato de video corto y vertical en la evolución de la duración estructural de las canciones producidas por la industria musical global durante la última década.
 
 \subsection{Objetivos Específicos}
-\begin{itemize}
-  \item{ Determinar la tendencia de la duración: Describir la evolución del promedio de duración (`duration\_ms`) por año para verificar si existe una reducción sistemática en la longitud de las canciones.}
-  \item{ Evaluar la aceleración rítmica: Analizar el comportamiento anual de las variables `tempo` y `energy` para identificar si existe una tendencia hacia composiciones más rápidas e intensas.}
-  \item{ Contrastar la consistencia geográfica: Comparar los promedios de duración y velocidad entre los 10 países del dataset para establecer si el fenómeno de inmediatez es globalmente homogéneo o presenta variaciones regionales significativas.}
-\item{ Validar la independencia de variables: Utilizar una matriz de correlación para demostrar la ausencia de relaciones lineales fuertes entre los atributos acústicos individuales y la métrica de `popularity`, descartando fórmulas únicas de éxito.}
-\end{itemize}
+*  **Determinar la tendencia de la duración:** Describir la evolución del promedio de duración (`duration\_ms`) por año para verificar si existe una reducción sistemática en la longitud de las canciones.
+* **Evaluar la aceleración rítmica:** Analizar el comportamiento anual de las variables `tempo` y `energy` para identificar si existe una tendencia hacia composiciones más rápidas e intensas.
+* **Contrastar la consistencia geográfica:** Comparar los promedios de duración y velocidad entre los 10 países del dataset para establecer si el fenómeno de inmediatez es globalmente homogéneo o presenta variaciones regionales significativas.
+* **Validar la independencia de variables:** Utilizar una matriz de correlación para demostrar la ausencia de relaciones lineales fuertes entre los atributos acústicos individuales y la métrica de `popularity`, descartando fórmulas únicas de éxito.
 
 
 \section{Cobertura}
 
 \subsection{Horizontal}
- \item{stigación abarca la totalidad de los registros válidos en el dataset (85,000 pistas), incluyendo todos los géneros musicales y los 10 países representados en la muestra (USA, UK, Brazil, India, Australia, France, Germany, Japan, Canada, Mexico*). *Nota: Se asumen los países visibles en tu gráfico previo}
+ * La investigación abarca la totalidad de los registros válidos en el dataset (85,000 pistas), incluyendo todos los géneros musicales y los 10 países representados en la muestra (USA, UK, Brazil, India, Australia, France, Germany, Japan, Canada, Mexico).
+* Nota: Se asumen los países visibles en tu gráfico previo.
 
-\subsection{vertical}
- \item{udio se delimita al análisis de las características técnicas de audio (tiempo, ritmo, energía) y su distribución temporal y geográfica, excluyendo análisis de contenido lírico o armónico complejo}
+\subsection{Vertical}
+ * El estudio se delimita al análisis de las características técnicas de audio (tiempo, ritmo, energía) y su distribución temporal y geográfica, excluyendo análisis de contenido lírico o armónico complejo.
 
 \begin{table}[ht]
 \centering
@@ -222,7 +232,7 @@ Descripción Presentación de resultados n\
 
 \chapter{Conclusiones y Recomendaciones}
 
-\textbf{1.-} Conclusion 1 del trabajo de investigación.\
+\textbf{Conclusion 1 del trabajo de investigación} 
 
 \textbf{Recomendación} 
 Recomendación 1 del trabajo de investigación\
