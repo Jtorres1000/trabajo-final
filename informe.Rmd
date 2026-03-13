@@ -1,0 +1,256 @@
+---
+# --- Metadatos Básicos ---
+title: "Videos cortos y verticales y su efecto en las tendencias musicales globales 2015-2025: Análisis descriptivo de series temporales."
+author:
+   - Jorge Torres
+   - Arianna Oliveros 
+date: "marzo 2026"
+
+# --- Metadatos Específicos de Plantilla ---
+degree: "Computación I"
+
+director: 
+  - Jesus Ochoa 
+  - Oliver Triveño
+lugar: "Caracas"
+facultad: 
+  - Facultad de Ciencias Económicas y Sociales
+  - Escuela de Estadistica y Ciencias Actuariales
+# Ruta al escudo (relativa al archivo .Rmd)
+escudo: "Latex/Classes/Escudos/faces"
+
+# --- Bibliografía ---
+
+header-includes:
+  - \usepackage[spanish]{babel}
+  - \usepackage[numbers]{natbib}
+  - \usepackage[nottoc]{tocbibind}
+output: 
+  pdf_document:
+    template: template.tex  # Llamamos al archivo de plantilla
+    keep_tex: true                 # Útil para ver errores si ocurren
+    toc: true                      # Generar índice
+    number_sections: true
+    citation_package: natbib       # Importante: forzar natbib porque tu plantilla lo usa
+    pandoc_args: ["--metadata", "reference-section-title=Bibliografía"]
+# --- Resumen (Abstract) ---
+abstract: |
+  Resumen del trabajo de investigación...
+---
+
+```{r setup, include=FALSE}
+# Configuración global de chunks
+knitr::opts_chunk$set(
+  echo = FALSE,        # Mostrar código
+  warning = FALSE,    # Ocultar advertencias
+  message = FALSE,    # Ocultar mensajes de carga
+  fig.align = "center",
+  out.width = "90%",
+  fig.pos = "H",
+  out.extra = ""
+)
+
+# Cargar librerías necesarias
+library(tidyverse)
+library(knitr)
+library(kableExtra)
+library(scales)
+```
+
+\chapter*{Introducción}
+
+Introducción del trabajo de investigación
+
+\chapter{Planteamiento del Problema}
+
+ En la última década, hay una inclinación a los videos de formato corto y vertical. Debido al auge que tuvo la aplicación Tiktok. En 2020, TikTok superó los 2 mil millones de visualizaciones en todo el mundo (Influencer Marketing Hub, 2020, como se citó en Navarro-Güere, 2024). Y, además, esta red social motiva a sus usuarios a generar contenido corto y vertical, para optimizar los vídeos en TikTok, la red social recomienda que los vídeos se graben siempre en modo vertical (Simplified, 2022, como se citó en Navarro-Güere, 2024)
+
+ Debido al éxito general que venía amasando la red social TikTok, otras plataformas empezaron a adaptarse a este tipo de formato vertical y corto, La sección Instagram Reels apareció en 2020 —diez años después que la aplicación Instagram— donde se graban y editan vídeos de clips de 15, 30 o 60 segundos con audio, efectos, stickers, audio y otros recursos (Instagram, 2020; Alexander, 2020; Lenis, 2023, como se citó en Navarro-Güere, 2024). Así mismo, la red social Youtube, se adaptó con la implementación de Youtube shorts, según YouTube (s.f.) Shorts es la plataforma para grabar, compartir y maratonear videos cortos (de 60 segundos o menos) en YouTube.
+
+ A la par de esto, según el reciente informe de la IFPI (2024) las ventas de la industria musical han venido migrando de un formato físico a un formato de streaming, pasando de discos en formato físico al uso de plataformas de audio streaming o de video streaming.
+
+```{r grafico-ingresos, echo=FALSE, fig.align='center', out.width="80%"}
+knitr::include_graphics("imagen/grafico 1.png")
+```
+
+ Como podemos apreciar en el gráfico, las ventas musicales a nivel global en la modalidad de streaming para el año 2024 estaban conformadas por un total de 20.4 billones de USD representando al 69\% de las ventas producidas por la industria musical, y ha mantenido un incremento desde 2011.
+
+ Así mismo, el auge de los videos de formato vertical ha reconfigurado la manera en que las audiencias más jóvenes consumen contenido sonoro. De acuerdo con los datos recopilados en el estudio Engaging with Music (IFPI, 2023), el 82\% de los usuarios con edades comprendidas entre los 16 y 24 años interactúa con la música diariamente a través de plataformas de videos cortos. Esta preferencia sitúa a este formato por encima de alternativas tradicionales y digitales, dejando en segundo plano al streaming de audio puro (72\%) y a las plataformas de video convencionales (66\%).
+ 
+ Del mismo modo, según Ngilangil (2022) en un estudio realizado en los estudiantes de la universidad Surigao del Norte State University (SNSU), en el que se analizó qué elementos garantizan el éxito de un video de TikTok, se observa que el contenido, la calidad visual y la música son factores muy influyentes para los usuarios.
+ 
+ Tomando en consideración que el mercado de la industria musical está siendo mayoritariamente dominado por plataformas de streaming, y que a su vez gran parte de su consumo proviene de formatos verticales y breves, surge la siguiente interrogante: ¿Es posible que este fenómeno esté condicionando la producción de nuevas piezas musicales, impulsando una reducción en su duración para adaptarse a estos vídeos y plataformas para así aumentar sus probabilidades de éxito?"
+
+
+
+En base a lo anterior se plantean las siguientes preguntas de investigación:
+
+\textbf{1.}	¿Cómo ha evolucionado el promedio de duración de las canciones a nivel global entre 2015 y 2025, y existe evidencia de una reducción de la misma año tras años?
+
+\textbf{2.}	¿Cuál es la tendencia creciente en las variables de velocidad y energía que sugieren una aceleración en la composición musical durante el periodo estudiado?
+
+
+\textbf{3.} ¿Cuál es la tendencia hacia canciones más cortas y rápidas: un fenómeno homogéneo en los 10 países analizados, o existen diferencias marcadas en el comportamiento de estas variables según la región?
+
+
+\textbf{4.} ¿Cuál es la correlación lineal significativa entre las características estructurales de una canción (duración, tempo, energía, etc.) y su popularidad, o son estas variables independientes del éxito comercial?
+
+
+\section{Justificación}
+
+Esta investigación es fundamental para comprender la transformación estructural del producto musical ante la presión de los algoritmos de recomendación. Desde una perspectiva de mercado, confirmar una tendencia decreciente en la duración y creciente en la velocidad permitiría a productores y sellos discográficos alinear sus estrategias de creación con los patrones de consumo actuales. Desde una perspectiva estadística, el estudio se justifica al integrar un análisis de correlación que desafía la intuición común: demostrar si el éxito es multifactorial o si depende linealmente de atributos específicos. Además, al contrastar estos datos por país, el estudio aportará valor al identificar si la globalización digital está homogeneizando los rasgos culturales de la música o si persisten resistencias locales ante la tendencia a contenido breve.
+
+\section{Objetivos}
+ 
+\subsection{Objetivo General}
+* Determinar la influencia del formato de video corto y vertical en la evolución de la duración estructural de las canciones producidas por la industria musical global durante la última década.
+
+\subsection{Objetivos Específicos}
+*  **Determinar la tendencia de la duración:** Describir la evolución del promedio de duración (`duration\_ms`) por año para verificar si existe una reducción sistemática en la longitud de las canciones.
+* **Evaluar la aceleración rítmica:** Analizar el comportamiento anual de las variables `tempo` y `energy` para identificar si existe una tendencia hacia composiciones más rápidas e intensas.
+* **Contrastar la consistencia geográfica:** Comparar los promedios de duración y velocidad entre los 10 países del dataset para establecer si el fenómeno de inmediatez es globalmente homogéneo o presenta variaciones regionales significativas.
+* **Validar la independencia de variables:** Utilizar una matriz de correlación para demostrar la ausencia de relaciones lineales fuertes entre los atributos acústicos individuales y la métrica de `popularity`, descartando fórmulas únicas de éxito.
+
+
+\section{Cobertura}
+
+\subsection{Horizontal}
+ * La investigación abarca la totalidad de los registros válidos en el dataset (85,000 pistas), incluyendo todos los géneros musicales y los 10 países representados en la muestra (USA, UK, Brazil, India, Australia, France, Germany, Japan, Canada, Mexico).
+* Nota: Se asumen los países visibles en tu gráfico previo.
+
+\subsection{Vertical}
+ * El estudio se delimita al análisis de las características técnicas de audio (tiempo, ritmo, energía) y su distribución temporal y geográfica, excluyendo análisis de contenido lírico o armónico complejo.
+
+\begin{table}[ht]
+\centering
+\caption{Variables consideradas} 
+\resizebox{10cm}{!} {
+\begin{tabular}{ccc}
+  \hline
+\ \ \ \ \ NOMBRE DE LA VARIABLE \\ 
+  \hline
+   \\ Variable Temporal (Eje de Evolución): release\_date (Año)\&\\
+   \\ Variable de Segmentación (Criterio de Comparación): country\& \\
+    \\ Variables de Interés (Métricas de la "Inmediatez"):
+     duration\_ms (transformada a duration\_ms).\& \\
+     tempo (BPM).\&\\
+     energy (Escala 0-1).\&\\
+     \\Variables de Validación (Correlación): popularity, stream\_count, danceability, loudness& & \\
+\hline
+\end{tabular}
+}
+\end{table}
+
+\subsection{Vertical}
+
+Describir la cobertura Vertical del trabajo de investigación
+
+
+\section{Periodo de Referencia}
+
+Describir la fuente y el Periodo de Referencia utilizado en el trabajo de investigación
+
+\section{Variables}
+
+Describir la variable en estudio en el trabajo de investigación
+
+\chapter{Marco Teórico}
+
+
+\section{Bases Teóricas}
+
+Resumen de las bases teoricas explicadas en el capitulo y su importancia\
+
+\subsection{Definición 1}
+
+Descripción de la definición 1\
+
+\subsection{Definición 2}
+
+Descripción de la definición 2\
+
+\subsection{Definición n}
+
+Descripción de la definición n\
+
+
+\chapter{Marco Metódico}
+En esta sección se presentan las metodologías y/o test necesarios relacionados con la práctica divulgada en el marco teórico, así como las fuentes de datos.
+ 
+\section{Bases metódicas utilizadas en el trabajo de investigación}
+
+Desarrollo\
+
+\subsection{Item 1}
+
+Descripción Item 1\
+
+\subsection{Item 2}
+
+Descripción Item 2\
+
+\subsubsection{Item 2.2}
+
+\section{Bases metódicas utilizadas en el trabajo de investigación}
+
+Desarrollo\
+
+\subsection{Item 1}
+
+Descripción Item 1\
+
+\subsection{Item 2}
+
+Descripción Item 2\
+
+\subsection{Item n}
+
+\section{Bases metódicas utilizadas en el trabajo de investigación}
+
+Desarrollo\
+
+\subsection{Item 1}
+
+Descripción Item 1\
+
+\subsection{Item 2}
+
+Descripción Item 2\
+
+\chapter{Análisis de Resultados}
+
+{\small Este capítulo presenta los resultados obtenidos al aplicar las metodologías descritas en el capítulo anterior, así como del análisis estadístico descriptivo de las variables estudiadas y las ventajas y desventajas al aplicar dichos tests.}
+
+\section{Presentación de resultados 1}
+Descripción Presentación de resultados 1\
+
+\section{Presentación de resultados 2}
+Descripción Presentación de resultados 2\
+
+\section{Presentación de resultados n}
+Descripción Presentación de resultados n\
+
+\chapter{Conclusiones y Recomendaciones}
+
+\textbf{Conclusion 1 del trabajo de investigación} 
+
+\textbf{Recomendación} 
+Recomendación 1 del trabajo de investigación\
+
+\textbf{2.-} Conclusion 2 del trabajo de investigación.\
+
+\textbf{Recomendación} 
+Recomendación 2 del trabajo de investigación.\
+
+\textbf{n.-} Conclusion n del trabajo de investigación.\
+
+\textbf{Recomendación} Recomendación n del trabajo de investigación.\
+
+\appendix
+\renewcommand{\thechapter}{\Alph{chapter}}
+
+\chapter{Anexo A}
+
+\chapter{Anexo B}
+
+\chapter{Anexo C}
