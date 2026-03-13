@@ -39,11 +39,9 @@ def preprocesar_datos(df: pd.DataFrame) -> pd.DataFrame:
     
     return df
 
-
 df = cargar_csv("18. Spotify 2015-2025.csv")
 
 df_processed = preprocesar_datos(df)
-
 
 # Sidebar para filtrado y búsqueda
 with st.sidebar:
@@ -56,7 +54,6 @@ with st.sidebar:
     selected_genres = st.multiselect("Selecciona uno o más géneros:", genres, default=["Pop", "Rock"], help="Selecciona uno o más géneros de la lista para filtrar los datos.", placeholder="Escoge una opción...")
 
     year_range = st.select_slider("Selecciona un rango de años:", options=sorted(df_processed['release_date'].dt.year.unique()), value=(2015, 2025), help="Selecciona un rango de años para filtrar los datos.")
-
 
 st.title("Dasboard exploratorio de Spotify Data (2015-2025)")
 st.markdown("Análisis exploratorio de datos de Spotify utilizando Streamlit, Pandas, Matplotlib y Seaborn.")
@@ -104,18 +101,34 @@ with st.expander("Ver datos filtrados"):
 
 # Gráficos
 
-# Gráfico de caja y bigotes según el género y la popularidad
+# Gráfico de Caja distribución de años de lanzamiento y duración de las canciones
+fig = px.box(
+    distribucion_años, 
+    x='año', 
+    y='duration_min', 
+    title="Gráfico de caja y bigotes según el año de lanzamiento y la duración en minutos", 
+    labels={"año": "Año de lanzamiento", 'duration_min': "Duración (minutos)"}, 
+    color_discrete_sequence=PALETA_SPOTIFY
+)
 
-fig = px.box(df_filtered, x='genre', y='popularity', title="Popularidad por Género", labels={"genre": "Género", "popularity": "Popularidad"}, color_discrete_sequence=PALETA_SPOTIFY)
-st.plotly_chart(fig, width='stretch')
+fig.update_xaxes(type='category')
 
-# Gráfico de barras de la cantidad de canciones por país
-fig = px.histogram(canciones_por_pais, x='country', y='count', title="Distribución de Países", labels={"country": "País", 'count': "Cantidad de canciones"}, color_discrete_sequence=PALETA_SPOTIFY)
-st.plotly_chart(fig, width='stretch')
+st.plotly_chart(fig, use_container_width=True)
 
-# Gráfico de mapa de calor según la cantidad de caciones por país.
-fig = px.choropleth(canciones_por_pais, locations='country', locationmode='country names', color='count', title="Mapa de Popularidad por País", color_continuous_scale=["#121212", "#1DB954", "#1ed760"])
-st.plotly_chart(fig, width='stretch')
+fig = px.line(
+    duracion_pais_tiempo, 
+    x='año', 
+    y='duración_promedio', 
+    color='país', 
+    title="Duración promedio por año de lanzamiento según el país.", 
+    labels={
+        "año": "Año de lanzamiento", 
+        'duración_promedio': "Duración promedio (minutos)",
+        "país": "País"
+    }, 
+)
+
+st.plotly_chart(fig, use_container_width=True)
 
 # Gráfico de mapa de calor según las correlaciones entre las variables numéricas    
 fig, ax = plt.subplots(figsize=(10, 8))
