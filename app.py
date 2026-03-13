@@ -68,24 +68,32 @@ df_filtered = df_filtered[
 
 st.write(f"Mostrando {len(df_filtered)} canciones:")
 
-with st.expander("Ver datos filtrados"):
-
+with st.expander("Ver datos en formato de tablas filtrados:"):
+    st.markdown("## Datos en tablas filtrados:")
     st.dataframe(df_filtered)
 
-    canciones_por_pais = df_filtered.groupby('country').size().reset_index(name='count').sort_values(by='count', ascending=False)
-    st.dataframe(canciones_por_pais)
+    st.markdown("### Duración promedio por país y año:")
 
-    top_10_artistas = (df_filtered.groupby('artist_name')['stream_count']
-                   .sum()
-                   .reset_index()
-                   .sort_values(by='stream_count', ascending=False)
-                   .head(10))
+    duracion_pais_tiempo = df_filtered.groupby([df_filtered['release_date'].dt.year, 'country'])['duration_min'].mean().reset_index()
+    duracion_pais_tiempo = duracion_pais_tiempo.rename(columns={
+    'release_date': 'año',
+    'country': 'país',
+    'duration_min': 'duración_promedio'
+})
+    st.dataframe(duracion_pais_tiempo)
+
+    duracion_media_año = df_filtered.groupby(df_filtered['release_date'].dt.year)['duration_min'].mean().reset_index()
     
-    st.dataframe(top_10_artistas)
+    df_filtered['año'] = df_filtered['release_date'].dt.year
 
-    columnas_corr = ['duration_min', 'popularity', 'danceability', 'energy', 'loudness', 'instrumentalness', 'stream_count']
+    distribucion_años = df_filtered[['año', 'duration_min']].sort_values(by='año').reset_index(drop=True)
 
-    st.markdown("## Matriz de correlaciones de las variables filtradas:")
+    st.markdown("### Duración promedio por año:")
+    st.dataframe(distribucion_años)
+
+    columnas_corr = ['duration_min', 'popularity', 'tempo', 'energy', 'stream_count']
+
+    st.markdown("## Matriz de correlación de las variables:")
 
     corr_matrix = df_filtered[columnas_corr].corr()
 
