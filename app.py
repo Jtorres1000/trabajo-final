@@ -49,9 +49,6 @@ with st.sidebar:
     cities = df_processed['country'].unique()
     selected_cities = st.multiselect("Selecciona una o más ciudades:", cities, default=["Canada", "Brazil", "Germany"], help="Selecciona uno o más países de la lista para filtrar los datos.", placeholder="Escoge una opción...")
 
-    genres = df_processed['genre'].unique()    
-    selected_genres = st.multiselect("Selecciona uno o más géneros:", genres, default=["Pop", "Rock"], help="Selecciona uno o más géneros de la lista para filtrar los datos.", placeholder="Escoge una opción...")
-
     year_range = st.select_slider("Selecciona un rango de años:", options=sorted(df_processed['release_date'].dt.year.unique()), value=(2015, 2025), help="Selecciona un rango de años para filtrar los datos.")
 
 st.title("Dasboard exploratorio de Spotify Data (2015-2025)")
@@ -62,10 +59,6 @@ df_filtered = df_processed.copy()
 # Filtro por Países
 if selected_cities:
     df_filtered = df_filtered[df_filtered['country'].isin(selected_cities)]
-
-# Filtro por Géneros
-if selected_genres:
-    df_filtered = df_filtered[df_filtered['genre'].isin(selected_genres)]
 
 # Filtro por Años 2015-2025
 df_filtered = df_filtered[
