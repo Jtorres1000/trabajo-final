@@ -4,6 +4,9 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
 import plotly.express as px
+import base64
+from streamlit_echarts import st_echarts
+
 
 # Definir una paleta de colores personalizada inspirada en Spotify  
 
@@ -38,12 +41,39 @@ def preprocesar_datos(df: pd.DataFrame) -> pd.DataFrame:
     
     return df
 
+# Función para agregar fondo personalizado al sidebar.
+def background_sidebar(image_file: str):
+    with open(image_file, "rb") as image:
+        encoded_string = base64.b64encode(image.read()).decode()
+    st.markdown(
+        f"""
+        <style>
+        section[data-testid="stSidebar"] {{
+            background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(data:image/png;base64,{encoded_string});
+            background-size: cover;
+            background-position: center;
+        }}
+        section[data-testid="stSidebar"] {{
+        backdrop-filter: blur(20px);
+    }}
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
+
+# Carga inicial
 df = cargar_csv("18. Spotify 2015-2025.csv")
 
 df_processed = preprocesar_datos(df)
 
 # Sidebar para filtrado y búsqueda
 with st.sidebar:
+    background_sidebar("imagen/Background 17.png")
+    col1, col2, col3 = st.columns([1,1,1])
+
+    with col2:
+        st.image("imagen/Spotify_Primary_Logo_RGB_Green.png", width=100)
+    st.audio("imagen/Spotify Wrapped 2025 Background Music (High Quality).mp3", start_time=5, autoplay= True, loop= True)
     st.header("Filtros de búsqueda")
 
     cities = df_processed['country'].unique()
