@@ -1,6 +1,6 @@
 ---
 # --- Metadatos Básicos ---
-title: "Videos cortos y verticales y su efecto en las tendencias musicales globales 2015-2025: Análisis descriptivo de series temporales."
+title: "Análisis de la evolución en la duración estructural y caracacterísticas acústicas de las canciones producidas po la industria musical en la última década."
 author:
    - Jorge Torres
    - Arianna Oliveros 
@@ -66,11 +66,8 @@ En la última década, hay una inclinación a los videos de formato corto y vert
 Debido al éxito general que venía amasando la red social TikTok, otras plataformas empezaron a adaptarse a este tipo de formato vertical y corto, La sección Instagram Reels apareció en 2020 —diez años después que la aplicación Instagram— donde se graban y editan vídeos de clips de 15, 30 o 60 segundos con audio, efectos, stickers, audio y otros recursos (Instagram, 2020; Alexander, 2020; Lenis, 2023, como se citó en Navarro-Güere, 2024). Así mismo, la red social Youtube, se adaptó con la implementación de Youtube shorts, según YouTube (s.f.) Shorts es la plataforma para grabar, compartir y maratonear videos cortos (de 60 segundos o menos) en YouTube.\
 
 A la par de esto, según el reciente informe de la IFPI (2024) las ventas de la industria musical han venido migrando de un formato físico a un formato de streaming, pasando de discos en formato físico al uso de plataformas de audio streaming o de video streaming.\
-```{r grafico-ingresos, echo=FALSE, fig.align='center', out.width="80%"}
-knitr::include_graphics("imagen/grafico 1.png")
-```
 
-Como podemos apreciar en el gráfico, las ventas musicales a nivel global en la modalidad de streaming para el año 2024 estaban conformadas por un total de 20.4 billones de USD representando al 69\% de las ventas producidas por la industria musical, y ha mantenido un incremento desde 2011.\
+las ventas musicales a nivel global en la modalidad de streaming para el año 2024 estaban conformadas por un total de 20.4 billones de USD representando al 69\% de las ventas producidas por la industria musical, y ha mantenido un incremento desde 2011.\
 
 Así mismo, el auge de los videos de formato vertical ha reconfigurado la manera en que las audiencias más jóvenes consumen contenido sonoro. De acuerdo con los datos recopilados en el estudio Engaging with Music (IFPI, 2023), el 82\% de los usuarios con edades comprendidas entre los 16 y 24 años interactúa con la música diariamente a través de plataformas de videos cortos. Esta preferencia sitúa a este formato por encima de alternativas tradicionales y digitales, dejando en segundo plano al streaming de audio puro (72\%) y a las plataformas de video convencionales (66\%).\
  
@@ -99,17 +96,17 @@ Esta investigación es fundamental para comprender la transformación estructura
  
 \subsection{Objetivo General}
 
-Analizar la evolución de la duración estructural y características acústicas de las canciones producidas por la industria musical global durante la última década, en el contexto del auge de los formatos de video corto. \
+Análisis de la evolución en la duración estructural y caracacterísticas acústicas de las canciones producidas po la industria musical en la última década. \
 
 \subsection{Objetivos Específicos}
 
-\textbf{1.} Determinar la tendencia de la duración: Describir la evolución del promedio de duración por año y analizar su tendencia.\
+\textbf{1.}Describir la evolución del promedio de duración por año y analizar su tendencia.\
 
-\textbf{2.}Evaluar la aceleración rítmica: Analizar el comportamiento anual de las variables tempo y energy para identificar patrones o tendencias.\
+\textbf{2.}Análizar el comportamiento anual de las variables tempo y energy para identificar patrones o tendencias.\
 
-\textbf{3.}Contrastar la consistencia geográfica: Comparar los promedios de duración y velocidad entre los 10 países del dataset para establecer si el fenómeno de inmediatez es globalmente homogéneo o presenta variaciones regionales significativas.\
+\textbf{3.}Comparar los promedios de duración y velocidad entre los 10 países del dataset para establecer si el fenómeno de inmediatez es globalmente homogéneo o presenta variaciones regionales significativas.\
 
-\textbf{4.}Validar la independencia de variables: Evaluar la relación lineal entre los atributos acústicos individuales de las canciones y su índice de popularidad, para determinar si el éxito comercial depende de factores aislados o es multifactorial.\
+\textbf{4.}Evaluar la relación lineal entre los atributos acústicos individuales de las canciones y su índice de popularidad, para determinar si el éxito comercial depende de factores aislados o es multifactorial.\
 
 \section{Cobertura}
 
@@ -252,3 +249,4 @@ Recomendación 2 del trabajo de investigación.\
 \chapter{Anexo B}
 
 \chapter{Anexo C}
+
