@@ -61,7 +61,6 @@ def background_sidebar(image_file: str):
 df = cargar_csv("18. Spotify 2015-2025.csv")
 df_processed = preprocesar_datos(df)
 
-
 # Menu lateral y filtros globales
 
 with st.sidebar:
@@ -242,8 +241,8 @@ def pagina_analisis_duracion():
     "yAxis": {
         "type": "value", 
         "name": "Minutos", 
-        "min": 3.5, 
-        "max": 5
+        "min": duracion_pais_tiempo['duración_promedio'].min().round() - 1,
+        "max": duracion_pais_tiempo['duración_promedio'].max().round() + 1
     },
     "dataZoom": [
         {
@@ -392,7 +391,7 @@ def pagina_analisis_tempo_energy():
         {
             "type": "value",
             "name": "Tempo",
-            "min" : 126  
+            "min" : round(min(tempo_lista), 0) - 5 
         }
     ],
     "series": [
@@ -457,7 +456,6 @@ def pagina_analisis_tempo_energy():
         {
             "type": "value",
             "name": "Energy",
-            "min": 0.4
         }
     ],
     "series": [
