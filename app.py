@@ -74,6 +74,9 @@ with st.sidebar:
     st.header("Filtros de búsqueda")
 
     cities = df_processed['country'].dropna().unique()
+    años_disponibles = sorted(df_processed['release_date'].dt.year.dropna().unique())
+    genres = df_processed['genre'].unique()
+    labels = df_processed['label'].unique()
 
     selected_cities = st.multiselect(
         "Selecciona una o más ciudades:", 
@@ -87,16 +90,42 @@ with st.sidebar:
     year_range = st.select_slider(
         "Selecciona un rango de años:", 
         options=años_disponibles, 
+        help="Friltra la data según un rango de años.",
         value=(2015, 2025)
     )
+    selected_genre = st.multiselect(
+        "Selecciona uno o más generos:",
+        genres,
+        default =["Reggaeton", "Pop", "Hip-Hop"],
+        help="Friltra la data según uno o más géneros musicales.",
+        placeholder="Escoge una opción..."
+    )
+    selected_labels = st.multiselect(
+        "Selecciona una o mas sellos discográficos:",
+        labels,
+        default =["Sony Music", "Warner Music", "XL Recordings"],
+        help="Filtra la data según uno o más sellos discográficos.",
+        placeholder="Escoge una opción..."
+    )
+    explicit = st.toggle("Incluir canciones explícitas", value=True, help="Activa o desactiva la inclusión de canciones con contenido explícito.")
     st.markdown("---")
     st.markdown("##### Acerca de este dashboard:")
     st.caption("Desarrollado usando Streamlit, pandas y plotly.")
 
 # Aplicar filtros
 df_filtered = df_processed.copy()
+
+if explicit:
+    df_filtered = df_filtered[(df_filtered['explicit'] == True) | (df_filtered['explicit'] == False)]
+else:
+    df_filtered = df_filtered[df_filtered['explicit'] == False]
+
+if selected_genre:
+    df_filtered = df_filtered[df_filtered['genre'].isin(selected_genre)]
 if selected_cities:
     df_filtered = df_filtered[df_filtered['country'].isin(selected_cities)]
+if selected_labels:
+    df_filtered = df_filtered[df_filtered['label'].isin(selected_labels)]
 
 df_filtered = df_filtered[
     (df_filtered['release_date'].dt.year >= year_range[0]) & 
