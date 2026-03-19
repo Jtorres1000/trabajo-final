@@ -149,6 +149,19 @@ columnas_corr = ['duration_min', 'popularity', 'tempo', 'energy', 'stream_count'
 columnas_validas = [col for col in columnas_corr if col in df_filtered.columns]
 corr_matrix = df_filtered[columnas_validas].corr()
 
+corr_nombres = corr_matrix.columns.tolist() 
+
+datos_pyecharts = []
+
+for x_index in range(len(corr_nombres)): 
+    for y_index in range(len(corr_nombres)): 
+        
+        valor = corr_matrix.iloc[y_index, x_index] 
+        
+        valor_redondeado = round(valor, 4)
+        
+        datos_pyecharts.append([x_index, y_index, valor_redondeado])
+
 # Paginas del dashboard
 
 def pagina_inicio():
@@ -462,18 +475,78 @@ def pagina_data_tablas():
 
 def pagina_analisis_correlacion():
     st.title("Análisis de correlación 🔗")
-    
-    if not corr_matrix.empty:
-        fig, ax = plt.subplots(figsize=(10, 8))
-        sns.heatmap(
-            corr_matrix, annot=True, cmap='coolwarm', 
-            linewidths=0.6, fmt='.4f', square=True, ax=ax
-        )
-        ax.set_title('Mapa de Calor - Correlaciones', fontsize=14)
-        st.pyplot(fig, use_container_width=True)
-    else:
-        st.warning("No hay suficientes datos numéricos para calcular la correlación.")
 
+    options = {
+    "title": {
+        "text": "Matriz de Correlación de Variables",
+        "left": "center",
+        "top": "2%"
+    },
+    
+    "toolbox": {
+        "show": True,
+        "orient": "vertical", 
+        "left": "right",
+        "top": "center",
+        "feature": {
+            "saveAsImage": { 
+                "show": True, 
+                "title": "Descargar PNG", # Texto al pasar el cursor
+                "type": "png", # O jpg, svg
+                "pixelRatio": 2 # Aumenta la resolución para que no se vea pixelada
+            }
+        }
+    },
+    "tooltip": {
+        "position": "top"
+    },
+    "grid": {
+        "height": "75%",
+        "top": "10%"
+    },
+    "xAxis": {
+        "type": "category",
+        "data": corr_nombres,
+        "splitArea": {"show": True},
+        "axisLabel": {
+            "interval": 0, # Fuerza a que se muestren todas las etiquetas
+        }
+    },
+    "yAxis": {
+        "type": "category",
+        "data": corr_nombres,
+        "splitArea": {"show": True}
+    },
+    "visualMap": {
+        "min": -1,
+        "max": 1,
+        "calculable": True,
+        "orient": "horizontal",
+        "left": "center",
+        "bottom": "2%",
+        "inRange": {
+            "color": ["#2166ac", "#abd9e9", "#f7f7f7", "#f4a582", "#b2182b"]
+        }
+    },
+    "series": [
+        {
+            "name": "Coeficiente de correlación",
+            "type": "heatmap",
+            "data": datos_pyecharts,
+            "label": {
+                "show": True,
+                "color": "#000000" 
+            },
+            "emphasis": {
+                "itemStyle": {
+                    "shadowBlur": 10,
+                    "shadowColor": "rgba(0, 0, 0, 0.5)"
+                }
+            }
+        }
+    ]
+}
+    st_echarts(options=options, height="500px")
 
 # Sistema de navegación entre páginas
 
