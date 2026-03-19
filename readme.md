@@ -19,9 +19,7 @@ Debido al éxito general que venía amasando la red social TikTok, otras platafo
 
 A la par de esto, según el reciente informe de la IFPI (2024) las ventas de la industria musical han venido migrando de un formato físico a un formato de streaming, pasando de discos en formato físico al uso de plataformas de audio streaming o de video streaming.
 
-![](imagen/grafico 1.png)
-
-Como podemos apreciar en el gráfico, las ventas musicales a nivel global en la modalidad de streaming para el año 2024 estaban conformadas por un total de 20.4 billones de USD representando al 69% de las ventas producidas por la industria musical, y ha mantenido un incremento desde 2011.
+Según el informe de la IFPI (2024) Las ventas musicales a nivel global en la modalidad de streaming para el año 2024 estaban conformadas por un total de 20.4 billones de USD representando al 69% de las ventas producidas por la industria musical, y ha mantenido un incremento desde 2011.
 
 Así mismo, el auge de los videos de formato vertical ha reconfigurado la manera en que las audiencias más jóvenes consumen contenido sonoro. De acuerdo con los datos recopilados en el estudio Engaging with Music (IFPI, 2023), el 82% de los usuarios con edades comprendidas entre los 16 y 24 años interactúa con la música diariamente a través de plataformas de videos cortos. Esta preferencia sitúa a este formato por encima de alternativas tradicionales y digitales, dejando en segundo plano al streaming de audio puro (72%) y a las plataformas de video convencionales (66%).
 
@@ -43,21 +41,21 @@ En base a lo anterior se plantean las siguientes preguntas de investigación:
 
 Esta investigación es fundamental para comprender la transformación estructural del producto musical ante la presión de los algoritmos de recomendación. Desde una perspectiva de mercado, confirmar una tendencia decreciente en la duración y creciente en la velocidad permitiría a productores y sellos discográficos alinear sus estrategias de creación con los patrones de consumo actuales. Desde una perspectiva estadística, el estudio se justifica al integrar un análisis de correlación que desafía la intuición común: demostrar si el éxito es multifactorial o si depende linealmente de atributos específicos. Además, al contrastar estos datos por país, el estudio aportará valor al identificar si la globalización digital está homogeneizando los rasgos culturales de la música o si persisten resistencias locales ante la tendencia a contenido breve.
 
-## Objectivos
+## Objetivos
 
-### Objectivo General.
+### Objetivo General.
 
 Analizar la evolución de la duración estructural y características acústicas de las canciones producidas por la industria musical global durante la última década, en el contexto del auge de los formatos de video corto.
 
 ### Objetivos Específicos.
 
--   Determinar la tendencia de la duración: Describir la evolución del promedio de duración por año y analizar su tendencia.
+-   Describir la evolución del promedio de duración por año y analizar su tendencia.
 
--   Evaluar la aceleración rítmica: Analizar el comportamiento anual de las variables tempo y energy para identificar patrones o tendencias.
+-   Analizar el comportamiento anual de las variables tempo y energy para identificar patrones o tendencias.
 
--   Contrastar la consistencia geográfica: Comparar los promedios de duración y velocidad entre los 10 países del dataset para establecer si el fenómeno de inmediatez es globalmente homogéneo o presenta variaciones regionales significativas.
+-   Comparar los promedios de duración y velocidad entre los 10 países del dataset para establecer si el fenómeno de inmediatez es globalmente homogéneo o presenta variaciones regionales significativas.
 
--   Validar la independencia de variables: Evaluar la relación lineal entre los atributos acústicos individuales de las canciones y su índice de popularidad, para determinar si el éxito comercial depende de factores aislados o es multifactorial.
+-   Evaluar los coeficientes de correlación entre los atributos acústicos individuales de las canciones, para determinar si el éxito comercial depende de factores aislados o es multifactorial.
 
 ###### Dashboard con Streamlit: <https://trabajo-final-8uor.onrender.com/>
 
