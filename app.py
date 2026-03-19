@@ -82,11 +82,10 @@ with st.sidebar:
         "Selecciona una o más ciudades:", 
         cities, 
         default=["Canada", "Brazil", "Germany"], 
-        help="Selecciona uno o más países.", 
+        help="Filtra la data según uno o más países.", 
         placeholder="Escoge una opción..."
     )
 
-    años_disponibles = sorted(df_processed['release_date'].dt.year.dropna().unique())
     year_range = st.select_slider(
         "Selecciona un rango de años:", 
         options=años_disponibles, 
@@ -110,7 +109,7 @@ with st.sidebar:
     explicit = st.toggle("Incluir canciones explícitas", value=True, help="Activa o desactiva la inclusión de canciones con contenido explícito.")
     st.markdown("---")
     st.markdown("##### Acerca de este dashboard:")
-    st.caption("Desarrollado usando Streamlit, pandas y plotly.")
+    st.caption("Desarrollado usando Streamlit, pandas, matplotlib y streamlit_echarts 🐱.")
 
 # Aplicar filtros
 df_filtered = df_processed.copy()
@@ -140,6 +139,11 @@ duracion_pais_tiempo = duracion_pais_tiempo.rename(columns={'country': 'país', 
 
 distribucion_años = df_filtered[['año', 'duration_min']].sort_values(by='año').reset_index(drop=True)
 media_anual_duracion = distribucion_años.groupby('año')['duration_min'].mean().reset_index(name='duración_promedio')
+
+media_tempo_energy = df_filtered.groupby('año')[['tempo', 'energy']].mean().sort_values(by='año').reset_index()
+años_tempo_energy = df_filtered['año'].sort_values().unique().tolist()
+tempo_lista = media_tempo_energy['tempo'].tolist()
+energy_lista = media_tempo_energy['energy'].tolist()
 
 columnas_corr = ['duration_min', 'popularity', 'tempo', 'energy', 'stream_count']
 columnas_validas = [col for col in columnas_corr if col in df_filtered.columns]
@@ -301,6 +305,139 @@ def pagina_analisis_duracion():
 }
     st_echarts(options=options, height="500px", key="pyechart-bar-duracion")
 
+def pagina_analisis_tempo_energy():
+    st.title("Análisis de tempo y energy 🎶")
+    options = {
+        "title": {
+        "text": "Valor de Tempo promedio según el año",
+        "left": "center",
+        "top": "2%"
+    },
+    
+    "toolbox": {
+        "show": True,
+        "orient": "vertical", 
+        "left": "right",
+        "top": "center",
+        "feature": {
+            "saveAsImage": { 
+                "show": True, 
+                "title": "Descargar PNG", 
+                "type": "png", 
+                "pixelRatio": 2 
+            }
+        }
+    },
+    "tooltip": {
+        "trigger": "axis",
+        "axisPointer": {
+            "type": "shadow"
+        }
+    },
+    "grid": {
+        "left": "3%",
+        "right": "4%",
+        "bottom": "8%",
+        "containLabel": True
+    },
+    "xAxis": [
+        {
+            "type": "category",
+            "name": "Año de lanzamiento",
+            "nameLocation":"middle",
+            "nameGap": 30,
+            "data": años_tempo_energy,       # <--- Tu lista de años aquí
+            "axisTick": {
+                "alignWithLabel": True
+            }
+        }
+    ],
+    "yAxis": [
+        {
+            "type": "value",
+            "name": "Tempo",
+            "min" : 126  
+        }
+    ],
+    "series": [
+        {
+            "name": "Tempo",
+            "type": "bar",
+            "barWidth": "60%",
+            "data": tempo_lista, 
+            "itemStyle": {
+                "color": "#3b07a3"    # Opcional: El verde clásico de Spotify
+            }
+        }
+    ]
+}
+    st_echarts(options=options, height="500px", key="pyechart-line-duracion-energy")
+    options = {
+    "title": {
+        "text": "Valor de Energy promedio según el año",
+        "left": "center",
+        "top": "2%"
+    },
+    
+    "toolbox": {
+        "show": True,
+        "orient": "vertical", 
+        "left": "right",
+        "top": "center",
+        "feature": {
+            "saveAsImage": { 
+                "show": True, 
+                "title": "Descargar PNG", 
+                "type": "png", 
+                "pixelRatio": 2 
+            }
+        }
+    },
+    "tooltip": {
+        "trigger": "axis",
+        "axisPointer": {
+            "type": "shadow"
+        }
+    },
+    "grid": {
+        "left": "3%",
+        "right": "4%",
+        "bottom": "8%",
+        "containLabel": True
+    },
+    "xAxis": [
+        {
+            "type": "category",
+            "name": "Año de lanzamiento",
+            "nameLocation":"middle",
+            "nameGap": 30,
+            "data": años_tempo_energy,       # <--- Tu lista de años aquí
+            "axisTick": {
+                "alignWithLabel": True
+            }
+        }
+    ],
+    "yAxis": [
+        {
+            "type": "value",
+            "name": "Energy",
+            "min": 0.4
+        }
+    ],
+    "series": [
+        {
+            "name": "Energy",
+            "type": "bar",
+            "barWidth": "60%",
+            "data": energy_lista, 
+            "itemStyle": {
+                "color": "#b2919c"    # Opcional: El verde clásico de Spotify
+            }
+        }
+    ]
+}
+    st_echarts(options=options, height="500px", key="pyechart-line-duracion-tempo")
+
 def pagina_data_tablas():
     st.title("Data en tablas 📈")
     st.write(f"**Mostrando {len(df_filtered)} canciones:**")
@@ -344,9 +481,10 @@ def pagina_analisis_correlacion():
 
 p_inicio = st.Page(pagina_inicio, title="Inicio", icon="🏠")
 p_duracion = st.Page(pagina_analisis_duracion, title="Análisis de duración", icon="🔎")
+p_tempo = st.Page(pagina_analisis_tempo_energy, title="Análisis de tempo y energy", icon="🎶")
 p_tablas = st.Page(pagina_data_tablas, title="Data en tablas", icon="📈")
 p_correlacion = st.Page(pagina_analisis_correlacion, title="Análisis de Correlación", icon="🔗")
 
 # Creamos el menú y lo ejecutamos
-pg = st.navigation([p_inicio, p_duracion, p_tablas, p_correlacion], position="top")
+pg = st.navigation([p_inicio, p_duracion, p_tempo, p_tablas, p_correlacion], position="top")
 pg.run()
