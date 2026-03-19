@@ -152,7 +152,7 @@ def pagina_inicio():
     col1, col2, col3 = st.columns([1, 8, 1])
     with col2:
         st.image("imagen/Spotify_New_Full_Logo_RGB_Green.png")
-        st.markdown("### Bienvenido al dashboard interactivo exploratoria de datos de Spotify!", text_alignment="center")
+        st.markdown("### Bienvenido al dashboard interactivo exploratorio de datos de Spotify!", text_alignment="center")
         st.markdown("Aquí podrás visualizar e interactuar con la data de las canciones de Spotify lanzadas entre 2015 y 2025, cuenta con filtros y gráficos interactivos.", text_alignment="center")
     st.markdown("---")
 
