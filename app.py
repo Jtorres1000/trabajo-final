@@ -276,6 +276,26 @@ def pagina_analisis_duracion():
     años_lista = media_anual_duracion["año"].tolist()
     duraciones_lista = media_anual_duracion["duración_promedio"].tolist()
     options = {
+        "title": {
+        "text": "Valor de duración promedio según el año",
+        "left": "center",
+        "top": "2%"
+    },
+    
+    "toolbox": {
+        "show": True,
+        "orient": "vertical", 
+        "left": "right",
+        "top": "center",
+        "feature": {
+            "saveAsImage": { 
+                "show": True, 
+                "title": "Descargar PNG", 
+                "type": "png", 
+                "pixelRatio": 2 
+            }
+        }
+    },
     "tooltip": {
         "trigger": "axis",
         "axisPointer": {
@@ -285,13 +305,16 @@ def pagina_analisis_duracion():
     "grid": {
         "left": "3%",
         "right": "4%",
-        "bottom": "3%",
+        "bottom": "8%",
         "containLabel": True
     },
     "xAxis": [
         {
+            "name": "Año de lanzamiento",
+            "nameLocation":"middle",
+            "nameGap": 30,
             "type": "category",
-            "data": años_lista,       # <--- Tu lista de años aquí
+            "data": años_lista,        
             "axisTick": {
                 "alignWithLabel": True
             }
@@ -301,7 +324,7 @@ def pagina_analisis_duracion():
         {
             "type": "value",
             "name": "Minutos",
-            "min" : 3  
+            "min" : 3.5
         }
     ],
     "series": [
@@ -309,9 +332,9 @@ def pagina_analisis_duracion():
             "name": "Duración",
             "type": "bar",
             "barWidth": "60%",
-            "data": duraciones_lista, # <--- Tu lista de duraciones aquí
+            "data": duraciones_lista,   
             "itemStyle": {
-                "color": "#1DB954"    # Opcional: El verde clásico de Spotify
+                "color": "#1DB954"       
             }
         }
     ]
@@ -359,7 +382,7 @@ def pagina_analisis_tempo_energy():
             "name": "Año de lanzamiento",
             "nameLocation":"middle",
             "nameGap": 30,
-            "data": años_tempo_energy,       # <--- Tu lista de años aquí
+            "data": años_tempo_energy,        
             "axisTick": {
                 "alignWithLabel": True
             }
@@ -379,7 +402,7 @@ def pagina_analisis_tempo_energy():
             "barWidth": "60%",
             "data": tempo_lista, 
             "itemStyle": {
-                "color": "#3b07a3"    # Opcional: El verde clásico de Spotify
+                "color": "#3b07a3"       
             }
         }
     ]
@@ -424,7 +447,7 @@ def pagina_analisis_tempo_energy():
             "name": "Año de lanzamiento",
             "nameLocation":"middle",
             "nameGap": 30,
-            "data": años_tempo_energy,       # <--- Tu lista de años aquí
+            "data": años_tempo_energy,        
             "axisTick": {
                 "alignWithLabel": True
             }
@@ -444,7 +467,7 @@ def pagina_analisis_tempo_energy():
             "barWidth": "60%",
             "data": energy_lista, 
             "itemStyle": {
-                "color": "#b2919c"    # Opcional: El verde clásico de Spotify
+                "color": "#b2919c"       
             }
         }
     ]
