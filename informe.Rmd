@@ -111,10 +111,10 @@ Análisis de la evolución en la duración estructural y caracacterísticas acú
 \section{Cobertura}
 
 \subsection{Horizontal}
-El estudio se delimita al análisis de las características técnicas de las canciones: duration_ms, stream_count, energy, release_date y tempo. 
+La investigación abarca la totalidad de los registros válidos en el dataset (85,000 pistas), incluyendo todos los géneros musicales y los 10 países representados en la muestra (*USA, UK, Brazil, India, Australia, France, Germany, Japan, Canada, Mexico*).\
 
 \subsection{Vertical}
-La investigación abarca la totalidad de los registros válidos en el dataset que comprenden un total de 85,000 registros. Abarcando la data desde el año 2015 hasta el año 2025.
+El estudio se delimita al análisis de algunas de  las características técnicas de audio duración en minutos, tempo y  energy. Así como  su distribución temporal y geográfica, excluyendo el análisis de otras variables..
 
 
 \begin{table}[ht]
