@@ -1,0 +1,5 @@
+from .inicio import pagina_inicio
+from .analisis_duracion import pagina_analisis_duracion
+from .analisis_tempo_energy import pagina_analisis_tempo_energy
+from .data_tablas import pagina_data_tablas
+from .analisis_correlacion import pagina_analisis_correlacion
