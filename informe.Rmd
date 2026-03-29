@@ -131,7 +131,7 @@ El estudio se delimita al análisis de algunas de  las características técnica
      duration\_ms (transformada a duration\_ms).\& \\
      tempo (BPM).\&\\
      energy (Escala 0-1).\&\\
-     \\Variables de Validación (Correlación): popularity, stream\_count, danceability, loudness& & \\
+     \\Variables de Validación (Correlación): popularity, stream\_count, danceability, loudness& \& \\
 \hline
 \end{tabular}
 }
