@@ -114,8 +114,10 @@ Análisis de la evolución en la duración estructural y caracacterísticas acú
 La investigación abarca la totalidad de los registros válidos en el dataset (85,000 pistas), incluyendo todos los géneros musicales y los 10 países representados en la muestra (*USA, UK, Brazil, India, Australia, France, Germany, Japan, Canada, Mexico*).\
 
 \subsection{Vertical}
-El estudio se delimita al análisis de algunas de  las características técnicas de audio duración en minutos, tempo y  energy. Así como  su distribución temporal y geográfica, excluyendo el análisis de otras variables..
+El estudio se delimita al análisis de algunas de  las características técnicas de audio duración en minutos, tempo y  energy. Así como  su distribución temporal y geográfica, excluyendo el análisis de otras variables.\
 
+\section{Periodo de Referencia}
+La fuente de los datos corresponde al repositorio abierto de Kaggle (“Spotify”). El análisis comprende los datos generados entre el *1 de enero de 2015* y el *31 de diciembre de 2025*, este periodo abarca todo el periodo disponible en el dataset. El procesamiento y limpieza de esta serie histórica se ejecutó mediante *scripts de R*, con fecha de corte a febrero de 2026.\
 
 \begin{table}[ht]
 \centering
