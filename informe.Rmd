@@ -117,7 +117,7 @@ La investigación abarca la totalidad de los registros válidos en el dataset (8
 El estudio se delimita al análisis de algunas de  las características técnicas de audio duración en minutos, tempo y  energy. Así como  su distribución temporal y geográfica, excluyendo el análisis de otras variables.\
 
 \section{Periodo de Referencia}
-La fuente de los datos corresponde al repositorio abierto de Kaggle (“Spotify”). El análisis comprende los datos generados entre el *1 de enero de 2015* y el *31 de diciembre de 2025*, este periodo abarca todo el periodo disponible en el dataset. El procesamiento y limpieza de esta serie histórica se ejecutó mediante *scripts de R*, con fecha de corte a febrero de 2026.\
+La fuente de los datos corresponde al repositorio abierto de Kaggle (“Spotify”). El análisis comprende los datos generados entre el *1 de enero de 2015* y el *31 de diciembre de 2025*, este periodo abarca todo el periodo disponible en el dataset. El procesamiento y limpieza de esta serie histórica se ejecutó mediante *scripts de R*, con fecha de corte a febrero de 2026.
 
 \begin{table}[ht]
 \centering
@@ -127,13 +127,13 @@ La fuente de los datos corresponde al repositorio abierto de Kaggle (“Spotify�
   \hline
 \ \ \ \ \ NOMBRE DE LA VARIABLE \\ 
   \hline
-   \\ Variable Temporal (Eje de Evolución): release\_date (Año)\&\\
-   \\ Variable de Segmentación (Criterio de Comparación): country\& \\
+   \\ Variable Temporal (Eje de Evolución): *release\_date (Año)*\&\\
+   \\ Variable de Segmentación (Criterio de Comparación): *country*\& \\
     \\ Variables de Interés (Métricas de la "Inmediatez"):
-     duration\_ms (transformada a duration\_ms).\& \\
-     tempo (BPM).\&\\
-     energy (Escala 0-1).\&\\
-     \\Variables de Validación (Correlación): popularity, stream\_count, danceability, loudness& \& \\
+     *duration\_ms* (transformada a *duration\_ms*).\& \\
+     *tempo* (BPM).\&\\
+     *energy* (Escala 0-1).\&\\
+     \\Variables de Validación (Correlación): *popularity, stream\_count, danceability, loudness&* \& \\
 \hline
 \end{tabular}
 }
