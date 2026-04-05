@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 from streamlit_echarts import st_echarts, Map
-from src.utils.calculos import calcular_metricas_duracion
+from src.utils.calculos import calcular_metricas_duracion, calcular_minutos
 from src.utils.cargar_json import load_map_data
 
 def pagina_analisis_duracion():
@@ -41,7 +41,6 @@ def pagina_analisis_duracion():
             "name": pais, "type": "line", "data": valores,
             "emphasis": {"focus": "series"}
         })
-
 
     options = {
     "title": {"text": "Duración Promedio por Año y País"},
@@ -84,7 +83,39 @@ def pagina_analisis_duracion():
     ],
     "series": series_data
 }
-    st_echarts(options=options, height="500px", key="pyechart-line-duracion-promedio")
+    events = {
+            "click": "function(params) { return [params.type, params.name, params.value, params.seriesName] }"
+    }
+    line_echart = st_echarts(options=options, height="500px", key="pyechart-line-duracion-promedio", events=events, on_select="rerun",
+    selection_mode="points")
+
+    if line_echart and "chart_event" in line_echart and line_echart["chart_event"] is not None:
+        evento = line_echart["chart_event"]
+        año = evento[1]
+        pais = evento[3]
+        valor = calcular_minutos(evento[2])
+        st.write(f"")
+        st.markdown(
+    f"""
+    <div style="background-color: #f0f2f6; padding: 15px; margin-bottom:15px; border-radius: 10px; border-left: 5px solid #1DB954;">
+        <p style="color: #31333F; margin: 0;">
+            Duración promedio en {pais} para el año {año} en minutos y segundos: {valor}
+        </p>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+    else:
+            st.markdown(
+    """
+    <div style="background-color: #f0f2f6; padding: 15px; margin-bottom:15px; border-radius: 10px; border-left: 5px solid #1DB954;">
+        <p style="color: #31333F; margin: 0;">
+            Haz click en un punto para ver el país y su duración en minutos y segundos.
+        </p>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
 
     # Gráfico de Caja Plotly
     fig_box = px.box(
@@ -96,7 +127,7 @@ def pagina_analisis_duracion():
     fig_box.update_xaxes(type='category')
     st.plotly_chart(fig_box, width='stretch')
 
-    # Gráfico de barras
+    # Gráfico de barras echart
 
     # Convertimos las columnas a listas normales
     años_lista = media_anual_duracion["año"].tolist()
@@ -165,18 +196,46 @@ def pagina_analisis_duracion():
         }
     ]
 }
-    st_echarts(options=options, height="500px", key="pyechart-bar-duracion")
+    events = {
+            "click": "function(params) { return [params.type, params.name, params.value]}"
+    }
+
+    bar_echart =st_echarts(options=options, height="500px", key="pyechart-bar-duracion", events=events, on_select="rerun", selection_mode="points")
+
+    if bar_echart and "chart_event" in bar_echart and bar_echart["chart_event"] is not None:
+        evento = bar_echart["chart_event"]
+        año = evento[1]
+        valor = calcular_minutos(evento[2])
+        st.markdown(
+    f"""
+    <div style="background-color: #f0f2f6; padding: 15px; margin-bottom:15px; border-radius: 10px; border-left: 5px solid #1DB954;">
+        <p style="color: #31333F; margin: 0;">
+            Duración promedio global para el año {año} en minutos y segundos: {valor}
+        </p>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+    else:
+        st.markdown(
+    """
+    <div style="background-color: #f0f2f6; padding: 15px; margin-bottom:15px; border-radius: 10px; border-left: 5px solid #1DB954;">
+        <p style="color: #31333F; margin: 0;">
+            Haz click en un país para ver su duración en minutos y segundos.
+        </p>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
 
     world_geojson = load_map_data()
 
     map_obj = Map(map_name="world", geo_json=world_geojson)
 
-
-
     año_seleccionado = st.selectbox(
         "Selecciona el año para cargar la data de un año en concreto.",
         options= sorted(df_processed['release_date'].dt.year.dropna().unique()),
-        index=0 # Por defecto, la primera opción ("Inicial (en blanco)")
+        index=0
     )
 
     options = {
@@ -212,11 +271,43 @@ def pagina_analisis_duracion():
         }
     ]
 }
-    st_echarts(options=options, map=map_obj, height="600px")
+    events = {
+            "click": "function(params) { return [params.type, params.name, params.value] }",
+    }
+    
+    map_chart = st_echarts(options=options, map=map_obj, height="600px", events=events, on_select="rerun",
+    selection_mode="points", key="pyechart-map-duracion")
+
+    if "chart_event" in map_chart and map_chart["chart_event"] is not None:
+        evento = map_chart["chart_event"]
+        pais_nombre = evento[1]
+        valor = calcular_minutos(evento[2])
+        st.markdown(
+    f"""
+    <div style="background-color: #f0f2f6; padding: 15px; margin-bottom:15px; border-radius: 10px; border-left: 5px solid #1DB954;">
+        <p style="color: #31333F; margin: 0;">
+            Duración promedio en {pais_nombre} para el año {año_seleccionado} en minutos y segundos: {valor}
+        </p>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+    else:
+            st.markdown(
+    """
+    <div style="background-color: #f0f2f6; padding: 15px; margin-bottom:15px; border-radius: 10px; border-left: 5px solid #1DB954;">
+        <p style="color: #31333F; margin: 0;">
+            Haz click en un país para ver su duración en minutos y segundos.
+        </p>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+    
 
     st.markdown(
     """
-    <div style="background-color: #f0f2f6; padding: 15px; margin-bottom:15px; border-radius: 10px; border-left: 5px solid #1DB954;">
+    <div style="background-color: #f0f2f6; padding: 15px; margin-bottom:15px; border-radius: 10px; border-left: 5px solid #ec150a;">
         <p style="color: #31333F; margin: 0;">
             Este gráfico solo puede mostrar la data de un año, asegurate de no tener filtros del rango de años activados en el sidebar.
         </p>
