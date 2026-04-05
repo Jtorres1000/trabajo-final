@@ -111,11 +111,13 @@ Análisis de la evolución en la duración estructural y caracacterísticas acú
 \section{Cobertura}
 
 \subsection{Horizontal}
-El estudio se delimita al análisis de las características técnicas de las canciones: duration_ms, stream_count, energy, release_date y tempo. 
+La investigación abarca la totalidad de los registros válidos en el dataset (85,000 pistas), incluyendo todos los géneros musicales y los 10 países representados en la muestra (*USA, UK, Brazil, India, Australia, France, Germany, Japan, Canada, Mexico*).\
 
 \subsection{Vertical}
-La investigación abarca la totalidad de los registros válidos en el dataset que comprenden un total de 85,000 registros. Abarcando la data desde el año 2015 hasta el año 2025.
+El estudio se delimita al análisis de algunas de  las características técnicas de audio duración en minutos, tempo y  energy. Así como  su distribución temporal y geográfica, excluyendo el análisis de otras variables.\
 
+\section{Periodo de Referencia}
+La fuente de los datos corresponde al repositorio abierto de Kaggle (“Spotify”). El análisis comprende los datos generados entre el *1 de enero de 2015* y el *31 de diciembre de 2025*, este periodo abarca todo el periodo disponible en el dataset. El procesamiento y limpieza de esta serie histórica se ejecutó mediante *scripts de R*, con fecha de corte a febrero de 2026.
 
 \begin{table}[ht]
 \centering
@@ -125,13 +127,13 @@ La investigación abarca la totalidad de los registros válidos en el dataset qu
   \hline
 \ \ \ \ \ NOMBRE DE LA VARIABLE \\ 
   \hline
-   \\ Variable Temporal (Eje de Evolución): release\_date (Año)\&\\
-   \\ Variable de Segmentación (Criterio de Comparación): country\& \\
+   \\ Variable Temporal (Eje de Evolución): *release\_date (Año)*\&\\
+   \\ Variable de Segmentación (Criterio de Comparación): *country*\& \\
     \\ Variables de Interés (Métricas de la "Inmediatez"):
-     duration\_ms (transformada a duration\_ms).\& \\
-     tempo (BPM).\&\\
-     energy (Escala 0-1).\&\\
-     \\Variables de Validación (Correlación): popularity, stream\_count, danceability, loudness& & \\
+     *duration\_ms* (transformada a *duration\_ms*).\& \\
+     *tempo* (BPM).\&\\
+     *energy* (Escala 0-1).\&\\
+     \\Variables de Validación (Correlación): *popularity, stream\_count, danceability, loudness&* \& \\
 \hline
 \end{tabular}
 }
