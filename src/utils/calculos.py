@@ -34,3 +34,15 @@ def calcular_metricas_correlacion(df_filtered):
             datos_pyecharts.append([x_index, y_index, valor_redondeado])
             
     return corr_matrix, corr_nombres, datos_pyecharts
+
+def calcular_minutos(minutos_decimales: float) -> str:
+    if minutos_decimales is None:
+        return "Sin datos"
+    
+    valor = float(minutos_decimales)
+    
+    minutos = int(valor)
+
+    segundos = int(round((valor - minutos) * 60))
+    
+    return f"{minutos} minutos y {segundos} segundos."
