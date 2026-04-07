@@ -367,7 +367,7 @@ function (params) {{
     """
     <div style="background-color: #f0f2f6; padding: 15px; margin-bottom:15px; border-radius: 10px; border-left: 5px solid #1DB954;">
         <p style="color: #31333F; margin: 0;">
-            Haz click en un país para ver su duración en minutos y segundos.
+            Haz click en una barra para ver su duración en minutos y segundos.
         </p>
     </div>
     """,
@@ -380,7 +380,7 @@ function (params) {{
 
     año_seleccionado = st.selectbox(
         "Selecciona el año para cargar la data de un año en concreto.",
-        options= sorted(df_processed['release_date'].dt.year.dropna().unique()),
+        options= sorted(df_filtered['release_date'].dt.year.dropna().unique()),
         index=0
     )
 
@@ -444,18 +444,6 @@ function (params) {{
     <div style="background-color: #f0f2f6; padding: 15px; margin-bottom:15px; border-radius: 10px; border-left: 5px solid #1DB954;">
         <p style="color: #31333F; margin: 0;">
             Haz click en un país para ver su duración en minutos y segundos.
-        </p>
-    </div>
-    """,
-    unsafe_allow_html=True
-)
-    
-
-    st.markdown(
-    """
-    <div style="background-color: #f0f2f6; padding: 15px; margin-bottom:15px; border-radius: 10px; border-left: 5px solid #ec150a;">
-        <p style="color: #31333F; margin: 0;">
-            Este gráfico solo puede mostrar la data de un año, asegurate de no tener filtros del rango de años activados en el sidebar.
         </p>
     </div>
     """,
