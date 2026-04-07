@@ -1,19 +1,21 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
-from streamlit_echarts import st_echarts, Map
+from streamlit_echarts import st_echarts, Map, JsCode
 from src.utils.calculos import calcular_metricas_duracion, calcular_minutos
 from src.utils.cargar_json import load_map_data
 
 def pagina_analisis_duracion():
 
-    duracion_pais_tiempo, distribucion_años, media_anual_duracion = calcular_metricas_duracion(st.session_state.get('df_filtered', None))
-    df_processed = st.session_state.get('df_processed', None)
+    duracion_pais_tiempo, distribucion_años, media_anual_duracion, duraciones_lista_boxplot, años_lista = calcular_metricas_duracion(st.session_state.get('df_filtered', None))
+
+    df_filtered = st.session_state.get('df_filtered', None)
+
     PALETA_SPOTIFY = st.session_state["PALETA_SPOTIFY"]
 
     st.title("Análisis de duración 🔎")
     
-    # Gráfico ECharts
+    # Gráfico line EChart
 
     df_pivot = duracion_pais_tiempo.pivot(index='año', columns='país', values='duración_promedio')
 
@@ -118,14 +120,158 @@ def pagina_analisis_duracion():
 )
 
     # Gráfico de Caja Plotly
-    fig_box = px.box(
-        distribucion_años, x='año', y='duration_min', 
-        title="Gráfico de caja y bigotes según el año de lanzamiento y la duración en minutos", 
-        labels={"año": "Año de lanzamiento", 'duration_min': "Duración (minutos)"}, 
-        color_discrete_sequence=PALETA_SPOTIFY
-    )
-    fig_box.update_xaxes(type='category')
-    st.plotly_chart(fig_box, width='stretch')
+
+    # fig_box = px.box(
+    #     distribucion_años, x='año', y='duration_min', 
+    #     title="Gráfico de caja y bigotes según el año de lanzamiento y la duración en minutos", 
+    #     labels={"año": "Año de lanzamiento", 'duration_min': "Duración (minutos)"}, 
+    #     color_discrete_sequence=PALETA_SPOTIFY
+    # )
+
+    # fig_box.update_xaxes(type='category')
+
+    # st.plotly_chart(fig_box, width='stretch')
+    
+    # Gráfico de caja Echarts
+
+    formatter_hover = JsCode("""
+    function (params) {
+        function calcularMinutos(valorDecimal) {
+            if (valorDecimal === null || valorDecimal === undefined || isNaN(valorDecimal)) return "Sin datos";
+            
+            let valor = parseFloat(valorDecimal);
+            let minutos = Math.floor(valor);
+            let segundos = Math.round((valor - minutos) * 60);
+            
+            // Si el redondeo llega a 60, sumamos un minuto y dejamos segundos en 0
+            if (segundos === 60) { 
+                minutos += 1; 
+                segundos = 0; 
+            }
+            
+            if (segundos < 1) {
+                return `${minutos} minutos.`;
+            } else {
+                let segundosFmt = segundos.toString().padStart(2, '0');
+                return `${minutos} minutos y ${segundosFmt} segundos.`;
+            }
+        }
+
+        if (params.seriesName === 'boxplot') {
+            let min = calcularMinutos(params.data[1]);
+            let q1 = calcularMinutos(params.data[2]);
+            let mediana = calcularMinutos(params.data[3]);
+            let q3 = calcularMinutos(params.data[4]);
+            let max = calcularMinutos(params.data[5]);
+            let categoria = params.name;
+
+            return `
+            <div style="font-family: sans-serif;">
+                <b style="font-size: 14px; border-bottom: 1px solid #ccc; padding-bottom: 4px; display: block; margin-bottom: 6px;">
+                Año: ${categoria}
+                </b>
+                <b>Máximo:</b> ${max}<br/>
+                <b>Tercer Cuartil (Q3):</b> ${q3}<br/>
+                <b>Mediana:</b> ${mediana}<br/>
+                <b>Primer Cuartil (Q1):</b> ${q1}<br/>
+                <b>Mínimo:</b> ${min}
+            </div>
+            `;
+        } else if (params.seriesName === 'outlier') {
+            let valorAtipico = calcularMinutos(params.data[1]);
+            return `<b>Valor Atípico:</b> ${valorAtipico}`;
+        }
+    }
+    """)
+    años_js = str(años_lista)
+
+    formatter_nombres = JsCode(f"""
+function (params) {{
+    var anios = {años_js};
+    return String(anios[params.value]);
+}}
+""")
+    
+    options = {
+        "title": [
+            {
+                "text": "Gráfico de caja y bigotes según el año de lanzamiento y la duración en minutos.",
+                "left": "center"
+            }
+
+        ],
+        "dataset": [
+            {
+                "source": duraciones_lista_boxplot
+            },
+            {
+                "transform": {
+                    "type": "boxplot",
+                    "config": {"itemNameFormatter": formatter_nombres}
+                }
+            },
+            {
+                "fromDatasetIndex": 1,
+                "fromTransformResult": 1
+            }
+        ],
+        "tooltip": {
+            "trigger": "item",
+            "axisPointer": {
+                "type": "shadow"
+            },
+            "formatter": formatter_hover
+        },
+        "grid": {
+            "left": "10%",
+            "right": "10%",
+            "bottom": "15%"
+        },
+        "xAxis": {
+            "type": "category",
+            "data": años_lista, # 
+            "name": "Año de lanzamiento",
+            "nameLocation": "middle",
+            "nameGap": 30,
+            "boundaryGap": True,
+            "splitArea": {
+                "show": False
+            },
+            "splitLine": {
+                "show": False
+            }
+        },
+        "yAxis": {
+            "type": "value",
+            "name": "Duración en minutos",
+            "min": 1,
+            "splitArea": {
+                "show": False
+            }
+        },
+        "series": [
+            {
+                "name": "boxplot",
+                "type": "boxplot",
+                "datasetIndex": 1,
+                "itemStyle": {
+                    "color": "#1DB9549F",       
+                    "borderColor": "#05F459",
+                    "borderWidth": 2  
+                }
+            },
+            {
+                "name": "outlier",
+                "type": "scatter",
+                "datasetIndex": 2,
+                "itemStyle": {
+                    "color": "#B0BC09"        # Color de los puntos atípicos
+                }
+            }
+        ]
+    }
+    # Finalmente, renderizamos en Streamlit
+    st_echarts(options=options, height="500px", key="pyechart-box-duracion")
 
     # Gráfico de barras echart
 
