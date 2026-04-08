@@ -161,7 +161,6 @@ Análisis exploratorio de los datos (EDA)
 Es un enfoque para analizar conjuntos de datos se usa para resumir las características principales de un dataset, a menudo utilizando métodos estadísticos y gráficos para describir la información.\
 
 \section{Bases Teóricas}
-
 El siguiente capítulo establece todos los métodos estadísticos y matemáticos utilizados para la investigación. Para ver si se encuentran patrones en las variables numéricas y analizar su comportamiento a lo largo del periodo de tiempo definido\
 
 La comprensión de estos conceptos es crucial para interpretar tanto la correlación de pearson como la media aritmética de las distintas variables.\
