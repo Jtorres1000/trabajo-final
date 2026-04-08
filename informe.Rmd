@@ -118,20 +118,18 @@ El estudio se delimita al análisis de algunas de  las características técnica
 
 \begin{table}[ht]
 \centering
-\caption{Variables consideradas} 
-\resizebox{10cm}{!} {
-\begin{tabular}{ccc}
+\caption{Variables consideradas en el estudio de audio} 
+\resizebox{\textwidth}{!} {
+\begin{tabular}{cll}
   \hline
-\ \ \ \ \ NOMBRE DE LA VARIABLE \\ 
+  \textbf{TIPO} & \textbf{VARIABLE} & \textbf{DESCRIPCIÓN} \\ 
   \hline
-   \\ Variable Temporal (Eje de Evolución): *release\_date (Año)*\&\\
-   \\ Variable de Segmentación (Criterio de Comparación): *country*\& \\
-    \\ Variables de Interés (Métricas de la "Inmediatez"):
-     *  * (transformada a *duration\_ms*).\& \\
-     *tempo* (BPM).\&\\
-     *energy* (Escala 0-1).\&\\
-     \\Variables de Validación (Correlación): *popularity, stream\_count, danceability, loudness&* \& \\
-\hline
+  Numérica & Duration & La extensión temporal de las pistas de audio medida en minutos. \\ 
+  Numérica & Tempo & La velocidad o ritmo de la música, medido en pulsaciones por minuto. \\ 
+  Numérica & Energy & Medida cuantitativa continua de intensidad y actividad (0 a 1). \\ 
+  Numérica & Popularity & Variable cuantitativa continua (0 a 100) asignada por modelado sintético. \\ 
+  Numérica & Stream\_count & Número aproximado de reproducciones de una pista. \\ 
+   \hline
 \end{tabular}
 }
 \end{table}
@@ -173,19 +171,34 @@ Es un enfoque para analizar conjuntos de datos se usa para resumir las caracter�
 Es un enfoque para analizar conjuntos de datos se usa para resumir las características principales de un dataset, a menudo utilizando métodos estadísticos y gráficos para describir la información.\
 
 \subsection{La media aritmética poblacional}
- Es un concepto fundamental para comprender e interpretar datos en estadística. Es una medida de tendencia central, es decir, una medida que nos indica el valor central al cual tienden los valores de una variable.\
- 
-Sean xi, las distintas medidas de una variable y n, la cantidad total de medidas, la media aritmética poblacional vendrá dada por la siguiente formula\
+ Es un concepto fundamental para comprender e interpretar datos en estadística. Es una medida de tendencia central, es decir, una medida que nos indica el valor central al cual tienden los valores de una variable.
+Sean $xi$, las distintas medidas de una variable y $N$, la cantidad total de medidas, la media aritmética poblacional vendrá dada por la siguiente formula:
 
-\subsection{El coeficiente de correlación de Pearson} 
- Es la medida más utilizada en el análisis  bivariante para entender la correlación lineal entre dos variables distintas.\
- 
-Está nos dice qué tan fuerte y en qué dirección se relacionan dos variables numéricas, oscilando entre -1 y 1 dónde:\
+$$
+\bar{X} = \frac{\sum_{i=1}^{n} x_i}{n}
+$$
 
-Entre 0 y 1: Describe una correlación positiva, dónde conforme una variable aumenta la otra también lo hace.\
+\subsection{El coeficiente de correlación de Pearson.} 
 
-Cercana o 0: No hay una correlación entre las 2 variables.
-Entre -1 y 0: Describe una correlación lineal negativa, dónde conforme una variable disminuye la otra aumenta.\
+Es la medida más utilizada en el análisis  bivariante para entender la correlación lineal entre dos variables distintas.
+Está nos dice qué tan fuerte y en qué dirección se relacionan dos variables numéricas, oscilando entre -1 y 1 dónde:
+\begin{itemize}
+ \item \textbf{Correlación Positiva ($0 < r \le 1$):} Describe una relación donde, conforme una variable aumenta, la otra también lo hace.
+ \item \textbf{Correlación Nula ($r \approx 0$):} Indica que no existe una relación lineal entre las dos variables.
+  \item \textbf{Correlación Negativa ($-1 \le r < 0$):} Describe una relación lineal inversa, donde conforme una variable disminuye, la otra aumenta (o viceversa).
+\end{itemize}
+
+La fórmula que lo describe es la siguiente:
+
+$$r_{xy} = \frac{\sum_{i=1}^{n} (x_i - \bar{x})(y_i - \bar{y})}{\sqrt{\sum_{i=1}^{n} (x_i - \bar{x})^2} \sqrt{\sum_{i=1}^{n} (y_i - \bar{y})^2}}$$
+
+donde:
+
+\begin{itemize}
+    \item \textbf{$n$:} es el tamaño de la muestra
+    \item \textbf{$x_i, y_i$:} son puntos muestrales individuales indexados con $i$
+    \item \textbf{$\bar{x}$:} denota la media poblacional definida por (análogamente para $\bar{y}$)
+\end{itemize}
 
 \subsection{Media aritmetica}
  Para poder resumir un conjunto de datos numéricos en un solo valor representativo usamos las siguientes variables: Energy, tempo y duration_min, esto nos va a permitir entender mejor la distribución central de los datos, además, entender la tendencia general de los datos sin necesidad de analizar cada valor individualmente.\
