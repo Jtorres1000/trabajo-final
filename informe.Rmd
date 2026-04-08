@@ -169,7 +169,7 @@ Es un enfoque para analizar conjuntos de datos se usa para resumir las caracter�
 
 \subsection{La media aritmética poblacional}
  Es un concepto fundamental para comprender e interpretar datos en estadística. Es una medida de tendencia central, es decir, una medida que nos indica el valor central al cual tienden los valores de una variable.
-Sean xi, las distintas medidas de una variable y n, la cantidad total de medidas, la media aritmética poblacional vendrá dada por la siguiente formula:
+Sean xi, las distintas medidas de una variable y n, la cantidad total de medidas, la media aritmética poblacional vendrá dada por la siguiente formula
 
 \subsection{El coeficiente de correlación de Pearson} 
  Es la medida más utilizada en el análisis  bivariante para entender la correlación lineal entre dos variables distintas.\
