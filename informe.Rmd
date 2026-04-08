@@ -180,7 +180,8 @@ Sean xi, las distintas medidas de una variable y n, la cantidad total de medidas
 \subsection{El coeficiente de correlación de Pearson} 
  Es la medida más utilizada en el análisis  bivariante para entender la correlación lineal entre dos variables distintas.\
  
-Está nos dice qué tan fuerte y en qué dirección se relacionan dos variables numéricas, oscilando entre -1 y 1 dónde:
+Está nos dice qué tan fuerte y en qué dirección se relacionan dos variables numéricas, oscilando entre -1 y 1 dónde:\
+
 Entre 0 y 1: Describe una correlación positiva, dónde conforme una variable aumenta la otra también lo hace.\
 
 Cercana o 0: No hay una correlación entre las 2 variables.
