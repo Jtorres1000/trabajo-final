@@ -111,7 +111,7 @@ Análisis de la evolución en la duración estructural y caracacterísticas acú
 \section{Cobertura}
 
 \subsection{Horizontal}
-La investigación abarca la totalidad de los registros válidos en el dataset (85,000 pistas), incluyendo todos los géneros musicales y los 10 países representados en la muestra (*USA, UK, Brazil, India, Australia, France, Germany, Japan, Canada, Mexico*).\
+Nuestra investigación analiza el dataset completo con sus 85,000 registros válidos. Esto nos permite ver todos los géneros musicales y la información de los 10 países que incluye la muestra, (*USA, UK, Brazil, India, Australia, France, Germany, Japan, Canada, Mexico*).\
 
 \subsection{Vertical}
 El estudio se delimita al análisis de algunas de  las características técnicas de audio duración en minutos, tempo y  energy. Así como  su distribución temporal y geográfica, excluyendo el análisis de otras variables.\
@@ -146,40 +146,52 @@ La fuente de los datos corresponde al repositorio abierto de Kaggle (“Spotify�
 
 \section{Variables}
 
-El análisis se centra en tres parámetros cuantitativos específicos:
-Duración (minutos): La extensión temporal de las pistas de audio medida en minutos.\
-Tempo (BPM): La velocidad o ritmo de la música, medido en pulsaciones por minuto.\
-Energy (Energía): Una medida cuantitativa continúa que describe la intensidad y actividad de una pista, oscila entre 0 y 1.\
-Popularity: Una variable cuantitativa continúa, varia del 0 a 100 asignada a cada canción mediante un modelado sintético.\
-Stream_count: número aproximado de reproducciones de una pista.\
+El análisis se centra en 5 parámetros cuantitativos específicos:\
+
+(*Duración (minutos)*): La extensión temporal de las pistas de audio medida en minutos.\
+
+(*Tempo (BPM)*): La velocidad o ritmo de la música, medido en pulsaciones por minuto.\
+
+(*Energy (Energía)*): Una medida cuantitativa continúa que describe la intensidad y actividad de una pista, oscila entre 0 y 1.\
+
+(*Popularity*): Una variable cuantitativa continúa, varia del 0 a 100 asignada a cada canción mediante un modelado sintético.\
+
+(*Stream_count*): número aproximado de reproducciones de una pista.\
+
 El siguiente capítulo establece todos los métodos estadísticos y matemáticos utilizados para la investigación. Para ver si se encuentran patrones en las variables numéricas y analizar su comportamiento a lo largo del periodo de tiempo definido\
 
 La comprensión de estos conceptos es crucial para interpretar tanto la correlación de pearson como la media aritmética de las distintas variables.\
 
-\chapter{Marco Teórico}
-Análisis exploratorio de los datos (EDA)
+\chapter {Bases Teóricas}
+El siguiente capítulo establece todos los métodos estadísticos y matemáticos utilizados para la investigación. Para ver si se encuentran patrones en las variables numéricas y analizar su comportamiento a lo largo del periodo de tiempo definido\
+
+La comprensión de estos conceptos es crucial para interpretar tanto la correlación de pearson como la media aritmética de las distintas variables.\
+
 Es un enfoque para analizar conjuntos de datos se usa para resumir las características principales de un dataset, a menudo utilizando métodos estadísticos y gráficos para describir la información.\
 
-\section{Bases Teóricas}
-El siguiente capítulo establece todos los métodos estadísticos y matemáticos utilizados para la investigación. Para ver si se encuentran patrones en las variables numéricas y analizar su comportamiento a lo largo del periodo de tiempo definido\
-
-La comprensión de estos conceptos es crucial para interpretar tanto la correlación de pearson como la media aritmética de las distintas variables.\
+\subsection{Análisis exploratorio de los datos (EDA)}
 Es un enfoque para analizar conjuntos de datos se usa para resumir las características principales de un dataset, a menudo utilizando métodos estadísticos y gráficos para describir la información.\
 
 \subsection{La media aritmética poblacional}
- Es un concepto fundamental para comprender e interpretar datos en estadística. Es una medida de tendencia central, es decir, una medida que nos indica el valor central al cual tienden los valores de una variable.
-Sean xi, las distintas medidas de una variable y n, la cantidad total de medidas, la media aritmética poblacional vendrá dada por la siguiente formula
+ Es un concepto fundamental para comprender e interpretar datos en estadística. Es una medida de tendencia central, es decir, una medida que nos indica el valor central al cual tienden los valores de una variable.\
+ 
+Sean xi, las distintas medidas de una variable y n, la cantidad total de medidas, la media aritmética poblacional vendrá dada por la siguiente formula\
 
 \subsection{El coeficiente de correlación de Pearson} 
  Es la medida más utilizada en el análisis  bivariante para entender la correlación lineal entre dos variables distintas.\
+ 
 Está nos dice qué tan fuerte y en qué dirección se relacionan dos variables numéricas, oscilando entre -1 y 1 dónde:
 Entre 0 y 1: Describe una correlación positiva, dónde conforme una variable aumenta la otra también lo hace.\
+
 Cercana o 0: No hay una correlación entre las 2 variables.
 Entre -1 y 0: Describe una correlación lineal negativa, dónde conforme una variable disminuye la otra aumenta.\
 
-\chapter{Marco Metódico}
-En esta sección se presentan las metodologías y/o test necesarios relacionados con la práctica divulgada en el marco teórico, así como las fuentes de datos.\
- 
+\subsection{Media aritmetica}
+ Para poder resumir un conjunto de datos numéricos en un solo valor representativo usamos las siguientes variables: Energy, tempo y duration_min, esto nos va a permitir entender mejor la distribución central de los datos, además, entender la tendencia general de los datos sin necesidad de analizar cada valor individualmente.\
+
+\subsection{correlación y dependencia lineal}
+Se usará para crear una matriz de correlación entre las variables, para ver si existe algún tipo de correlación entre las variables escogidas.\
+
 \section{Bases metódicas utilizadas en el trabajo de investigación}
 
 Desarrollo\
