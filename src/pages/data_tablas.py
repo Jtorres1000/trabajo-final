@@ -4,7 +4,7 @@ def pagina_data_tablas():
 
     df_filtered = st.session_state.get('df_filtered', None)
 
-    duracion_pais_tiempo, distribucion_años, media_anual_duracion = calcular_metricas_duracion(df_filtered)
+    duracion_pais_tiempo, distribucion_años, media_anual_duracion, duraciones_lista_boxplot, años_lista = calcular_metricas_duracion(df_filtered)
     media_tempo_energy, años_tempo_energy, tempo_lista, energy_lista = calcular_metricas_tempo_energy(df_filtered)
     corr_matrix, corr_nombres, datos_pyecharts = calcular_metricas_correlacion(df_filtered)
 
