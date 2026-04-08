@@ -56,9 +56,18 @@ def calcular_minutos(minutos_decimales: float) -> str:
 
     segundos = int(round((valor - minutos) * 60))
 
-    if segundos < 1:
-        text = f"{minutos} minutos."
-    else:
-        text = f"{minutos} minutos y {segundos} segundos."
+    if minutos > 1:
+        minutos_texto = f"{minutos} minutos"
+    elif minutos == 1:
+        minutos_texto = f"{minutos} minuto"
+    else:        minutos_texto = ""
 
-    return text
+    if segundos > 1:
+        segundos_texto = f"{segundos} segundos"
+    elif segundos == 1:        
+        segundos_texto = f"{segundos} segundo"
+    else:        segundos_texto = ""
+
+    frase = f"{minutos_texto} y {segundos_texto}.".strip()
+
+    return frase
