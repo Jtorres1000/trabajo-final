@@ -8,8 +8,19 @@ def calcular_metricas_duracion(df_filtered):
 
     distribucion_años = df_filtered[['año', 'duration_min']].sort_values(by='año').reset_index(drop=True)
     media_anual_duracion = distribucion_años.groupby('año')['duration_min'].mean().reset_index(name='duración_promedio')
+    años_lista = sorted(df_filtered['año'].unique().astype(str).tolist())
+
+    duraciones_lista_boxplot = []
+
+    for año in años_lista:
+        # Filtramos el DataFrame original por cada año
+        # Y extraemos TODOS los valores de duration_min en una lista
+        valores_del_año = df_filtered[df_filtered['año'] == int(año)]['duration_min'].dropna().tolist()
+        # Agregamos esta lista de valores a nuestra lista maestra
+        duraciones_lista_boxplot.append(valores_del_año)
     
-    return duracion_pais_tiempo, distribucion_años, media_anual_duracion
+    
+    return duracion_pais_tiempo, distribucion_años, media_anual_duracion, duraciones_lista_boxplot, años_lista
 
 def calcular_metricas_tempo_energy(df_filtered):
     media_tempo_energy = df_filtered.groupby('año')[['tempo', 'energy']].mean().sort_values(by='año').reset_index()
@@ -34,3 +45,20 @@ def calcular_metricas_correlacion(df_filtered):
             datos_pyecharts.append([x_index, y_index, valor_redondeado])
             
     return corr_matrix, corr_nombres, datos_pyecharts
+
+def calcular_minutos(minutos_decimales: float) -> str:
+    if minutos_decimales is None:
+        return "Sin datos"
+    
+    valor = float(minutos_decimales)
+    
+    minutos = int(valor)
+
+    segundos = int(round((valor - minutos) * 60))
+
+    if segundos < 1:
+        text = f"{minutos} minutos."
+    else:
+        text = f"{minutos} minutos y {segundos} segundos."
+
+    return text
