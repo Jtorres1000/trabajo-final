@@ -104,7 +104,7 @@ Análisis de la evolución en la duración estructural y caracacterísticas acú
 
 \textbf{2.}Análizar el comportamiento anual de las variables tempo y energy para identificar patrones o tendencias.\
 
-\textbf{3.}Comparar los promedios de duración y velocidad entre los 10 países del dataset para establecer si el fenómeno de inmediatez es globalmente homogéneo o presenta variaciones regionales significativas.\
+\textbf{3.}Comparar los promedios de duración entre los 10 países del dataset para establecer si el fenómeno de inmediatez es globalmente homogéneo o presenta variaciones regionales significativas.\
 
 \textbf{4.}Evaluar la relación lineal entre los atributos acústicos individuales de las canciones y su índice de popularidad, para determinar si el éxito comercial depende de factores aislados o es multifactorial.\
 
@@ -223,7 +223,6 @@ Descripción Item 2\
 \section{Bases metódicas utilizadas en el trabajo de investigación}
 
 Desarrollo\
-
 \subsection{Item 1}
 
 Descripción Item 1\
