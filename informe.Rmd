@@ -85,7 +85,7 @@ En base a lo anterior se plantean las siguientes preguntas de investigación:\
 \textbf{3.} ¿De qué forma se comporta la duración de las canciones según el país entre el periodo 2015-2025? \
 
 
-\textbf{4.} ¿Cuál es la correlación estadística entre los atributos acústicos de las canciones como duración, tempo y energy y su nivel de popularidad en el periodo 2015-2025?\
+\textbf{4.} ¿Cuál es la correlación estadística entre los atributos acústicos de las canciones como duración, tempo y energy y su nivel de popularidad en el periodo 2015-2025?
 
 
 \section{Justificación}
@@ -96,25 +96,28 @@ Esta investigación es fundamental para comprender la transformación estructura
  
 \subsection{Objetivo General}
 
-Análisis de la evolución en la duración estructural y caracacterísticas acústicas de las canciones producidas po la industria musical en la última década. \
+Análisis de la evolución en la duración estructural y caracacterísticas acústicas de las canciones producidas po la industria musical en la última década. 
 
 \subsection{Objetivos Específicos}
 
-\textbf{1.}Describir la evolución del promedio de duración por año y analizar su tendencia.\
+\textbf{1.} Describir la evolución del promedio de duración por año y analizar su tendencia.\
 
-\textbf{2.}Análizar el comportamiento anual de las variables tempo y energy para identificar patrones o tendencias.\
+\textbf{2.} Análizar el comportamiento anual de las variables tempo y energy para identificar patrones o tendencias.\
 
 \textbf{3.}Comparar los promedios de duración entre los 10 países del dataset para establecer si el fenómeno de inmediatez es globalmente homogéneo o presenta variaciones regionales significativas.\
 
-\textbf{4.}Evaluar la relación lineal entre los atributos acústicos individuales de las canciones y su índice de popularidad, para determinar si el éxito comercial depende de factores aislados o es multifactorial.\
+\textbf{3.} Comparar los promedios de duración y velocidad entre los 10 países del dataset para establecer si el fenómeno de inmediatez es globalmente homogéneo o presenta variaciones regionales significativas.\
+
+\textbf{4.} Evaluar la relación lineal entre los atributos acústicos individuales de las canciones y su índice de popularidad, para determinar si el éxito comercial depende de factores aislados o es multifactorial.
 
 \section{Cobertura}
 
 \subsection{Horizontal}
-Nuestra investigación analiza el dataset completo con sus 85,000 registros válidos. Esto nos permite ver todos los géneros musicales y la información de los 10 países que incluye la muestra, (*USA, UK, Brazil, India, Australia, France, Germany, Japan, Canada, Mexico*).\
+Nuestra investigación analiza el dataset completo con sus 85,000 registros válidos. Esto nos permite ver todos los géneros musicales y la información de los 10 países que se incluyen en la muestra los cuales son los siguientes: USA, United Kingdom, Brazil, India, Australia, France, Germany, Japan, Canada y Mexico.
 
 \subsection{Vertical}
-El estudio se delimita al análisis de algunas de  las características técnicas de audio duración en minutos, tempo y  energy. Así como  su distribución temporal y geográfica, excluyendo el análisis de otras variables.\
+El estudio se delimita a un análisis puramente cuantitativo y descriptivo. Usando algunas de  las características técnicas de las pistas; duración en minutos, tempo y  energy. Así como  su distribución temporal y geográfica, excluyendo el análisis de otras variables.
+
 
 \begin{table}[ht]
 \centering
@@ -134,41 +137,34 @@ El estudio se delimita al análisis de algunas de  las características técnica
 }
 \end{table}
 
-\subsection{Vertical}
-
-Se trata de un análisis puramente cuantitativo y descriptivo. Busca encontrar patrones numéricos en el audio y ver cómo esos números se comportan a través del mapa y del calendario, sin entrar en interpretaciones subjetivas o artísticas.\
-
 \section{Periodo de Referencia}
 
-La fuente de los datos corresponde al repositorio abierto de Kaggle (“Spotify”). El análisis comprende los datos generados entre el *1 de enero de 2015* y el *31 de diciembre de 2025*, este periodo abarca todo el periodo disponible en el dataset. El procesamiento y limpieza de esta serie histórica se ejecutó mediante *scripts de R*, con fecha de corte a febrero de 2026.\
+La fuente de los datos corresponde al repositorio abierto de Kaggle (“Spotify”). El análisis comprende los datos generados entre el *1 de enero de 2015* y el *31 de diciembre de 2025*, este periodo abarca todo el periodo disponible en el dataset. El procesamiento y limpieza de esta serie histórica se ejecutó mediante *scripts de R*, con fecha de corte a febrero de 2026.
 
 \section{Variables}
 
-El análisis se centra en 5 parámetros cuantitativos específicos:\
+El análisis se centra en 5 parámetros cuantitativos específicos:
 
-(*Duración (minutos)*): La extensión temporal de las pistas de audio medida en minutos.\
+\begin{itemize}
+    \item \textbf{Duration (minutos):} La extensión temporal de las pistas de audio medida en minutos.
+    \item \textbf{Tempo (BPM):} La velocidad o ritmo de la música, medido en pulsaciones por minuto.
+    \item \textbf{Energy (Energía):} Una medida cuantitativa continua que describe la intensidad y actividad de una pista, oscila entre 0 y 1.
+    \item \textbf{Popularity:} Una variable cuantitativa continua, varía de 0 a 100 asignada a cada canción mediante un modelado sintético.
+    \item \textbf{Stream\_count:} Número aproximado de reproducciones de una pista.
+\end{itemize}
 
-(*Tempo (BPM)*): La velocidad o ritmo de la música, medido en pulsaciones por minuto.\
+\chapter {Marco Teórico}
 
-(*Energy (Energía)*): Una medida cuantitativa continúa que describe la intensidad y actividad de una pista, oscila entre 0 y 1.\
-
-(*Popularity*): Una variable cuantitativa continúa, varia del 0 a 100 asignada a cada canción mediante un modelado sintético.\
-
-(*Stream_count*): número aproximado de reproducciones de una pista.\
+\section {Bases teóricas}
 
 El siguiente capítulo establece todos los métodos estadísticos y matemáticos utilizados para la investigación. Para ver si se encuentran patrones en las variables numéricas y analizar su comportamiento a lo largo del periodo de tiempo definido\
 
 La comprensión de estos conceptos es crucial para interpretar tanto la correlación de pearson como la media aritmética de las distintas variables.\
 
-\chapter {Bases Teóricas}
-El siguiente capítulo establece todos los métodos estadísticos y matemáticos utilizados para la investigación. Para ver si se encuentran patrones en las variables numéricas y analizar su comportamiento a lo largo del periodo de tiempo definido\
-
-La comprensión de estos conceptos es crucial para interpretar tanto la correlación de pearson como la media aritmética de las distintas variables.\
-
-Es un enfoque para analizar conjuntos de datos se usa para resumir las características principales de un dataset, a menudo utilizando métodos estadísticos y gráficos para describir la información.\
+Es un enfoque para analizar conjuntos de datos se usa para resumir las características principales de un dataset, a menudo utilizando métodos estadísticos y gráficos para describir la información.
 
 \subsection{Análisis exploratorio de los datos (EDA)}
-Es un enfoque para analizar conjuntos de datos se usa para resumir las características principales de un dataset, a menudo utilizando métodos estadísticos y gráficos para describir la información.\
+Es un enfoque para analizar conjuntos de datos se usa para resumir las características principales de un dataset, a menudo utilizando métodos estadísticos y gráficos para describir la información.
 
 \subsection{La media aritmética poblacional}
  Es un concepto fundamental para comprender e interpretar datos en estadística. Es una medida de tendencia central, es decir, una medida que nos indica el valor central al cual tienden los valores de una variable.
@@ -200,11 +196,7 @@ donde:
     \item \textbf{$\bar{x}$:} denota la media poblacional definida por (análogamente para $\bar{y}$)
 \end{itemize}
 
-\subsection{Media aritmetica}
- Para poder resumir un conjunto de datos numéricos en un solo valor representativo usamos las siguientes variables: Energy, tempo y duration_min, esto nos va a permitir entender mejor la distribución central de los datos, además, entender la tendencia general de los datos sin necesidad de analizar cada valor individualmente.\
-
-\subsection{correlación y dependencia lineal}
-Se usará para crear una matriz de correlación entre las variables, para ver si existe algún tipo de correlación entre las variables escogidas.\
+\chapter{Marco Metódico}
 
 \section{Bases metódicas utilizadas en el trabajo de investigación}
 
