@@ -194,6 +194,250 @@ donde:
     \item \textbf{$\bar{x}$:} denota la media poblacional definida por (análogamente para $\bar{y}$)
 \end{itemize}
 
+
+$$
+\text{duration\_min} = \frac{\text{duration\_ms}}{60000}
+$$
+
+
+```{r}
+
+#Limpieza y creación de columnas nuevas.
+df <- read_csv("18. Spotify 2015-2025.csv")
+
+df <- df %>%
+  mutate(across(where(is.character), ~ trimws(.))) %>%
+  mutate(across(where(is.character), ~ na_if(., "None")))
+
+missing_values <- df %>%
+  summarise(across(everything(), ~ sum(is.na(.))))%>%
+  select(track_name, album_name)
+
+kable(missing_values, digits = 3, 
+      caption = "Valores faltantes")
+
+```
+
+```{r}
+# Agregado de las columnas year y duration_min
+
+df_clean <- df %>%
+  mutate(duration_min = round(duration_ms / 60000, 2), year = year(release_date))
+```
+
+```{r}
+#Gráfico de caja y bigotes.
+fig_boxplot <- ggplot(df_clean, aes(y = duration_min)) +
+  geom_boxplot(
+    fill = "skyblue", 
+    color = "black",
+  ) +
+  
+  coord_cartesian(ylim = c(1, 8)) + 
+  
+  scale_y_continuous(breaks = seq(0, 10, by = 1)) +
+  
+  labs(
+    title = "Distribución de la Duración de las Pistas",
+    subtitle = "Análisis de dispersión y detección de valores atípicos",
+    y = "Duración (Minutos)",
+    x = "" 
+  ) +
+  theme_minimal()
+
+fig_boxplot
+```
+
+
+```{r}
+
+# Gráfico de barra, media de duración anual.
+
+media_anual <- df_clean %>%
+  group_by(year) %>%
+  summarise(
+    media_duracion_min = mean(duration_min, na.rm = TRUE),
+    media_energy = mean(energy, na.rm = TRUE),
+    media_tempo = mean(tempo, na.rm = TRUE)
+  )
+
+
+fig_ggplot <- ggplot(media_anual, aes(x = factor(year), y = media_duracion_min)) +
+
+  geom_col(fill = "steelblue") + 
+  
+  scale_y_continuous(breaks = seq(0, 5, by = 0.25)) +
+  coord_cartesian(ylim = c(3.5, 4.30)) +
+
+  labs(
+    title = "Duración Media de Pistas por Año",
+    x = "Año de Lanzamiento",
+    y = "Duración Media (Minutos)"
+  ) +
+  
+  theme_minimal() +
+  
+ 
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1)
+  )
+
+
+fig_ggplot
+
+```
+
+
+```{r}
+#Distribución por países con frecuencia relativa porcentual.
+
+distribucion_pais_porcentaje <- df_clean %>%
+  count(country, name = "total") %>%
+  mutate(porcentaje = round((total / sum(total)) * 100, 2)) %>%
+  arrange(desc(porcentaje))
+
+```
+
+```{r}
+#tabla total acumulado top 3
+fila_total_top3 <- distribucion_pais_porcentaje %>%
+  slice(1:3) %>% 
+  summarise(
+    country = "Total", 
+    total = sum(total),      
+    porcentaje = sum(porcentaje) 
+  )
+
+
+distribucion_final <- distribucion_pais_porcentaje %>%
+  bind_rows(fila_total_top3)
+
+kable(fila_total_top3 , digits = 3, 
+      caption = "Total acumulado:")
+
+```
+
+
+```{r}
+
+df_pareto <- distribucion_pais_porcentaje %>%
+  arrange(desc(total)) %>% 
+  mutate(
+   
+    country = factor(country, levels = country), 
+    cum_tot = cumsum(total),            
+    cum_pct = cum_tot / sum(total)         
+  )
+
+escala_secundaria <- sum(df_pareto$total)
+
+
+fig_pareto <- ggplot(df_pareto, aes(x = country)) +
+  
+  geom_col(aes(y = total), fill = "steelblue", alpha = 0.8) +
+  
+  geom_line(aes(y = cum_pct * escala_secundaria, group = 1), color = "red", linewidth = 1.2) +
+  geom_point(aes(y = cum_pct * escala_secundaria), color = "red", size = 3) +
+  
+  geom_text(aes(y = cum_pct * escala_secundaria, label = percent(cum_pct, accuracy = 1)),
+            vjust = -1.5, color = "red", size = 3.5) +
+
+  scale_y_continuous(
+    name = "Cantidad de Pistas",
+    sec.axis = sec_axis(~ . / escala_secundaria, name = "Porcentaje Acumulado", labels = percent)
+  ) +
+  
+  labs(
+    title = "Gráfico de Pareto: Distribución de Pistas por País",
+    x = "País"
+  ) +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+fig_pareto
+```
+
+
+```{r}
+#Gráfico de barras energy
+
+fig_energy <- ggplot(media_anual, aes(x = factor(year), y = media_energy)) +
+  geom_col(fill = "coral") + 
+  
+  coord_cartesian(ylim = c(0.49, 0.52)) +
+  
+  labs(
+    title = "Nivel Medio de Energía por Año",
+    x = "Año de Lanzamiento",
+    y = "Energía Media (0 a 1)"
+  ) +
+  theme_minimal() +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1)
+  )
+
+fig_energy
+```
+
+```{r}
+
+# Gráfico de barras tempo
+
+fig_tempo <- ggplot(media_anual, aes(x = factor(year), y = media_tempo)) +
+  geom_col(fill = "mediumseagreen") + 
+  
+  
+  coord_cartesian(ylim = c(128, 132)) +
+  
+  labs(
+    title = "Tempo Medio (BPM) por Año",
+    x = "Año de Lanzamiento",
+    y = "Tempo Medio (Pulsaciones por Minuto)"
+  ) +
+  theme_minimal() +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1)
+  )
+
+fig_tempo
+```
+
+```{r}
+
+top3_nombres <- df_clean %>%
+  count(country) %>%
+  slice_max(order_by = n, n = 3) %>%
+  pull(country)
+
+
+media_top3_anual <- df_clean %>%
+
+  filter(country %in% top3_nombres) %>% 
+  group_by(year, country) %>%
+  summarise(
+    media_duracion = mean(duration_min, na.rm = TRUE),
+    .groups = "drop"
+  )
+
+ggplot(media_top3_anual, aes(x = year, y = media_duracion, color = country)) +
+  geom_line(linewidth = 1.2) +
+  geom_point(size = 2) + 
+  
+  
+  scale_x_continuous(breaks = seq(2015, 2025, by = 2)) + 
+  
+  labs(
+    title = "Evolución de la Duración Media: Top 3 Países",
+    x = "Año",
+    y = "Duración Media (Minutos)",
+    color = "País" 
+  ) +
+  theme_minimal() +
+  theme(
+    legend.position = "bottom" 
+  )
+```
+
 \chapter{Marco Metódico}
 
 \section{Bases metódicas utilizadas en el trabajo de investigación}
