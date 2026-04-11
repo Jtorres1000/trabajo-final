@@ -71,3 +71,23 @@ def calcular_minutos(minutos_decimales: float) -> str:
     frase = f"{minutos_texto} y {segundos_texto}.".strip()
 
     return frase
+
+def calcular_segmentos_distribucion(df_filtered, año_seleccionado=None):
+    df_temp = df_filtered.copy()
+
+    if año_seleccionado is not None:
+        df_temp = df_temp[df_temp["año"].astype(str) == str(año_seleccionado)]
+
+    # Agrupamos y contamos
+    segmentos_tempo = df_temp.groupby(['segmento_tempo']).size().reset_index(name='value')
+    segmentos_energy = df_temp.groupby(['segmento_energy']).size().reset_index(name='value')
+
+    # Renombramos columnas para ECharts
+    segmentos_tempo = segmentos_tempo.rename(columns={'segmento_tempo': 'name'})
+    segmentos_energy = segmentos_energy.rename(columns={'segmento_energy': 'name'})
+
+    # Convertimos a formato de diccionario para ECharts
+    segmentos_tempo_serie = segmentos_tempo.to_dict('records')
+    segmentos_energy_serie = segmentos_energy.to_dict('records')
+        
+    return segmentos_tempo_serie, segmentos_energy_serie

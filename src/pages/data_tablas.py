@@ -12,7 +12,7 @@ def pagina_data_tablas():
     st.write(f"**Mostrando {len(df_filtered)} canciones:**")
 
     st.markdown("### Datos en tablas filtrados:")
-    st.dataframe(df_filtered[["release_date", "genre", "duration_min", "popularity", "stream_count", "energy", "country", "explicit", "label", "año"]], width='stretch')
+    st.dataframe(df_filtered[["release_date", "genre", "duration_min", "popularity", "stream_count", "energy", "tempo" ,"country", "explicit", "label", "año", "segmento_tempo", "segmento_energy"]], width='stretch')
 
     st.markdown("### Duración promedio por país y año:")
     st.dataframe(duracion_pais_tiempo, width='stretch')
