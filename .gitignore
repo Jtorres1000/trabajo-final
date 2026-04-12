@@ -10,3 +10,5 @@ informe.tex
 template.tex
 plantilla.Rproj
 __pycache__/
+.RDataTmp
+/informe_files
