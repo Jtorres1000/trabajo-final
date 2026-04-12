@@ -32,7 +32,7 @@ output:
 
 # --- Resumen (Abstract) ---
 abstract: |
-  Resumen del trabajo de investigación...
+  En el presente informe analizamos cómo ha cambiado la música en la última década (2015-2025). Queremos saber si el éxito de plataformas como TikTok o Instagram Reels, que priorizan los videos cortos y rápidos, ha obligado a los artistas a hacer canciones más breves y aceleradas. Para responder a esto, revisamos miles de canciones usando herramientas de programación, buscando patrones en su duración, ritmo y energía, y así descubrir si la forma de hacer música realmente ha cambiado o si se mantiene igual a pesar de las nuevas tendencias de consumo.
 ---
 
 ```{r setup, include=FALSE}
@@ -54,10 +54,27 @@ library(kableExtra)
 library(scales)
 ```
 
-
 \chapter*{Introducción}
 
-Introducción del trabajo de investigación
+La industria de la música ha cambiado muchísimo en los últimos años. Lo que antes era un formato tradicional, se ha transformado completamente por el auge del streaming y el contenido breve en redes sociales. Sin embargo, más allá de lo que vemos en redes, la producción musical sigue siendo un entorno lleno de cambios: el éxito de una canción es el resultado de una mezcla compleja de gustos personales, tendencias y nuevas tecnologías.
+
+Este trabajo tiene como objetivo analizar a fondo una base de datos de 85,000 canciones lanzadas entre 2015 y 2025. Usando herramientas de programación en R, buscamos entender cómo la duración, el ritmo y la energía de las canciones han evolucionado frente a la creciente preferencia por los videos cortos y rápidos.
+
+Estructura del Informe
+Este documento está organizado en cinco partes principales:
+
+\begin{itemize}
+    \item \textbf{Capítulo I}: Planteamos la duda principal: ¿Está el auge de las redes sociales obligando a crear música más corta? Aquí definimos qué queremos descubrir y qué límites tiene nuestra investigación.
+
+\item \textbf{Capítulo II}: Explicamos los conceptos básicos que usamos, como el promedio y la relación entre diferentes factores, para que cualquier persona pueda entender cómo analizamos los números.
+
+\item \textbf{Capítulo III}: Detallamos cómo preparamos y revisamos la información antes de trabajar con ella, asegurándonos de que los datos fueran fiables y estuvieran listos para el análisis.
+
+\item \textbf{Capítulo IV}: Mostramos los resultados obtenidos a través de gráficos y tablas. Aquí es donde ponemos a prueba nuestras ideas y vemos qué dicen realmente los datos sobre la duración y el ritmo de la música en esta última década.
+
+\item \textbf{Capítulo V}: Finalmente, compartimos nuestras conclusiones. Reflexionamos sobre si los artistas han cambiado realmente su forma de componer y dejamos recomendaciones para futuros estudios.
+
+Este reporte no solo busca repasar qué ha pasado con la música en la última década, sino también proponer una forma clara y organizada de analizar cómo los hábitos digitales influyen en lo que escuchamos.\
 
 \chapter {Planteamiento del Problema}
 
@@ -81,12 +98,9 @@ En base a lo anterior se plantean las siguientes preguntas de investigación:\
 
 \textbf{2.}	¿Cuál es el comportamiento en las variables de tempo y energy  durante 2015-2025? \
 
-
 \textbf{3.} ¿De qué forma se comporta la duración de las canciones según el país entre el periodo 2015-2025? \
 
-
 \textbf{4.} ¿Cuál es la correlación estadística entre los atributos acústicos de las canciones como duración, tempo y energy y su nivel de popularidad en el periodo 2015-2025?
-
 
 \section{Justificación}
 
@@ -118,15 +132,14 @@ Nuestra investigación analiza el dataset completo con sus 85,000 registros vál
 \subsection{Vertical}
 El estudio se delimita a un análisis puramente cuantitativo y descriptivo. Usando algunas de  las características técnicas de las pistas; duración en minutos, tempo y  energy. Así como  su distribución temporal y geográfica, excluyendo el análisis de otras variables.
 
-
 \begin{table}[ht]
 \centering
 \caption{Variables consideradas en el estudio de audio} 
 \resizebox{\textwidth}{!} {
-\begin{tabular}{cll}
+\begin{tabular}{c l l}
   \hline
-  \textbf{TIPO} & \textbf{VARIABLE} & \textbf{DESCRIPCIÓN} \\ 
-  \hline
+  \textbf{TIPO} & \textbf{VARIABLE} & \textbf{DESCRIPCIÓN} \\
+  \hline}
   Numérica & Duration & La extensión temporal de las pistas de audio medida en minutos. \\ 
   Numérica & Tempo & La velocidad o ritmo de la música, medido en pulsaciones por minuto. \\ 
   Numérica & Energy & Medida cuantitativa continua de intensidad y actividad (0 a 1). \\ 
@@ -201,15 +214,51 @@ $$
 \text{duration\_min} = \frac{\text{duration\_ms}}{60000}
 $$
 
+```{r}
+# Agregado de las columnas year y duration_min
+df <- read.csv("18. Spotify 2015-2025.csv")
+df_clean <- df %>%
+  dplyr::mutate(
+    duration_min = round(duration_ms / 60000, 2),
+    year = lubridate::year(as.Date(release_date))
+  )
+```
 
+\chapter{Marco Metódico}
+
+\section{Bases metódicas utilizadas en el trabajo de investigación}
+
+Este apartado describe el marco metodológico y los procedimientos analíticos empleados para validar las hipótesis planteadas anteriormente.
+
+El proceso abarca desde la preparación y limpieza del conjunto de datos 18. Spotify 2015-2025.csv hasta la aplicación de técnicas de estadísticas descriptivas orientadas a evaluar el comportamiento de las variables estructurales y acústicas de las canciones. Todo el flujo de trabajo ha sido ejecutado en el lenguaje R (versión 4.5.3) a través de RStudio.
+
+\section{Bases metódicas utilizadas en el trabajo de investigación}
+Se trata de una investigación no experimental  dado que se analizan datos históricos de la plataforma sin manipular las variables, con un enfoque cuantitativo, caracterizado por el procesamiento de datos numéricos y el uso de técnicas estadísticas para describir y correlacionar variables. Se usa una técnica de análisis documental, ya que se fundamenta en una base de datos secundaria.
+
+A continuación, se describen las etapas del procesamiento
+
+\subsection{Procesamiento y Limpieza de Datos (ETL)}
+Para garantizar la calidad y precisión de los resultados de esta investigación,fueron sometidos a un proceso de preparación antes de realizar los cálculos estadísticos. Este proceso permitió organizar la información de las 85,000 canciones para que fuera posible analizarlas de manera confiable.
+Durante la revisión inicial de la base de datos, se identificó la presencia de valores nulos en ambul_name y track_name. Dado que estos registros erróneos son una minoría, se filtraron del dataset.
+ 
+Del conjunto de datos se seleccionaron únicamente las variables necesarias para el análisis. 
+
+total de registros erróneos:
+total luego del filtrado:
+
+Para facilitar el análisis de la duración, la columna duration_ms fue cambiada a duration_min, mediante la siguiente fórmula:
+
+duration_min = (duration_ms / 60000).
+
+Por último, se agregó una columna “year” que contiene el valor del año extraído de “realese_date”.
 ```{r}
 
 #Limpieza y creación de columnas nuevas.
 df <- read_csv("18. Spotify 2015-2025.csv")
 
 df <- df %>%
-  mutate(across(where(is.character), ~ trimws(.))) %>%
-  mutate(across(where(is.character), ~ na_if(., "None")))
+  dplyr::mutate(across(where(is.character), ~ trimws(.))) %>%
+  dplyr::mutate(across(where(is.character), ~ na_if(., "None")))
 
 missing_values <- df %>%
   summarise(across(everything(), ~ sum(is.na(.))))%>%
@@ -220,12 +269,12 @@ kable(missing_values, digits = 3,
 
 ```
 
-```{r}
-# Agregado de las columnas year y duration_min
+\subsection{fuentes de investigación}
+La fuente de los datos corresponde al repositorio abierto de Kaggle (“18. Spotify 2015-2025”). El análisis comprende los datos generados entre el 1 de enero de 2015 y el 31 de diciembre de 2025
+\section{Fase de Análisis Exploratorio}
+De acuerdo con los conceptos establecidos en el Marco Teórico, se llevó a cabo el Análisis Exploratorio de Datos con el fin de validar la calidad de la muestra de Spotify.
 
-df_clean <- df %>%
-  mutate(duration_min = round(duration_ms / 60000, 2), year = year(release_date))
-```
+En esta fase, se aplicaron de manera práctica los siguientes pasos, se generaron histogramas y diagramas de caja para observar cómo se distribuyen la duración, el tempo y la energy de las canciones.
 
 ```{r}
 #Gráfico de caja y bigotes.
@@ -234,11 +283,8 @@ fig_boxplot <- ggplot(df_clean, aes(y = duration_min)) +
     fill = "skyblue", 
     color = "black",
   ) +
-  
   coord_cartesian(ylim = c(1, 8)) + 
-  
   scale_y_continuous(breaks = seq(0, 10, by = 1)) +
-  
   labs(
     title = "Distribución de la Duración de las Pistas",
     subtitle = "Análisis de dispersión y detección de valores atípicos",
@@ -250,7 +296,43 @@ fig_boxplot <- ggplot(df_clean, aes(y = duration_min)) +
 fig_boxplot
 ```
 
+El análisis de la distribución de la duración de las pistas (Figura 3.3) muestra una mediana de aproximadamente 4.25 minutos. La mayor concentración de datos se encuentra dentro del rango intercuartílico, que oscila entre los 2.9 y 5.6 minutos, lo que abarca al 50% central de las pistas analizadas. La ausencia de puntos fuera de los bigotes indica que no existen valores atípicos, sugiriendo una distribución consistente de las duraciones de las pistas sin sesgos extremos.
 
+\subsection{Elección de países más representativos de la población}
+Para el análisis longitudinal de la duración promedio anual, se optó por delimitar la unidad de análisis a una submuestra conformada por los tres países con mayor volumen de producción musical dentro del dataset: India, Canadá y Japón.
+
+```{r}
+#Distribución por países con frecuencia relativa porcentual.
+
+distribucion_pais_porcentaje <- df_clean %>%
+  count(country, name = "total") %>%
+  mutate(porcentaje = round((total / sum(total)) * 100, 2)) %>%
+  arrange(desc(porcentaje))
+
+```
+En conjunto, estos tres seleccionados concentran 25831 observaciones analizadas. La exclusión de los países con menor frecuencia absoluta tiene como objetivo facilitar la visualización de resultados a la hora de generar gráficos de líneas.
+
+\chapter{Análisis de Resultados}
+
+\small Este capítulo presenta los resultados obtenidos al aplicar las metodologías descritas en el capítulo anterior, así como del análisis estadístico descriptivo de las variables estudiadas y las ventajas y desventajas al aplicar dichos tests.
+\section{Presentación de resultados 1}
+```{r}
+
+fila_total_top3<- distribucion_pais_porcentaje %>%
+  slice(1:3) %>%
+    summarise(
+      country = "total",
+    total = sum(total, na.rm = TRUE),
+    porcentaje = sum(porcentaje, na.rm = TRUE)
+    )
+distribucion_final <- distribucion_pais_porcentaje %>%
+  bind_rows(fila_total_top3)
+kable(fila_total_top3, digits = 3,
+      caption = "total acumulado:")
+
+```
+
+\section{Presentación de resultados 1}
 ```{r}
 
 # Gráfico de barra, media de duración anual.
@@ -288,38 +370,9 @@ fig_ggplot <- ggplot(media_anual, aes(x = factor(year), y = media_duracion_min))
 fig_ggplot
 
 ```
+El gráfico comunica que, al menos para los datos analizados, no ha habido cambios drásticos en la duración de las canciones en la última década. A pesar de las posibles tendencias de la industria musical hacia pistas más cortas (frecuentemente discutido en contextos de streaming), en este conjunto de datos específico, las pistas han mantenido una duración media muy estable, fluctuando apenas unos segundos hacia arriba o hacia abajo.
 
-
-```{r}
-#Distribución por países con frecuencia relativa porcentual.
-
-distribucion_pais_porcentaje <- df_clean %>%
-  count(country, name = "total") %>%
-  mutate(porcentaje = round((total / sum(total)) * 100, 2)) %>%
-  arrange(desc(porcentaje))
-
-```
-
-```{r}
-#tabla total acumulado top 3
-fila_total_top3 <- distribucion_pais_porcentaje %>%
-  slice(1:3) %>% 
-  summarise(
-    country = "Total", 
-    total = sum(total),      
-    porcentaje = sum(porcentaje) 
-  )
-
-
-distribucion_final <- distribucion_pais_porcentaje %>%
-  bind_rows(fila_total_top3)
-
-kable(fila_total_top3 , digits = 3, 
-      caption = "Total acumulado:")
-
-```
-
-
+\section{Presentación de resultados 2}
 ```{r}
 
 df_pareto <- distribucion_pais_porcentaje %>%
@@ -350,16 +403,17 @@ fig_pareto <- ggplot(df_pareto, aes(x = country)) +
   ) +
   
   labs(
-    title = "Gráfico de Pareto: Distribución de Pistas por País",
-    x = "País"
+    title = "Gráfico de Pareto: Distribucion de Pistas por Pais",
+    x = "Pais"
   ) +
   theme_minimal() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
 fig_pareto
 ```
+La altura de las barras es prácticamente equivalente para cada país, lo que indica que el volumen de pistas no presenta disparidades significativas entre las distintas naciones estudiadas. Esta homogeneidad se confirma mediante la curva de porcentaje acumulado, la cual describe una tendencia lineal con un crecimiento constante del 10% por cada categoría añadida. En conclusión, el peso relativo de cada país en el conjunto total es casi idéntico, lo que refleja un equilibrio proporcional en la muestra geográfica seleccionada
 
-
+\section{Presentación de resultados 3}
 ```{r}
 #Gráfico de barras energy
 
@@ -380,7 +434,9 @@ fig_energy <- ggplot(media_anual, aes(x = factor(year), y = media_energy)) +
 
 fig_energy
 ```
+El gráfico expone la evolución del nivel medio de energía en las pistas durante la última década. De manera análoga a la duración, se observa una estabilidad persistente en este atributo musical, sin una tendencia ascendente o descendente marcada. Los valores promedio se mantienen confinados dentro de un intervalo estrecho, oscilando entre 0.50 y 0.51 en una escala normalizada de 0 a 1.
 
+\section{Presentación de resultados 4}
 ```{r}
 
 # Gráfico de barras tempo
@@ -403,112 +459,21 @@ fig_tempo <- ggplot(media_anual, aes(x = factor(year), y = media_tempo)) +
 
 fig_tempo
 ```
+El gráfico presenta la evolución del tempo promedio, medido en pulsaciones por minuto (BPM), a lo largo del periodo analizado. Al igual que en las variables anteriores, se observa una estabilidad marcada en el ritmo de las pistas, cuyos valores promedio fluctúan dentro de un rango estrecho, principalmente entre los 129 y 131 BPM.
 
-```{r}
-
-top3_nombres <- df_clean %>%
-  count(country) %>%
-  slice_max(order_by = n, n = 3) %>%
-  pull(country)
-
-
-media_top3_anual <- df_clean %>%
-
-  filter(country %in% top3_nombres) %>% 
-  group_by(year, country) %>%
-  summarise(
-    media_duracion = mean(duration_min, na.rm = TRUE),
-    .groups = "drop"
-  )
-
-ggplot(media_top3_anual, aes(x = year, y = media_duracion, color = country)) +
-  geom_line(linewidth = 1.2) +
-  geom_point(size = 2) + 
-  
-  
-  scale_x_continuous(breaks = seq(2015, 2025, by = 2)) + 
-  
-  labs(
-    title = "Evolución de la Duración Media: Top 3 Países",
-    x = "Año",
-    y = "Duración Media (Minutos)",
-    color = "País" 
-  ) +
-  theme_minimal() +
-  theme(
-    legend.position = "bottom" 
-  )
-```
-
-\chapter{Marco Metódico}
-
-\section{Bases metódicas utilizadas en el trabajo de investigación}
-
-Desarrollo\
-
-\subsection{Item 1}
-
-Descripción Item 1\
-
-\subsection{Item 2}
-
-Descripción Item 2\
-
-\subsubsection{Item 2.2}
-
-\section{Bases metódicas utilizadas en el trabajo de investigación}
-
-Desarrollo\
-\subsection{Item 1}
-
-Descripción Item 1\
-
-\subsection{Item 2}
-
-Descripción Item 2\
-
-\subsection{Item n}
-
-\section{Bases metódicas utilizadas en el trabajo de investigación}
-
-Desarrollo\
-
-\subsection{Item 1}
-
-Descripción Item 1\
-
-\subsection{Item 2}
-
-Descripción Item 2\
-
-\chapter{Análisis de Resultados}
-
-{\small Este capítulo presenta los resultados obtenidos al aplicar las metodologías descritas en el capítulo anterior, así como del análisis estadístico descriptivo de las variables estudiadas y las ventajas y desventajas al aplicar dichos tests.}
-
-\section{Presentación de resultados 1}
-Descripción Presentación de resultados 1\
-
-\section{Presentación de resultados 2}
-Descripción Presentación de resultados 2\
-
-\section{Presentación de resultados n}
-Descripción Presentación de resultados n\
+A pesar de pequeñas variaciones interanuales, no se identifica una tendencia de aceleración o desaceleración constante en la producción musical de este conjunto de datos. El tempo se comporta de forma cíclica y oscilante, manteniéndose en niveles de moderada intensidad durante toda la década, lo que refuerza la conclusión general de una homogeneidad estructural en las características técnicas de las pistas examinadas.
 
 \chapter{Conclusiones y Recomendaciones}
+A partir de los resultados obtenidos tras el análisis descriptivo y exploratorio de la muestra de 85,000 registros musicales correspondientes al periodo 2015-2025, se presentan las siguientes conclusiones:
 
-\textbf{Conclusion 1 del trabajo de investigación} 
+\textbf{Las canciones no se han vuelto más cortas.} 
+Aunque todo el mundo dice que ahora las canciones son más breves por culpa de TikTok y Reels, nuestros datos demuestran que esto no es así. En promedio, las canciones siguen durando unos 4 minutos y cuarto, tal como venía pasando hace años. Parece que, al menos en este conjunto de datos, la forma de hacer música no ha cambiado tanto como pensábamos.
 
-\textbf{Recomendación} 
-Recomendación 1 del trabajo de investigación\
+\textbf{La música suena igual de "energética" que antes.} 
+Al revisar si la música es más rápida o más movida, vimos que no hay cambios reales. Los niveles de energía y la velocidad (el ritmo o BPM) se mantienen iguales. No estamos produciendo música más rápida ni más intensa a nivel global.
 
-\textbf{2.-} Conclusion 2 del trabajo de investigación.\
-
-\textbf{Recomendación} 
-Recomendación 2 del trabajo de investigación.\
-
-\textbf{n.-} Conclusion n del trabajo de investigación.\
-
-\textbf{Recomendación} Recomendación n del trabajo de investigación.\
+\textbf{Tenemos una muestra bien balanceada} 
+Los 10 países que elegimos para el estudio aportan prácticamente la misma cantidad de datos cada uno. Esto es bueno porque significa que no hay un país que tenga más peso que otro y que los resultados son justos para todas las regiones.
 
 \appendix
 \renewcommand{\thechapter}{\Alph{chapter}}
