@@ -51,6 +51,6 @@ def sidebar():
         explicit = st.toggle("Incluir canciones explícitas", value=True, help="Activa o desactiva la inclusión de canciones con contenido explícito.")
         st.markdown("---")
         st.markdown("##### Acerca de este dashboard:")
-        st.caption("Desarrollado usando Streamlit, pandas, matplotlib y streamlit_echarts 🐱.")
+        st.caption("Desarrollado usando Streamlit, pandas y streamlit_echarts 🐱.")
         return selected_cities, year_range, selected_genre, selected_labels, explicit
 
