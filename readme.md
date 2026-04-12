@@ -5,11 +5,22 @@
 
 # Introducción.
 
----
+La industria de la música ha cambiado muchísimo en los últimos años. Lo que antes era un formato tradicional, se ha transformado completamente por el auge del streaming y el contenido breve en redes sociales. Sin embargo, más allá de lo que vemos en redes, la producción musical sigue siendo un entorno lleno de cambios: el éxito de una canción es el resultado de una mezcla compleja de gustos personales, tendencias y nuevas tecnologías.
+
+Este trabajo tiene como objetivo analizar a fondo una base de datos de 85,000 canciones lanzadas entre 2015 y 2025. Usando herramientas de programación en R, buscamos entender cómo la duración, el ritmo y la energía de las canciones han evolucionado frente a la creciente preferencia por los videos cortos y rápidos.
+
 
 ## Estructura del informe.
 
----
+- Capítulo I: Planteamos la duda principal: ¿Está el auge de las redes sociales obligando a crear música más corta? Aquí definimos qué queremos descubrir y qué límites tiene nuestra investigación.
+
+- Capítulo II: Explicamos los conceptos básicos que usamos, como el promedio y la relación entre diferentes factores, para que cualquier persona pueda entender cómo analizamos los números.
+
+- Capítulo III: Detallamos cómo preparamos y revisamos la información antes de trabajar con ella, asegurándonos de que los datos fueran fiables y estuvieran listos para el análisis.
+
+- Capítulo IV: Mostramos los resultados obtenidos a través de gráficos y tablas. Aquí es donde ponemos a prueba nuestras ideas y vemos qué dicen realmente los datos sobre la duración y el ritmo de la música en esta última década.
+
+- Capítulo V: Finalmente, compartimos nuestras conclusiones. Reflexionamos sobre si los artistas han cambiado realmente su forma de componer y dejamos recomendaciones para futuros estudios.
 
 # Planteamiento del problema.
 
@@ -57,8 +68,7 @@ Analizar la evolución de la duración estructural y características acústicas
 
 -   Evaluar los coeficientes de correlación entre los atributos acústicos individuales de las canciones, para determinar si el éxito comercial depende de factores aislados o es multifactorial.
 
-###### Dashboard con Streamlit: <https://trabajo-final-8uor.onrender.com/>
+###### Dashboard con Streamlit onrender: <https://trabajo-final-8uor.onrender.com/>
+###### Dasgbiard con Streamlit streamlit deployment: <https://spotifyinteractivedashboardproject.streamlit.app/>
+###### Informe Estadístico con R Markdown: <https://trabajo-final-informe.onrender.com/informe.pdf>
 
-###### Informe Estadístico con R Markdown: ...
-
-##  
