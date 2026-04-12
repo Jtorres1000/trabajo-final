@@ -69,6 +69,7 @@ Analizar la evolución de la duración estructural y características acústicas
 -   Evaluar los coeficientes de correlación entre los atributos acústicos individuales de las canciones, para determinar si el éxito comercial depende de factores aislados o es multifactorial.
 
 ###### Dashboard con Streamlit onrender: <https://trabajo-final-8uor.onrender.com/>
-###### Dasgbiard con Streamlit streamlit deployment: <https://spotifyinteractivedashboardproject.streamlit.app/>
+###### Dashboard con Streamlit streamlit deployment: <https://spotifyinteractivedashboardproject.streamlit.app/>
+###### Dashboard con Streamlit streamlit deployment versión 85k de registros: <https://spotifyinteractivedashboardproject.streamlit.app/>
 ###### Informe Estadístico con R Markdown: <https://trabajo-final-informe.onrender.com/informe.pdf>
 
