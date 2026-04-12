@@ -79,8 +79,8 @@ def calcular_segmentos_distribucion(df_filtered, año_seleccionado=None):
         df_temp = df_temp[df_temp["año"].astype(str) == str(año_seleccionado)]
 
     # Agrupamos y contamos
-    segmentos_tempo = df_temp.groupby(['segmento_tempo']).size().reset_index(name='value')
-    segmentos_energy = df_temp.groupby(['segmento_energy']).size().reset_index(name='value')
+    segmentos_tempo = df_temp.groupby(['segmento_tempo'], observed=False).size().reset_index(name='value')
+    segmentos_energy = df_temp.groupby(['segmento_energy'], observed=False).size().reset_index(name='value')
 
     # Renombramos columnas para ECharts
     segmentos_tempo = segmentos_tempo.rename(columns={'segmento_tempo': 'name'})
