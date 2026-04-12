@@ -52,6 +52,7 @@ library(tidyverse)
 library(knitr)
 library(kableExtra)
 library(scales)
+library(corrplot)
 ```
 
 \chapter*{Introducción}
@@ -492,7 +493,7 @@ Japón redujo su duración media para el año 2025 aunque no es su media más ba
 
 \section{Análisis de correlación entre las características musicales y el número de reproducciones}
 
-```{r}
+```{r correlation-plot}
 
 variables_interes <- df_clean[, c("duration_min", "popularity", "tempo", "energy", "stream_count")]
 
@@ -500,36 +501,15 @@ variables_interes <- df_clean[, c("duration_min", "popularity", "tempo", "energy
 
 matriz_corr <- cor(variables_interes)
 
+corrplot(matriz_corr, 
+         method = 'color', 
+         order = 'alphabet', 
+         addCoef.col = 'black', 
+         number.digits = 3,
+         addgrid.col = 'gray',
+         tl.col = 'black',      
+         tl.srt = 45)
 
-kable(matriz_corr, digits = 3, 
-             caption = "Matriz de correlación entre métricas de las canciones")
-```
-```{r correlation-plot}
-
-library(corrplot)
-
-columnas_deseadas <- c("duration_min", "popularity", "tempo", "energy", "stream_count")
-
-columnas_existentes <- columnas_deseadas[columnas_deseadas %in% colnames(df_clean)]
-
-datos_grafico <- na.omit(df_clean[, columnas_existentes])
-
-matriz <- cor(datos_grafico)
-
-corrplot_nativa <- function(m, titulo) {
-  n <- nrow(m)
-  image(1:n, 1:n, m, col = colorRampPalette(c("White", "Orange", "RED"))(200),
-        axes = FALSE, xlab = "", ylab = "", main = "Matriz de Correlación")
-  axis(1, at=1:n, labels=colnames(m), las=2, cex.axis = 0.7)
-  axis(2, at=1:n, labels=rownames(m), las=2, cex.axis = 0.7)
-  for(i in 1:n) {
-    for(j in 1:n) {
-      text(i, j, round(m[i,j], 3))
-    }
-  }
-}
-
-corrplot_nativa(matriz, "Matriz de correlación")
 ```
 Al analizar la matriz de correlación, se observa que la única relación lineal destacable se da entre la popularidad (popularity) y el número de reproducciones (stream_count), mostrando un coeficiente positivo de 0.358, lo que indica una tendencia moderada donde las canciones más populares suelen acumular un mayor volumen de escuchas, no obstante al no conocer la naturaleza bajo la cual fue definida la variable energy, no se conoce si esto tenga alguna significancia. Por otro lado, el resto de las variables (duration_min, tempo y energy) presentan coeficientes muy cercanos a cero, lo que demuestra una práctica independencia lineal; es decir, ni la duración, ni el ritmo, ni la energía de las canciones en esta muestra específica tienen un impacto directo o significativo en su popularidad o en la cantidad de reproducciones que generan.
 
