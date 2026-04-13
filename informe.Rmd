@@ -156,12 +156,18 @@ El análisis se centra en 5 parámetros cuantitativos específicos:
 \end{table}
 
 \chapter {Marco Teórico}
+En este apartado explicaremos de forma sencilla qué son los elementos que componen nuestro análisis. Entender estos conceptos básicos es clave para comprender por qué la música, tal como la conocemos, tiene las características que analizamos en este estudio.
+
+\section{Spotify}
+Esta plataforma digital funciona mediante tecnología de streaming. A diferencia de la adquisición de discos físicos o la descarga permanente de archivos, este sistema permite escuchar música directamente desde internet. Lo que convierte a este servicio en una herramienta de investigación tan poderosa es que, además de ser una biblioteca de millones de canciones, registra datos sobre el comportamiento de cada pista. Esto permite observar patrones globales, como la duración promedio o el tempo de las composiciones, en tiempo real y a gran escala.
+
+\section{Género Musical}
+El género musical es, esencialmente, una etiqueta o categoría que agrupa canciones que comparten características similares, como el tipo de instrumentos usados, la estructura de la composición o el estilo interpretativo. En el contexto de nuestro análisis, los géneros son importantes porque funcionan como "familias" musicales que suelen seguir sus propias reglas. Por ejemplo, una canción de música electrónica suele tener un ritmo más marcado que una balada, y esto influye en los valores de tempo o energía que aparecen en nuestra base de datos.
+
+\section{Tempo (BPM)}
+El tempo se refiere a la velocidad con la que se desarrolla una canción. Se mide en beats per minute o pulsaciones por minuto (BPM). Imagina que el tempo es el "latido" de la música: si una canción tiene un tempo bajo, suena pausada o lenta; si tiene un tempo alto, es rápida y probablemente más movida. Este valor es fundamental en nuestra investigación porque nos permite medir si, con el paso de los años, las canciones se han vuelto físicamente más rápidas para adaptarse al ritmo acelerado de las redes sociales.
 
 \section {Bases teóricas}
-
-El siguiente capítulo establece todos los métodos estadísticos y matemáticos utilizados para la investigación. Para ver si se encuentran patrones en las variables numéricas y analizar su comportamiento a lo largo del periodo de tiempo definido\
-
-La comprensión de estos conceptos es crucial para interpretar tanto la correlación de pearson como la media aritmética de las distintas variables.\
 
 \subsection{Análisis exploratorio de los datos (EDA)}
 Es un enfoque para analizar conjuntos de datos se usa para resumir las características principales de un dataset, a menudo utilizando métodos estadísticos y gráficos para describir la información.
@@ -222,15 +228,13 @@ distribucion_pais_porcentaje <- df_clean %>%
 ```
 
 \chapter{Marco Metódico}
-
-El presente apartado describe el marco metodológico y los procedimientos analíticos empleados para validar las hipótesis planteadas.
-
-Spotify, como plataforma líder en distribución de contenido multimedia, ofrece acceso a un catálogo que incluye más de mil millones de canciones provenientes de sellos discográficos y compañías de medios, además de tres millones de vídeos musicales. Para este estudio, se ha consolidado una base de datos compuesta por 85.000 registros, los cuales abarcan una amplia diversidad de géneros musicales —desde jazz hasta indie— e incluyen obras de artistas reconocidos, tales como Mark Diaz y Mr. James Brown, con sus álbumes más destacados.
-
-Dada la extensión de la plataforma, el presente análisis se fundamenta en el conjunto de datos denominado Spotify 2015-2025.csv. El objetivo es realizar estadísticas descriptivas y de correlación para examinar la evolución de la duración, el ritmo y la energía de las canciones, evaluando cómo estas características han mutado frente a la tendencia actual de las diversas plataformas que priorizan la difusión de piezas de menor duración.
+Este apartado describe el marco metodológico y los procesamientos analíticos
+empleados para validar las hipótesis planteadas anteriormente.
+El proceso abarca desde la preparación y la limpieza del conjunto de datos  18.Spotify 2015-2025.csv hasta la aplicacion de tecnicas de estadístocas descriptivas orientadas a evaluar el comportamiento de las variables estructurales y acústicas de las canciones. 
+Todo el flujo del trabajo ha sido ejecutado en el lenguaje R (versión 4.5.3) a través de RStudio.
 \section{Bases metódicas utilizadas en el trabajo de investigación}
 
-Se trata de una investigación no experimental  dado que se analizan datos históricos de la plataforma sin manipular las variables, con un enfoque cuantitativo, caracterizado por el procesamiento de datos numéricos y el uso de técnicas estadísticas para describir y correlacionar variables. Para el análisis, se emplea estadística descriptiva con el fin de resumir los datos, junto con el análisis de correlación para identificar y cuantificar la relación entre las variables de estudio.\
+Se trata de una investigación descriptiva y correlacional dado que se analizan datos históricos de la plataforma sin manipular las variables, con un enfoque cuantitativo, caracterizado por el procesamiento de datos numéricos y el uso de técnicas estadísticas para describir y correlacionar variables. Para el análisis, se emplea estadística descriptiva con el fin de resumir los datos, junto con el análisis de correlación para identificar y cuantificar la relación entre las variables de estudio.\
  
 A continuación, se describen las etapas del procesamiento:
 
