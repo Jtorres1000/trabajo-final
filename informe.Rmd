@@ -158,16 +158,17 @@ El análisis se centra en 5 parámetros cuantitativos específicos:
 \chapter {Marco Teórico}
 En este apartado explicaremos de forma sencilla qué son los elementos que componen nuestro análisis. Entender estos conceptos básicos es clave para comprender por qué la música, tal como la conocemos, tiene las características que analizamos en este estudio.
 
-\section{Spotify}
+\section {Bases teóricas}
+
+\subsection{Spotify}
 Esta plataforma digital funciona mediante tecnología de streaming. A diferencia de la adquisición de discos físicos o la descarga permanente de archivos, este sistema permite escuchar música directamente desde internet. Lo que convierte a este servicio en una herramienta de investigación tan poderosa es que, además de ser una biblioteca de millones de canciones, registra datos sobre el comportamiento de cada pista. Esto permite observar patrones globales, como la duración promedio o el tempo de las composiciones, en tiempo real y a gran escala.
 
-\section{Género Musical}
+\subsection{Género Musical}
 El género musical es, esencialmente, una etiqueta o categoría que agrupa canciones que comparten características similares, como el tipo de instrumentos usados, la estructura de la composición o el estilo interpretativo. En el contexto de nuestro análisis, los géneros son importantes porque funcionan como "familias" musicales que suelen seguir sus propias reglas. Por ejemplo, una canción de música electrónica suele tener un ritmo más marcado que una balada, y esto influye en los valores de tempo o energía que aparecen en nuestra base de datos.
 
-\section{Tempo (BPM)}
+\subsection{Tempo (BPM)}
 El tempo se refiere a la velocidad con la que se desarrolla una canción. Se mide en beats per minute o pulsaciones por minuto (BPM). Imagina que el tempo es el "latido" de la música: si una canción tiene un tempo bajo, suena pausada o lenta; si tiene un tempo alto, es rápida y probablemente más movida. Este valor es fundamental en nuestra investigación porque nos permite medir si, con el paso de los años, las canciones se han vuelto físicamente más rápidas para adaptarse al ritmo acelerado de las redes sociales.
 
-\section {Bases teóricas}
 
 \subsection{Análisis exploratorio de los datos (EDA)}
 Es un enfoque para analizar conjuntos de datos se usa para resumir las características principales de un dataset, a menudo utilizando métodos estadísticos y gráficos para describir la información.
@@ -241,7 +242,7 @@ A continuación, se describen las etapas del procesamiento:
 \subsection{Procesamiento y Limpieza de Datos (ETL)}
 
 Para garantizar la calidad y precisión de los resultados de esta investigación,fueron sometidos a un proceso de preparación antes de realizar los cálculos estadísticos. Este proceso permitió organizar la información de las 85,000 canciones para que fuera posible analizarlas de manera confiable.
-Durante la revisión inicial de la base de datos, se identificó la presencia de valores nulos en ambul_name y track_name. Dado que estos registros erróneos son una minoría y las variables afectadas no afectan al estudio se decidió dejar los registros, la siguiente tabla describe los valores erróneos encontrados para cada variable.
+Durante la revisión inicial de la base de datos, se identificó la presencia de valores nulos en album_name y track_name. Dado que estos registros erróneos son una minoría y las variables afectadas no afectan al estudio se decidió dejar los registros, la siguiente tabla describe los valores erróneos encontrados para cada variable.
 
 ```{r}
 
@@ -534,13 +535,19 @@ Finalmente, el análisis de correlación evidenció una notable ausencia de vín
 \setlength{\leftskip}{0.5in}
 \setlength{\parskip}{8pt}
 
+Epidemic Sound. (s.f.). \textit{Géneros musicales}. Recuperado el 12 de abril de 2026, de https://www.epidemicsound.com/es/music/genres/
+
+Hernández Sánchez, J. P. (2022). \textit{Contemos historias cortas: El microrrelato audiovisual en Instagram} [Tesis de maestría, Universidad de Antioquia]. Biblioteca Digital Universidad de Antioquia. https://bibliotecadigital.udea.edu.co/server/api/core/bitstreams/7bcee190-db44-4929-9b66-25e29aafea5f/content
+
 International Federation of the Phonographic Industry. (2023). \textit{Engaging with music 2023}. https://www.ifpi.org/wp-content/uploads/2023/12/IFPI-Engaging-With-Music-2023_full-report.pdf
 
 International Federation of the Phonographic Industry. (2025). \textit{Global music report 2025: State of the industry}. https://www.ifpi.org/wp-content/uploads/2024/03/GMR2025_SOTI.pdf
 
-Hernández Sánchez, J. P. (2022). \textit{Contemos historias cortas: El microrrelato audiovisual en Instagram} [Tesis de maestría, Universidad de Antioquia]. Biblioteca Digital Universidad de Antioquia. https://bibliotecadigital.udea.edu.co/server/api/core/bitstreams/7bcee190-db44-4929-9b66-25e29aafea5f/content
-
 Ngilangil, K. M. (2022). Tiktok on SNSU students: Engagement and influence. \textit{International Journal of English Literature and Social Sciences, 7}(4). https://www.researchgate.net/profile/Kristopher-Ngilangil/publication/362467641_Tiktok_on_SNSU_Students_Engagement_and_Influence/links/62eb5249505511283e8c8023/Tiktok-on-SNSU-Students-Engagement-and-Influence.pdf
+
+Wikipedia. (s.f.). \textit{Spotify}. Recuperado el 12 de abril de 2026, de https://es.wikipedia.org/wiki/Spotify
+
+Wikipedia. (s.f.). \textit{Tempo}. Recuperado el 12 de abril de 2026, de https://es.wikipedia.org/wiki/Tempo
 
 YouTube. (s.f.). \textit{YouTube Shorts}. Recuperado el 12 de abril de 2026, de https://www.youtube.com/creators/shorts/
 
