@@ -52,6 +52,7 @@ library(tidyverse)
 library(knitr)
 library(kableExtra)
 library(scales)
+library(corrplot)
 ```
 
 \chapter*{Introducción}
@@ -72,21 +73,17 @@ Este trabajo tiene como objetivo analizar a fondo una base de datos de 85,000 ca
     \item \textbf{Capítulo IV}: Mostramos los resultados obtenidos a través de gráficos y tablas. Aquí es donde ponemos a prueba nuestras ideas y vemos qué dicen realmente los datos sobre la duración y el ritmo de la música en esta última década.
 
     \item \textbf{Capítulo V}: Finalmente, compartimos nuestras conclusiones. Reflexionamos sobre si los artistas han cambiado realmente su forma de componer y dejamos recomendaciones para futuros estudios.
-    
 \end{itemize}
-
-Este reporte no solo busca repasar qué ha pasado con la música en la última década, sino también proponer una forma clara y organizada de analizar cómo los hábitos digitales influyen en lo que escuchamos.
-
 
 \chapter {Planteamiento del Problema}
 
-En la última década, hay una inclinación a los videos de formato corto y vertical. Debido al auge que tuvo la aplicación Tiktok. En 2020, TikTok superó los 2 mil millones de visualizaciones en todo el mundo (Influencer Marketing Hub, 2020, como se citó en Navarro-Güere, 2024). Y, además, esta red social motiva a sus usuarios a generar contenido corto y vertical, para optimizar los vídeos en TikTok, la red social recomienda que los vídeos se graben siempre en modo vertical (Simplified, 2022, como se citó en Navarro-Güere, 2024)\
+En la última década, hay una inclinación a los videos de formato corto y vertical. Debido al auge que tuvo la aplicación Tiktok. En 2020 superó los 2 mil millones de visualizaciones en todo el mundo (Influencer Marketing Hub, 2020, como se citó en Navarro-Güere, 2024). Y, además, esta red social motiva a sus usuarios a generar contenido corto y vertical, la red social recomienda que los vídeos se graben siempre en modo vertical (Simplified, 2022, como se citó en Navarro-Güere, 2024)\
 
-Debido al éxito general que venía amasando la red social TikTok, otras plataformas empezaron a adaptarse a este tipo de formato vertical y corto, La sección Instagram Reels apareció en 2020 —diez años después que la aplicación Instagram— donde se graban y editan vídeos de clips de 15, 30 o 60 segundos con audio, efectos, stickers, audio y otros recursos (Instagram, 2020; Alexander, 2020; Lenis, 2023, como se citó en Navarro-Güere, 2024). Así mismo, la red social Youtube, se adaptó con la implementación de Youtube shorts, según YouTube (s.f.) Shorts es la plataforma para grabar, compartir y maratonear videos cortos (de 60 segundos o menos) en YouTube.\
+Debido al éxito que alcanzó TikTok, otras plataformas adaptaron su formato a vídeos verticales de corta duración. En 2020, diez años después del lanzamiento de Instagram, se introdujeron los Reels, una sección que permite grabar y editar clips de 15, 30 o 60 segundos utilizando diversos recursos como audio, efectos, stickers y otras herramientas de edición (Instagram, 2020; Alexander, 2020; Lenis, 2023, como se citó en Navarro-Güere, 2024). De igual manera, YouTube se adaptó a esta tendencia con la implementación de Shorts, definidos como la plataforma propia para grabar, compartir y consumir vídeos de 60 segundos o menos (YouTube, s.f.).\
 
 A la par de esto, según el reciente informe de la IFPI (2024) las ventas de la industria musical han venido migrando de un formato físico a un formato de streaming, pasando de discos en formato físico al uso de plataformas de audio streaming o de video streaming.\
 
-las ventas musicales a nivel global en la modalidad de streaming para el año 2024 estaban conformadas por un total de 20.4 billones de USD representando al 69\% de las ventas producidas por la industria musical, y ha mantenido un incremento desde 2011.\
+Las ventas musicales a nivel global en la modalidad de streaming para el año 2024 estaban conformadas por un total de 20.4 billones de USD representando al 69\% de las ventas producidas por la industria musical, y ha mantenido un incremento desde 2011.\
 
 Así mismo, el auge de los videos de formato vertical ha reconfigurado la manera en que las audiencias más jóvenes consumen contenido sonoro. De acuerdo con los datos recopilados en el estudio Engaging with Music (IFPI, 2023), el 82\% de los usuarios con edades comprendidas entre los 16 y 24 años interactúa con la música diariamente a través de plataformas de videos cortos. Esta preferencia sitúa a este formato por encima de alternativas tradicionales y digitales, dejando en segundo plano al streaming de audio puro (72\%) y a las plataformas de video convencionales (66\%).\
  
@@ -112,7 +109,7 @@ Esta investigación es fundamental para comprender la transformación estructura
  
 \subsection{Objetivo General}
 
-Análisis de la evolución en la duración estructural y caracacterísticas acústicas de las canciones producidas po la industria musical en la última década. 
+Análisis de la evolución en la duración estructural y caracacterísticas acústicas de las canciones producidas por la industria musical en la última década. 
 
 \subsection{Objetivos Específicos}
 
@@ -133,8 +130,8 @@ Nuestra investigación analiza el dataset completo con sus 85,000 registros vál
 El estudio se delimita a un análisis puramente cuantitativo y descriptivo. Usando algunas de  las características técnicas de las pistas; duración en minutos, tempo y  energy. Así como  su distribución temporal y geográfica, excluyendo el análisis de otras variables.
 
 \section{Periodo de Referencia}
-
-El análisis comprende los datos generados entre el *1 de enero de 2015* y el *31 de diciembre de 2025*, este periodo abarca todo el periodo disponible en el dataset.
+\textbf{1 de enero de 2015}, \textbf{31 de diciembre de 2025}
+El análisis comprende los datos generados entre el 1 de enero de 2015 y el 31 de diciembre de 2025, este periodo abarca todo el periodo disponible en el dataset.
 
 \section{Variables}
 
@@ -159,12 +156,19 @@ El análisis se centra en 5 parámetros cuantitativos específicos:
 \end{table}
 
 \chapter {Marco Teórico}
+En este apartado explicaremos de forma sencilla qué son los elementos que componen nuestro análisis. Entender estos conceptos básicos es clave para comprender por qué la música, tal como la conocemos, tiene las características que analizamos en este estudio.
 
 \section {Bases teóricas}
 
-El siguiente capítulo establece todos los métodos estadísticos y matemáticos utilizados para la investigación. Para ver si se encuentran patrones en las variables numéricas y analizar su comportamiento a lo largo del periodo de tiempo definido\
+\subsection{Spotify}
+Esta plataforma digital funciona mediante tecnología de streaming. A diferencia de la adquisición de discos físicos o la descarga permanente de archivos, este sistema permite escuchar música directamente desde internet. Lo que convierte a este servicio en una herramienta de investigación tan poderosa es que, además de ser una biblioteca de millones de canciones, registra datos sobre el comportamiento de cada pista. Esto permite observar patrones globales, como la duración promedio o el tempo de las composiciones, en tiempo real y a gran escala.
 
-La comprensión de estos conceptos es crucial para interpretar tanto la correlación de pearson como la media aritmética de las distintas variables.\
+\subsection{Género Musical}
+El género musical es, esencialmente, una etiqueta o categoría que agrupa canciones que comparten características similares, como el tipo de instrumentos usados, la estructura de la composición o el estilo interpretativo. En el contexto de nuestro análisis, los géneros son importantes porque funcionan como "familias" musicales que suelen seguir sus propias reglas. Por ejemplo, una canción de música electrónica suele tener un ritmo más marcado que una balada, y esto influye en los valores de tempo o energía que aparecen en nuestra base de datos.
+
+\subsection{Tempo (BPM)}
+El tempo se refiere a la velocidad con la que se desarrolla una canción. Se mide en beats per minute o pulsaciones por minuto (BPM). Imagina que el tempo es el "latido" de la música: si una canción tiene un tempo bajo, suena pausada o lenta; si tiene un tempo alto, es rápida y probablemente más movida. Este valor es fundamental en nuestra investigación porque nos permite medir si, con el paso de los años, las canciones se han vuelto físicamente más rápidas para adaptarse al ritmo acelerado de las redes sociales.
+
 
 \subsection{Análisis exploratorio de los datos (EDA)}
 Es un enfoque para analizar conjuntos de datos se usa para resumir las características principales de un dataset, a menudo utilizando métodos estadísticos y gráficos para describir la información.
@@ -225,21 +229,20 @@ distribucion_pais_porcentaje <- df_clean %>%
 ```
 
 \chapter{Marco Metódico}
-
-Este apartado describe el marco metodológico y los procedimientos analíticos empleados para validar las hipótesis planteadas anteriormente.
-
-El proceso abarca desde la preparación y limpieza del conjunto de datos 18. Spotify 2015-2025.csv hasta la aplicación de técnicas de estadísticas descriptivas orientadas a evaluar el comportamiento de las variables estructurales y acústicas de las canciones. Todo el flujo de trabajo ha sido ejecutado en el lenguaje R (versión 4.5.3) a través de RStudio.
-
+Este apartado describe el marco metodológico y los procesamientos analíticos
+empleados para validar las hipótesis planteadas anteriormente.
+El proceso abarca desde la preparación y la limpieza del conjunto de datos  18.Spotify 2015-2025.csv hasta la aplicacion de tecnicas de estadístocas descriptivas orientadas a evaluar el comportamiento de las variables estructurales y acústicas de las canciones. 
+Todo el flujo del trabajo ha sido ejecutado en el lenguaje R (versión 4.5.3) a través de RStudio.
 \section{Bases metódicas utilizadas en el trabajo de investigación}
 
-Se trata de una investigación no experimental  dado que se analizan datos históricos de la plataforma sin manipular las variables, con un enfoque cuantitativo, caracterizado por el procesamiento de datos numéricos y el uso de técnicas estadísticas para describir y correlacionar variables. Se usa una técnica de análisis documental, ya que se fundamenta en una base de datos secundaria.\
-
+Se trata de una investigación descriptiva y correlacional dado que se analizan datos históricos de la plataforma sin manipular las variables, con un enfoque cuantitativo, caracterizado por el procesamiento de datos numéricos y el uso de técnicas estadísticas para describir y correlacionar variables. Para el análisis, se emplea estadística descriptiva con el fin de resumir los datos, junto con el análisis de correlación para identificar y cuantificar la relación entre las variables de estudio.\
+ 
 A continuación, se describen las etapas del procesamiento:
 
 \subsection{Procesamiento y Limpieza de Datos (ETL)}
 
 Para garantizar la calidad y precisión de los resultados de esta investigación,fueron sometidos a un proceso de preparación antes de realizar los cálculos estadísticos. Este proceso permitió organizar la información de las 85,000 canciones para que fuera posible analizarlas de manera confiable.
-Durante la revisión inicial de la base de datos, se identificó la presencia de valores nulos en ambul_name y track_name. Dado que estos registros erróneos son una minoría y las variables afectadas no afectan al estudio se decidió dejar los registros, la siguiente tabla describe los valores erróneos encontrados para cada variable.
+Durante la revisión inicial de la base de datos, se identificó la presencia de valores nulos en album_name y track_name. Dado que estos registros erróneos son una minoría y las variables afectadas no afectan al estudio se decidió dejar los registros, la siguiente tabla describe los valores erróneos encontrados para cada variable.
 
 ```{r}
 
@@ -490,12 +493,12 @@ ggplot(media_top3_anual, aes(x = year, y = media_duracion, color = country)) +
 ```
 El análisis del gráfico evidencia reducciones en la media de las canciones en algunos puntos particulares, empezando por Japón, país que marcó el mínimo absoluto de la muestra en 2023 y registró otros valles importantes en 2019 y 2025. Esta inclinación reciente a la baja es secundada por Canadá, que tras una fase de crecimiento continuo, sufrió caídas abruptas en 2021 y especialmente en 2024, regresando a niveles mínimos similares a los de su inicio en 2015.
 
-Japón redujo su duración media para el año 2025 aunque no es su media más baja históricamente hablando, mismo caso para canadá donde su media aumentó un poco en 2025, pero esta bastante cerca de su media mas baja en 2015, finalmente india donde aumento muy ligeramente su media con respecto a 2025.
+Japón redujo su duración media para el año 2025 aunque no es su media más baja históricamente hablando, mismo caso para canadá donde su media aumentó un poco en 2025, pero esta bastante cerca de su media mas baja en 2015, finalmente india donde aumento muy ligeramente su media con respecto a 2025.\\
 
 
 \section{Análisis de correlación entre las características musicales y el número de reproducciones}
 
-```{r}
+```{r correlation-plot}
 
 variables_interes <- df_clean[, c("duration_min", "popularity", "tempo", "energy", "stream_count")]
 
@@ -503,11 +506,16 @@ variables_interes <- df_clean[, c("duration_min", "popularity", "tempo", "energy
 
 matriz_corr <- cor(variables_interes)
 
+corrplot(matriz_corr, 
+         method = 'color', 
+         order = 'alphabet', 
+         addCoef.col = 'black', 
+         number.digits = 3,
+         addgrid.col = 'gray',
+         tl.col = 'black',      
+         tl.srt = 45)
 
-kable(matriz_corr, digits = 3, 
-             caption = "Matriz de correlación entre métricas de las canciones")
 ```
-
 Al analizar la matriz de correlación, se observa que la única relación lineal destacable se da entre la popularidad (popularity) y el número de reproducciones (stream_count), mostrando un coeficiente positivo de 0.358, lo que indica una tendencia moderada donde las canciones más populares suelen acumular un mayor volumen de escuchas, no obstante al no conocer la naturaleza bajo la cual fue definida la variable energy, no se conoce si esto tenga alguna significancia. Por otro lado, el resto de las variables (duration_min, tempo y energy) presentan coeficientes muy cercanos a cero, lo que demuestra una práctica independencia lineal; es decir, ni la duración, ni el ritmo, ni la energía de las canciones en esta muestra específica tienen un impacto directo o significativo en su popularidad o en la cantidad de reproducciones que generan.
 
 \chapter{Conclusiones y Recomendaciones}
@@ -527,18 +535,22 @@ Finalmente, el análisis de correlación evidenció una notable ausencia de vín
 \setlength{\leftskip}{0.5in}
 \setlength{\parskip}{8pt}
 
+Epidemic Sound. (s.f.). \textit{Géneros musicales}. Recuperado el 12 de abril de 2026, de https://www.epidemicsound.com/es/music/genres/
+
+Hernández Sánchez, J. P. (2022). \textit{Contemos historias cortas: El microrrelato audiovisual en Instagram} [Tesis de maestría, Universidad de Antioquia]. Biblioteca Digital Universidad de Antioquia. https://bibliotecadigital.udea.edu.co/server/api/core/bitstreams/7bcee190-db44-4929-9b66-25e29aafea5f/content
+
 International Federation of the Phonographic Industry. (2023). \textit{Engaging with music 2023}. https://www.ifpi.org/wp-content/uploads/2023/12/IFPI-Engaging-With-Music-2023_full-report.pdf
 
 International Federation of the Phonographic Industry. (2025). \textit{Global music report 2025: State of the industry}. https://www.ifpi.org/wp-content/uploads/2024/03/GMR2025_SOTI.pdf
 
-Hernández Sánchez, J. P. (2022). \textit{Contemos historias cortas: El microrrelato audiovisual en Instagram} [Tesis de maestría, Universidad de Antioquia]. Biblioteca Digital Universidad de Antioquia. https://bibliotecadigital.udea.edu.co/server/api/core/bitstreams/7bcee190-db44-4929-9b66-25e29aafea5f/content
-
 Ngilangil, K. M. (2022). Tiktok on SNSU students: Engagement and influence. \textit{International Journal of English Literature and Social Sciences, 7}(4). https://www.researchgate.net/profile/Kristopher-Ngilangil/publication/362467641_Tiktok_on_SNSU_Students_Engagement_and_Influence/links/62eb5249505511283e8c8023/Tiktok-on-SNSU-Students-Engagement-and-Influence.pdf
+
+Wikipedia. (s.f.). \textit{Spotify}. Recuperado el 12 de abril de 2026, de https://es.wikipedia.org/wiki/Spotify
+
+Wikipedia. (s.f.). \textit{Tempo}. Recuperado el 12 de abril de 2026, de https://es.wikipedia.org/wiki/Tempo
 
 YouTube. (s.f.). \textit{YouTube Shorts}. Recuperado el 12 de abril de 2026, de https://www.youtube.com/creators/shorts/
 
 \setlength{\parindent}{0in}
 \setlength{\leftskip}{0in}
 \setlength{\parskip}{0pt}
-
-
