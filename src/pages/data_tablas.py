@@ -17,7 +17,7 @@ def pagina_data_tablas():
     st.markdown("### Duración promedio por país y año:")
     st.dataframe(duracion_pais_tiempo, width='stretch')
 
-    st.markdown("### Duración promedio de las canciones por año")
+    st.markdown("### Duración promedio de las canciones por año:")
     st.dataframe(media_anual_duracion, width='stretch')
 
     st.markdown("### Matriz de correlación de las variables:")
