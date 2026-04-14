@@ -115,3 +115,4 @@ def pagina_inicio():
         """,
         unsafe_allow_html=True
     )
+    st.info("Puedes acceder al informe estadístico mediante el siguiente enlace: https://trabajo-final-informe.onrender.com/informe.pdf", icon=":material/picture_as_pdf:")
