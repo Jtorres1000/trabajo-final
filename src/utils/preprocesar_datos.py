@@ -7,6 +7,7 @@ def preprocesar_datos(df: pd.DataFrame) -> pd.DataFrame:
     """Preprocesa el DataFrame de Spotify."""
     df = df.convert_dtypes()
     df = df.replace(r'^\s*$', np.nan, regex=True)
+    df= df.head(15000)
     df["duration_ms"] = df["duration_ms"].div(1000 * 60).round(2)
     df = df.rename(columns={'duration_ms': 'duration_min'})
     df['release_date'] = pd.to_datetime(df['release_date'])
