@@ -19,7 +19,7 @@ def sidebar():
         labels = df_processed['label'].unique()
 
         selected_cities = st.multiselect(
-            "Selecciona una o más ciudades:", 
+            "Selecciona uno o más países:", 
             cities, 
             default=["Canada", "Brazil", "Germany"], 
             help="Filtra la data según uno o más países.", 
@@ -29,7 +29,7 @@ def sidebar():
         year_range = st.select_slider(
             "Selecciona un rango de años:", 
             options=años_disponibles, 
-            help="Friltra la data según un rango de años.",
+            help="Filtra la data según un rango de años.",
             value=(2015, 2025)
         )
         
@@ -37,7 +37,7 @@ def sidebar():
             "Selecciona uno o más generos:",
             genres,
             default =["Reggaeton", "Pop", "Hip-Hop"],
-            help="Friltra la data según uno o más géneros musicales.",
+            help="Filtra la data según uno o más géneros musicales.",
             placeholder="Escoge una opción..."
         )
         selected_labels = st.multiselect(
