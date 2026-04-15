@@ -239,9 +239,10 @@ Se trata de una investigación descriptiva y correlacional dado que se analizan 
  
 A continuación, se describen las etapas del procesamiento:
 
-\subsection{Procesamiento y Limpieza de Datos (ETL)}
+\subsection{Procesamiento y Limpieza de Datos}
 
-Para garantizar la calidad y precisión de los resultados de esta investigación,fueron sometidos a un proceso de preparación antes de realizar los cálculos estadísticos. Este proceso permitió organizar la información de las 85,000 canciones para que fuera posible analizarlas de manera confiable.
+Para garantizar la calidad y precisión de los resultados de esta investigación, fueron sometidos a un proceso de preparación antes de realizar los cálculos estadísticos. Este proceso permitió organizar la información de las 85,000 canciones para que fuera posible analizarlas de manera confiable.\
+
 Durante la revisión inicial de la base de datos, se identificó la presencia de valores nulos en album_name y track_name. Dado que estos registros erróneos son una minoría y las variables afectadas no afectan al estudio se decidió dejar los registros, la siguiente tabla describe los valores erróneos encontrados para cada variable.
 
 ```{r}
@@ -265,7 +266,7 @@ $$
 
 Por último, se agregó una columna “year” que contiene el valor del año extraído de “realese_date”.
 
-\subsection{fuentes de investigación}
+\subsection{Fuentes de investigación}
 La fuente de los datos corresponde al repositorio abierto de Kaggle (“18. Spotify 2015-2025”). El análisis comprende los datos generados entre el 1 de enero de 2015 y el 31 de diciembre de 2025
 \section{Fase de Análisis Exploratorio}
 De acuerdo con los conceptos establecidos en el Marco Teórico, se llevó a cabo el Análisis Exploratorio de Datos con el fin de validar la calidad de la muestra de Spotify.
