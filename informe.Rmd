@@ -1,10 +1,10 @@
 ---
 # --- Metadatos Básicos ---
-title: "Análisis de la evolución en la duración estructural y caracacterísticas acústicas de las canciones producidas po la industria musical en la última década."
+title: "Análisis de la evolución en la duración estructural y características acústicas de las canciones producidas por la industria musical en el periodo 2015-2025"
 author:
    - Jorge Torres
    - Arianna Oliveros 
-date: "marzo 2026"
+date: "abril 2026"
 
 # --- Metadatos Específicos de Plantilla ---
 degree: "Computación I"
@@ -109,13 +109,13 @@ Esta investigación es fundamental para comprender la transformación estructura
  
 \subsection{Objetivo General}
 
-Análisis de la evolución en la duración estructural y caracacterísticas acústicas de las canciones producidas por la industria musical en la última década. 
+Análisis de la evolución en la duración estructural y características acústicas de las canciones producidas por la industria musical en la última década. 
 
 \subsection{Objetivos Específicos}
 
 \textbf{1.} Describir la evolución del promedio de duración por año y analizar su tendencia.\
 
-\textbf{2.} Análizar el comportamiento anual de las variables tempo y energy para identificar patrones o tendencias.\
+\textbf{2.} Analizar el comportamiento anual de las variables tempo y energy para identificar patrones o tendencias.\
 
 \textbf{3.}Comparar los promedios de duración entre los 3 paises más representativos del dataset para establecer si el fenómeno de inmediatez es globalmente homogéneo o presenta variaciones regionales significativas.\
 
@@ -231,7 +231,7 @@ distribucion_pais_porcentaje <- df_clean %>%
 \chapter{Marco Metódico}
 Este apartado describe el marco metodológico y los procesamientos analíticos
 empleados para validar las hipótesis planteadas anteriormente.
-El proceso abarca desde la preparación y la limpieza del conjunto de datos  18.Spotify 2015-2025.csv hasta la aplicacion de tecnicas de estadístocas descriptivas orientadas a evaluar el comportamiento de las variables estructurales y acústicas de las canciones. 
+El proceso abarca desde la preparación y la limpieza del conjunto de datos del archivo 18.Spotify 2015-2025.csv hasta la aplicación de técnicas estadísticas descriptivas orientadas a evaluar el comportamiento de las variables estructurales y acústicas de las canciones. 
 Todo el flujo del trabajo ha sido ejecutado en el lenguaje R (versión 4.5.3) a través de RStudio.
 \section{Bases metódicas utilizadas en el trabajo de investigación}
 
@@ -362,7 +362,7 @@ kable(fila_total_top3, digits = 3,
 
 \chapter{Análisis de Resultados}
 
-\small Este capítulo presenta los resultados obtenidos al aplicar las metodologías descritas en el capítulo anterior, así como del análisis estadístico descriptivo de las variables estudiadas y las ventajas y desventajas al aplicar dichos tests.
+\small Este capítulo presenta los resultados obtenidos al aplicar las metodologías descritas en el capítulo anterior, así como del análisis estadístico descriptivo de las variables estudiadas.
 
 \section{Análisis de duración media de las pistas por año}
 ```{r}
@@ -493,7 +493,7 @@ ggplot(media_top3_anual, aes(x = year, y = media_duracion, color = country)) +
 ```
 El análisis del gráfico evidencia reducciones en la media de las canciones en algunos puntos particulares, empezando por Japón, país que marcó el mínimo absoluto de la muestra en 2023 y registró otros valles importantes en 2019 y 2025. Esta inclinación reciente a la baja es secundada por Canadá, que tras una fase de crecimiento continuo, sufrió caídas abruptas en 2021 y especialmente en 2024, regresando a niveles mínimos similares a los de su inicio en 2015.
 
-Japón redujo su duración media para el año 2025 aunque no es su media más baja históricamente hablando, mismo caso para canadá donde su media aumentó un poco en 2025, pero esta bastante cerca de su media mas baja en 2015, finalmente india donde aumento muy ligeramente su media con respecto a 2025.\\
+Japón redujo su duración media para el año 2025 aunque no es su media más baja históricamente hablando, mismo caso para Canadá donde su media aumentó un poco en 2025, pero esta bastante cerca de su media mas baja en 2015, finalmente india donde aumento muy ligeramente su media con respecto a 2025.\\
 
 
 \section{Análisis de correlación entre las características musicales y el número de reproducciones}
