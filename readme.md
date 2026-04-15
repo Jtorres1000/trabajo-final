@@ -71,5 +71,5 @@ Analizar la evolución de la duración estructural y características acústicas
 ###### Dashboard con Streamlit onrender: <https://trabajo-final-8uor.onrender.com/>
 ###### Dashboard con Streamlit, streamlit deployment versión 15k de registros: <https://spotifyinteractivedashboard.streamlit.app/>
 ###### Dashboard con Streamlit, streamlit deployment versión 85k de registros: <https://spotifyinteractivedashboardproject.streamlit.app/>
-###### Informe Estadístico con R Markdown: <https://trabajo-final-informe.onrender.com/informe.pdf>
+###### Informe Estadístico con R Markdown: <https://trabajo-final-informe.onrender.com/R/informe.pdf>
 

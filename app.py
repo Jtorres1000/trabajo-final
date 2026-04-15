@@ -21,7 +21,7 @@ sns.set_palette(sns.color_palette(PALETA_SPOTIFY))
 st.set_page_config(page_title="Spotify Dashboard", layout="wide", page_icon="🎵")
 
 # Carga inicial
-df = cargar_csv("18. Spotify 2015-2025.csv")
+df = cargar_csv("./dataset/18. Spotify 2015-2025.csv")
 df_processed = preprocesar_datos(df)
 
 # Inicializar los datos en el session_state
